@@ -5,9 +5,6 @@ export default defineNuxtConfig({
   ssr: false,
   nitro: {
     preset: 'github-pages',
-    output: {
-      publicDir: '../.output/public',
-    },
   },
   app: {
     baseURL: '/grille/',
