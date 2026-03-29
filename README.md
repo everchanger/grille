@@ -2,7 +2,7 @@
 
 **Grille** is a daily car guessing game — think Wordle, but for iconic cars. Every day a new car is chosen. You have 6 guesses to identify it using colour-coded feedback on Make, Model, Year, Horsepower, and Weight. The car image progressively reveals itself the more guesses you use.
 
-Play it live → **[GitHub Pages](https://YOUR_USERNAME.github.io/grille/)**
+Play it live → **[GitHub Pages](https://everchanger.github.io/grille/)**
 
 ---
 
