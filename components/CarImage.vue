@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full max-w-md mx-auto my-4 rounded overflow-hidden bg-gray-800">
+  <div class="w-full max-w-md mx-auto my-4 rounded-xl overflow-hidden bg-gray-800/50 backdrop-blur-sm ring-1 ring-white/10 shadow-lg shadow-indigo-500/10 transition-all duration-300">
     <template v-if="state === 'none'">
-      <div class="h-48 flex items-center justify-center text-gray-500 text-4xl">🚗</div>
+      <div class="h-48 flex items-center justify-center text-gray-500 text-4xl bg-gradient-to-br from-gray-800/50 to-gray-900/50">🚗</div>
     </template>
     <template v-else-if="state === 'silhouette'">
       <div class="relative h-48">

@@ -4,7 +4,7 @@
       v-model="query"
       type="text"
       placeholder="Search for a car..."
-      class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:border-blue-400"
+      class="w-full px-4 py-2.5 rounded-xl bg-white/[0.06] text-white placeholder-gray-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 backdrop-blur-sm transition-all duration-200"
       :disabled="disabled"
       @input="onInput"
       @keydown.enter="selectFirst"
@@ -12,15 +12,15 @@
     />
     <ul
       v-if="suggestions.length > 0"
-      class="absolute z-10 w-full bg-gray-800 border border-gray-600 rounded mt-1 max-h-60 overflow-y-auto"
+      class="absolute z-10 w-full bg-gray-900/90 backdrop-blur-xl border border-white/10 rounded-xl mt-2 max-h-60 overflow-y-auto shadow-xl shadow-black/40 animate-scale-in"
     >
       <li
         v-for="car in suggestions"
         :key="car.id"
-        class="px-4 py-2 cursor-pointer hover:bg-gray-700 text-white text-sm"
+        class="px-4 py-2.5 cursor-pointer text-gray-300 text-sm hover:bg-indigo-500/20 hover:text-white transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
         @mousedown.prevent="select(car)"
       >
-        {{ car.make }} {{ car.model }} ({{ car.year }})
+        {{ car.make }} {{ car.model }} <span class="text-gray-500">({{ car.year }})</span>
       </li>
     </ul>
   </div>
