@@ -29,6 +29,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { Car } from '~/types'
+import { carLabel } from '~/utils/carLabel'
 import carsData from '~/data/cars.json'
 
 const props = defineProps<{
@@ -60,7 +61,7 @@ const onInput = () => {
 }
 
 const select = (car: Car) => {
-  query.value = `${car.make} ${car.model} (${car.year})`
+  query.value = carLabel(car)
   emit('guess', query.value)
   query.value = ''
 }

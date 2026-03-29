@@ -61,6 +61,7 @@ import { ref, computed } from 'vue'
 import { useGame } from '~/composables/useGame'
 import { useUnits } from '~/composables/useUnits'
 import { useStorage } from '~/composables/useStorage'
+import { carLabel } from '~/utils/carLabel'
 import type { GuessEntry } from '~/types'
 import carsData from '~/data/cars.json'
 import type { Car } from '~/types'
@@ -77,7 +78,7 @@ const guessEntries = computed<GuessEntry[]>(() => {
   return state.value.guesses
     .map((name, idx) => {
       if (!name || !state.value.guessResults[idx]) return null
-      const car = cars.find(c => `${c.make} ${c.model} (${c.year})` === name || `${c.make} ${c.model}` === name)
+      const car = cars.find(c => carLabel(c) === name || `${c.make} ${c.model}` === name)
       if (!car) return null
       return { car, feedback: state.value.guessResults[idx]! } as GuessEntry
     })

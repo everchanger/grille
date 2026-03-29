@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import type { Car, GameState, GuessFeedback, StatsState, ImageState } from '~/types'
 import { useStorage } from '~/composables/useStorage'
+import { carLabel } from '~/utils/carLabel'
 import carsData from '~/data/cars.json'
 
 const EPOCH = new Date('2025-01-01T00:00:00Z')
@@ -69,7 +70,7 @@ export const useGame = () => {
     if (!canGuess.value) return
 
     const guessed = cars.find(
-      c => `${c.make} ${c.model} (${c.year})` === carName || `${c.make} ${c.model}` === carName,
+      c => carLabel(c) === carName || `${c.make} ${c.model}` === carName,
     )
     if (!guessed) return
 
@@ -116,7 +117,7 @@ export const useGame = () => {
     const lines: string[] = [`Grille #${dayNumber.value} ${state.value.solved ? filled : 'X'}/6`, '']
     const row = (idx: number) => {
       if (state.value.guesses[idx] === null) return '⬜⬜⬜⬜⬜'
-      return state.value.solved && state.value.guesses[idx] !== null && idx === filled - 1 && state.value.solved
+      return state.value.solved && state.value.guesses[idx] !== null && idx === filled - 1
         ? '✅✅✅✅✅'
         : '🟥🟥🟥🟥🟥'
     }
