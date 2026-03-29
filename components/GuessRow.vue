@@ -1,0 +1,64 @@
+<template>
+  <div class="grid grid-cols-5 gap-1 mb-1">
+    <div
+      v-for="col in columns"
+      :key="col.key"
+      :class="['flex flex-col items-center justify-center rounded p-1 text-center min-h-[52px] text-xs font-semibold', cellClass(col.key)]"
+    >
+      <span class="text-lg leading-none">{{ icon(col.key) }}</span>
+      <span class="mt-0.5 text-[10px] opacity-75">{{ col.label }}</span>
+      <span v-if="displayValue(col.key)" class="text-[10px] font-bold">{{ displayValue(col.key) }}</span>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import type { GuessFeedback, FeedbackResult } from '~/types'
+import { useUnits } from '~/composables/useUnits'
+
+interface Column {
+  key: keyof GuessFeedback
+  label: string
+}
+
+const props = defineProps<{
+  feedback: GuessFeedback
+  car: import('~/types').Car
+}>()
+
+const { formatWeight } = useUnits()
+
+const columns: Column[] = [
+  { key: 'make', label: 'Make' },
+  { key: 'model', label: 'Model' },
+  { key: 'year', label: 'Year' },
+  { key: 'horsepower', label: 'HP' },
+  { key: 'weight', label: 'Weight' },
+]
+
+const icon = (key: keyof GuessFeedback): string => {
+  const result: FeedbackResult = props.feedback[key]
+  if (result === 'correct') return '✅'
+  if (result === 'close') return '🟡'
+  if (result === 'higher') return '🔼'
+  if (result === 'lower') return '🔽'
+  return '❌'
+}
+
+const cellClass = (key: keyof GuessFeedback): string => {
+  const result: FeedbackResult = props.feedback[key]
+  if (result === 'correct') return 'bg-green-600 text-white'
+  if (result === 'close') return 'bg-yellow-500 text-white'
+  return 'bg-gray-700 text-white'
+}
+
+const displayValue = (key: keyof GuessFeedback): string => {
+  if (!props.car) return ''
+  if (key === 'make') return props.car.make
+  if (key === 'model') return props.car.model
+  if (key === 'year') return String(props.car.year)
+  if (key === 'horsepower') return `${props.car.horsepower} hp`
+  if (key === 'weight') return formatWeight(props.car.weight_kg)
+  return ''
+}
+</script>
