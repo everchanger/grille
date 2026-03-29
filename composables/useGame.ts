@@ -135,5 +135,6 @@ export const useGame = () => {
     canGuess,
     submitGuess,
     generateShareText,
+    computeFeedback,
   }
 }
