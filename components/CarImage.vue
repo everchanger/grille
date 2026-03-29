@@ -6,7 +6,7 @@
     <template v-else-if="state === 'silhouette'">
       <div class="relative h-48">
         <img
-          :src="src"
+          :src="resolvedSrc"
           :alt="alt"
           class="w-full h-full object-cover"
           style="filter: brightness(0) contrast(1);"
@@ -16,7 +16,7 @@
     <template v-else-if="state === 'blurred'">
       <div class="relative h-48">
         <img
-          :src="src"
+          :src="resolvedSrc"
           :alt="alt"
           class="w-full h-full object-cover"
           style="filter: blur(12px);"
@@ -25,7 +25,7 @@
     </template>
     <template v-else>
       <img
-        :src="src"
+        :src="resolvedSrc"
         :alt="alt"
         class="w-full h-48 object-cover"
       />
@@ -34,11 +34,15 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { ImageState } from '~/types'
+import { resolveAssetUrl } from '~/utils/useAssetUrl'
 
-defineProps<{
+const props = defineProps<{
   src: string
   alt: string
   state: ImageState
 }>()
+
+const resolvedSrc = computed(() => resolveAssetUrl(props.src))
 </script>

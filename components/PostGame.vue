@@ -8,7 +8,7 @@
     </div>
 
     <img
-      :src="car.image"
+      :src="resolvedImage"
       :alt="`${car.make} ${car.model}`"
       class="w-full max-w-sm mx-auto rounded mb-4 object-cover h-48"
     />
@@ -58,9 +58,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import type { Car } from '~/types'
 import { useUnits } from '~/composables/useUnits'
+import { resolveAssetUrl } from '~/utils/useAssetUrl'
 
 const props = defineProps<{
   car: Car
@@ -72,6 +73,7 @@ defineEmits<{
 }>()
 
 const { formatWeight } = useUnits()
+const resolvedImage = computed(() => resolveAssetUrl(props.car.image))
 const countdown = ref('')
 
 const updateCountdown = () => {
