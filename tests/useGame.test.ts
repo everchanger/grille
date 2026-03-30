@@ -164,10 +164,10 @@ describe('useGame', () => {
       expect(game.state.value.failed).toBe(false)
     })
 
-    it('imageState starts as none', async () => {
+    it('imageState starts with maximum blur', async () => {
       const { useGame } = await import('~/composables/useGame')
       const game = useGame()
-      expect(game.imageState.value).toBe('none')
+      expect(game.imageState.value).toBe(40)
     })
 
     it('todaysCar selects from the car list deterministically', async () => {

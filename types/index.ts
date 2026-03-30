@@ -49,4 +49,4 @@ export interface SettingsState {
   unit: 'kg' | 'lbs'
 }
 
-export type ImageState = 'none' | 'silhouette' | 'blurred' | 'full'
+export type ImageState = number
