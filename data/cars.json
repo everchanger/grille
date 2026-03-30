@@ -15,20 +15,6 @@
   },
   {
     "id": 2,
-    "make": "Ford",
-    "model": "Mustang (1st Gen)",
-    "year": 1964,
-    "country": "USA",
-    "horsepower": 271,
-    "weight_kg": 1297,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/ford-mustang-1st-gen.webp",
-    "fact": "The original Mustang sold over 1 million units in its first 18 months — a record that had never been seen in the automotive industry before.",
-    "wiki": "https://en.wikipedia.org/wiki/Ford_Mustang"
-  },
-  {
-    "id": 3,
     "make": "Chevrolet",
     "model": "Corvette (C1)",
     "year": 1953,
@@ -42,7 +28,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 4,
+    "id": 3,
     "make": "Chevrolet",
     "model": "Corvette (C2)",
     "year": 1963,
@@ -56,7 +42,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 5,
+    "id": 4,
     "make": "Chevrolet",
     "model": "Corvette (C3)",
     "year": 1968,
@@ -70,7 +56,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 6,
+    "id": 5,
     "make": "Chevrolet",
     "model": "Corvette (C4)",
     "year": 1984,
@@ -84,7 +70,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 7,
+    "id": 6,
     "make": "Chevrolet",
     "model": "Corvette (C5)",
     "year": 1997,
@@ -98,7 +84,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 8,
+    "id": 7,
     "make": "Chevrolet",
     "model": "Corvette (C6)",
     "year": 2005,
@@ -112,7 +98,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 9,
+    "id": 8,
     "make": "Chevrolet",
     "model": "Corvette (C7)",
     "year": 2014,
@@ -126,7 +112,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 10,
+    "id": 9,
     "make": "Chevrolet",
     "model": "Corvette (C8)",
     "year": 2020,
@@ -140,49 +126,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette"
   },
   {
-    "id": 11,
-    "make": "Chevrolet",
-    "model": "Camaro (1st Gen)",
-    "year": 1967,
-    "country": "USA",
-    "horsepower": 295,
-    "weight_kg": 1497,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-camaro-1st-gen.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Camaro"
-  },
-  {
-    "id": 12,
-    "make": "Chevrolet",
-    "model": "Camaro SS (3rd Gen)",
-    "year": 1982,
-    "country": "USA",
-    "horsepower": 165,
-    "weight_kg": 1474,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-camaro-ss-3rd-gen.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Camaro_SS"
-  },
-  {
-    "id": 13,
-    "make": "Chevrolet",
-    "model": "Camaro Z28 (4th Gen)",
-    "year": 1993,
-    "country": "USA",
-    "horsepower": 275,
-    "weight_kg": 1499,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-camaro-z28-4th-gen.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Camaro_Z28"
-  },
-  {
-    "id": 14,
+    "id": 10,
     "make": "Chevrolet",
     "model": "Camaro ZL1 (5th Gen)",
     "year": 2012,
@@ -196,7 +140,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Camaro_ZL1"
   },
   {
-    "id": 15,
+    "id": 11,
     "make": "Chevrolet",
     "model": "Impala (3rd Gen)",
     "year": 1965,
@@ -210,21 +154,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Impala"
   },
   {
-    "id": 16,
-    "make": "Chevrolet",
-    "model": "Chevelle SS 396",
-    "year": 1966,
-    "country": "USA",
-    "horsepower": 375,
-    "weight_kg": 1542,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-chevelle-ss-396.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Chevelle_SS_396"
-  },
-  {
-    "id": 17,
+    "id": 12,
     "make": "Chevrolet",
     "model": "Bel Air",
     "year": 1957,
@@ -238,7 +168,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Bel_Air"
   },
   {
-    "id": 18,
+    "id": 13,
     "make": "Ford",
     "model": "GT40",
     "year": 1964,
@@ -252,7 +182,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_GT40"
   },
   {
-    "id": 19,
+    "id": 14,
     "make": "Ford",
     "model": "GT (2005)",
     "year": 2005,
@@ -266,7 +196,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_GT"
   },
   {
-    "id": 20,
+    "id": 15,
     "make": "Ford",
     "model": "GT (2017)",
     "year": 2017,
@@ -280,7 +210,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_GT"
   },
   {
-    "id": 21,
+    "id": 16,
     "make": "Ford",
     "model": "Mustang GT (S197)",
     "year": 2005,
@@ -294,7 +224,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Mustang_GT"
   },
   {
-    "id": 22,
+    "id": 17,
     "make": "Ford",
     "model": "Mustang Shelby GT500 (S197)",
     "year": 2007,
@@ -308,21 +238,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Mustang_Shelby_GT500"
   },
   {
-    "id": 23,
-    "make": "Ford",
-    "model": "Mustang (S550)",
-    "year": 2015,
-    "country": "USA",
-    "horsepower": 435,
-    "weight_kg": 1678,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/ford-mustang-s550.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Ford_Mustang"
-  },
-  {
-    "id": 24,
+    "id": 18,
     "make": "Ford",
     "model": "Thunderbird (1st Gen)",
     "year": 1955,
@@ -336,7 +252,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Thunderbird"
   },
   {
-    "id": 25,
+    "id": 19,
     "make": "Ford",
     "model": "F-150 Raptor",
     "year": 2010,
@@ -350,7 +266,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_F-150_Raptor"
   },
   {
-    "id": 26,
+    "id": 20,
     "make": "Ford",
     "model": "Bronco (1st Gen)",
     "year": 1966,
@@ -364,7 +280,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Bronco"
   },
   {
-    "id": 27,
+    "id": 21,
     "make": "Ford",
     "model": "Escort RS Cosworth",
     "year": 1992,
@@ -378,7 +294,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Escort_RS_Cosworth"
   },
   {
-    "id": 28,
+    "id": 22,
     "make": "Ford",
     "model": "Sierra RS Cosworth",
     "year": 1986,
@@ -392,7 +308,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Sierra_RS_Cosworth"
   },
   {
-    "id": 29,
+    "id": 23,
     "make": "Ford",
     "model": "Focus RS (Mk2)",
     "year": 2009,
@@ -406,7 +322,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Focus_RS"
   },
   {
-    "id": 30,
+    "id": 24,
     "make": "Ford",
     "model": "Focus RS (Mk3)",
     "year": 2016,
@@ -420,7 +336,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Focus_RS"
   },
   {
-    "id": 31,
+    "id": 25,
     "make": "Dodge",
     "model": "Charger R/T",
     "year": 1968,
@@ -434,35 +350,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Dodge_Charger_R/T"
   },
   {
-    "id": 32,
-    "make": "Dodge",
-    "model": "Challenger R/T",
-    "year": 1970,
-    "country": "USA",
-    "horsepower": 335,
-    "weight_kg": 1644,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/dodge-challenger-r-t.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Dodge_Challenger_R/T"
-  },
-  {
-    "id": 33,
-    "make": "Dodge",
-    "model": "Viper (RT/10)",
-    "year": 1992,
-    "country": "USA",
-    "horsepower": 400,
-    "weight_kg": 1527,
-    "engine": "V10",
-    "drivetrain": "RWD",
-    "image": "/cars/dodge-viper-rt-10.webp",
-    "fact": "The original Viper had no roof, no side windows, no ABS, no traction control, and no airbags — Dodge intentionally built it as a raw, dangerous driving experience.",
-    "wiki": "https://en.wikipedia.org/wiki/Dodge_Viper"
-  },
-  {
-    "id": 34,
+    "id": 26,
     "make": "Dodge",
     "model": "Viper GTS",
     "year": 1996,
@@ -476,35 +364,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Dodge_Viper_GTS"
   },
   {
-    "id": 35,
-    "make": "Dodge",
-    "model": "Viper SRT-10 ACR",
-    "year": 2008,
-    "country": "USA",
-    "horsepower": 600,
-    "weight_kg": 1538,
-    "engine": "V10",
-    "drivetrain": "RWD",
-    "image": "/cars/dodge-viper-srt-10-acr.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Dodge_Viper_SRT-10_ACR"
-  },
-  {
-    "id": 36,
-    "make": "Dodge",
-    "model": "Challenger SRT Hellcat",
-    "year": 2015,
-    "country": "USA",
-    "horsepower": 707,
-    "weight_kg": 2013,
-    "engine": "V8 Supercharged",
-    "drivetrain": "RWD",
-    "image": "/cars/dodge-challenger-srt-hellcat.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Dodge_Challenger_SRT_Hellcat"
-  },
-  {
-    "id": 37,
+    "id": 27,
     "make": "Dodge",
     "model": "Challenger SRT Demon",
     "year": 2018,
@@ -518,21 +378,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Dodge_Challenger_SRT_Demon"
   },
   {
-    "id": 38,
-    "make": "Plymouth",
-    "model": "Barracuda (3rd Gen)",
-    "year": 1970,
-    "country": "USA",
-    "horsepower": 335,
-    "weight_kg": 1593,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/plymouth-barracuda-3rd-gen.webp",
-    "fact": "The Plymouth Barracuda is a two-door pony car that was manufactured by Chrysler Corporation from 1964 through 1974 model years.\nThe first-generation Barracuda was based on the Chrysler A-body and was offered from 1964 until 1966.",
-    "wiki": "https://en.wikipedia.org/wiki/Plymouth_Barracuda"
-  },
-  {
-    "id": 39,
+    "id": 28,
     "make": "Pontiac",
     "model": "GTO (1964)",
     "year": 1964,
@@ -546,7 +392,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pontiac_GTO"
   },
   {
-    "id": 40,
+    "id": 29,
     "make": "Pontiac",
     "model": "Firebird Trans Am (2nd Gen)",
     "year": 1970,
@@ -560,7 +406,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pontiac_Firebird_Trans_Am"
   },
   {
-    "id": 41,
+    "id": 30,
     "make": "Pontiac",
     "model": "Firebird Trans Am (3rd Gen)",
     "year": 1982,
@@ -574,7 +420,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pontiac_Firebird_Trans_Am"
   },
   {
-    "id": 42,
+    "id": 31,
     "make": "Toyota",
     "model": "Supra (A80)",
     "year": 1993,
@@ -588,7 +434,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Supra"
   },
   {
-    "id": 43,
+    "id": 32,
     "make": "Toyota",
     "model": "Supra (A70)",
     "year": 1986,
@@ -602,7 +448,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Supra"
   },
   {
-    "id": 44,
+    "id": 33,
     "make": "Toyota",
     "model": "Supra (A90)",
     "year": 2019,
@@ -616,7 +462,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Supra"
   },
   {
-    "id": 45,
+    "id": 34,
     "make": "Toyota",
     "model": "2000GT",
     "year": 1967,
@@ -630,7 +476,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_2000GT"
   },
   {
-    "id": 46,
+    "id": 35,
     "make": "Toyota",
     "model": "AE86 Sprinter Trueno",
     "year": 1983,
@@ -644,7 +490,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_AE86_Sprinter_Trueno"
   },
   {
-    "id": 47,
+    "id": 36,
     "make": "Toyota",
     "model": "MR2 (AW11)",
     "year": 1984,
@@ -658,21 +504,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_MR2"
   },
   {
-    "id": 48,
-    "make": "Toyota",
-    "model": "MR2 Turbo (SW20)",
-    "year": 1989,
-    "country": "Japan",
-    "horsepower": 200,
-    "weight_kg": 1260,
-    "engine": "I4 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/toyota-mr2-turbo-sw20.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Toyota_MR2_Turbo"
-  },
-  {
-    "id": 49,
+    "id": 37,
     "make": "Toyota",
     "model": "Celica GT-Four (ST205)",
     "year": 1994,
@@ -686,7 +518,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Celica_GT-Four"
   },
   {
-    "id": 50,
+    "id": 38,
     "make": "Toyota",
     "model": "Land Cruiser (J40)",
     "year": 1960,
@@ -700,7 +532,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Land_Cruiser"
   },
   {
-    "id": 51,
+    "id": 39,
     "make": "Toyota",
     "model": "Land Cruiser (J80)",
     "year": 1990,
@@ -714,21 +546,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Land_Cruiser"
   },
   {
-    "id": 52,
-    "make": "Toyota",
-    "model": "Corolla (E110)",
-    "year": 1995,
-    "country": "Japan",
-    "horsepower": 120,
-    "weight_kg": 1100,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/toyota-corolla-e110.webp",
-    "fact": "The Toyota Corolla (Japanese: トヨタ・カローラ, Hepburn: Toyota Karōra) is a seri.e.s of compact cars (formerly subcompact) manufactured and marketed globally by the Japanese automaker Toyota Motor Corporation.",
-    "wiki": "https://en.wikipedia.org/wiki/Toyota_Corolla"
-  },
-  {
-    "id": 53,
+    "id": 40,
     "make": "Toyota",
     "model": "Camry (XV20)",
     "year": 1996,
@@ -742,7 +560,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Camry"
   },
   {
-    "id": 54,
+    "id": 41,
     "make": "Toyota",
     "model": "Hilux (7th Gen)",
     "year": 2004,
@@ -756,7 +574,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Hilux"
   },
   {
-    "id": 55,
+    "id": 42,
     "make": "Toyota",
     "model": "GR Yaris",
     "year": 2020,
@@ -770,7 +588,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_GR_Yaris"
   },
   {
-    "id": 56,
+    "id": 43,
     "make": "Nissan",
     "model": "Skyline GT-R (R34)",
     "year": 1999,
@@ -784,7 +602,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Skyline_GT-R"
   },
   {
-    "id": 57,
+    "id": 44,
     "make": "Nissan",
     "model": "Skyline GT-R (R33)",
     "year": 1995,
@@ -798,7 +616,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Skyline_GT-R"
   },
   {
-    "id": 58,
+    "id": 45,
     "make": "Nissan",
     "model": "Skyline GT-R (R32)",
     "year": 1989,
@@ -812,7 +630,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Skyline_GT-R"
   },
   {
-    "id": 59,
+    "id": 46,
     "make": "Nissan",
     "model": "GT-R (R35)",
     "year": 2007,
@@ -826,7 +644,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_GT-R"
   },
   {
-    "id": 60,
+    "id": 47,
     "make": "Nissan",
     "model": "Silvia (S15)",
     "year": 1999,
@@ -840,7 +658,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Silvia"
   },
   {
-    "id": 61,
+    "id": 48,
     "make": "Nissan",
     "model": "Silvia (S13)",
     "year": 1988,
@@ -854,7 +672,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Silvia"
   },
   {
-    "id": 62,
+    "id": 49,
     "make": "Nissan",
     "model": "240SX (S14)",
     "year": 1993,
@@ -868,7 +686,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_240SX"
   },
   {
-    "id": 63,
+    "id": 50,
     "make": "Nissan",
     "model": "350Z",
     "year": 2002,
@@ -882,7 +700,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_350Z"
   },
   {
-    "id": 64,
+    "id": 51,
     "make": "Nissan",
     "model": "370Z",
     "year": 2009,
@@ -896,7 +714,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_370Z"
   },
   {
-    "id": 65,
+    "id": 52,
     "make": "Nissan",
     "model": "Fairlady Z (S30)",
     "year": 1969,
@@ -910,7 +728,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Fairlady_Z"
   },
   {
-    "id": 66,
+    "id": 53,
     "make": "Nissan",
     "model": "300ZX (Z32)",
     "year": 1989,
@@ -924,7 +742,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_300ZX"
   },
   {
-    "id": 67,
+    "id": 54,
     "make": "Nissan",
     "model": "Patrol (Y60)",
     "year": 1987,
@@ -938,7 +756,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Patrol"
   },
   {
-    "id": 68,
+    "id": 55,
     "make": "Honda",
     "model": "NSX (NA1)",
     "year": 1990,
@@ -952,7 +770,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_NSX"
   },
   {
-    "id": 69,
+    "id": 56,
     "make": "Honda",
     "model": "NSX (NC1)",
     "year": 2016,
@@ -966,7 +784,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_NSX"
   },
   {
-    "id": 70,
+    "id": 57,
     "make": "Honda",
     "model": "S2000 (AP1)",
     "year": 1999,
@@ -980,7 +798,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_S2000"
   },
   {
-    "id": 71,
+    "id": 58,
     "make": "Honda",
     "model": "Civic Type R (EK9)",
     "year": 1997,
@@ -994,7 +812,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Civic_Type_R"
   },
   {
-    "id": 72,
+    "id": 59,
     "make": "Honda",
     "model": "Civic Type R (FD2)",
     "year": 2007,
@@ -1008,7 +826,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Civic_Type_R"
   },
   {
-    "id": 73,
+    "id": 60,
     "make": "Honda",
     "model": "Civic Type R (FK8)",
     "year": 2017,
@@ -1022,21 +840,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Civic_Type_R"
   },
   {
-    "id": 74,
-    "make": "Honda",
-    "model": "Integra Type R (DC2)",
-    "year": 1995,
-    "country": "Japan",
-    "horsepower": 200,
-    "weight_kg": 1080,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/honda-integra-type-r-dc2.webp",
-    "fact": "The Honda Inte.g.ra (Japanese: ホンダ インテグラ, Hepburn: Honda Inte.g.ura), sold in North America as the Acura Inte.g.ra and later the Acura RSX, is an automobile produced by the Japanese company Honda from 1985 until 2006, and then since 2021.",
-    "wiki": "https://en.wikipedia.org/wiki/Honda_Integra_Type_R"
-  },
-  {
-    "id": 75,
+    "id": 61,
     "make": "Honda",
     "model": "Prelude (5th Gen)",
     "year": 1996,
@@ -1050,7 +854,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Prelude"
   },
   {
-    "id": 76,
+    "id": 62,
     "make": "Honda",
     "model": "Beat",
     "year": 1991,
@@ -1064,21 +868,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Beat"
   },
   {
-    "id": 77,
-    "make": "Honda",
-    "model": "CR-X (EF8)",
-    "year": 1987,
-    "country": "Japan",
-    "horsepower": 150,
-    "weight_kg": 910,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/honda-cr-x-ef8.webp",
-    "fact": "The Honda CR-X (originally launched as the Honda Ballade Sports CR-X in Japan) is a sport-compact car manufactured by Honda from 1983 until 1991.",
-    "wiki": "https://en.wikipedia.org/wiki/Honda_CR-X"
-  },
-  {
-    "id": 78,
+    "id": 63,
     "make": "Mazda",
     "model": "RX-7 (FD)",
     "year": 1992,
@@ -1092,7 +882,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_RX-7"
   },
   {
-    "id": 79,
+    "id": 64,
     "make": "Mazda",
     "model": "RX-7 (FC)",
     "year": 1985,
@@ -1106,7 +896,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_RX-7"
   },
   {
-    "id": 80,
+    "id": 65,
     "make": "Mazda",
     "model": "RX-7 (SA/FB)",
     "year": 1978,
@@ -1120,7 +910,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_RX-7"
   },
   {
-    "id": 81,
+    "id": 66,
     "make": "Mazda",
     "model": "RX-8",
     "year": 2003,
@@ -1134,7 +924,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_RX-8"
   },
   {
-    "id": 82,
+    "id": 67,
     "make": "Mazda",
     "model": "MX-5 (NA)",
     "year": 1989,
@@ -1148,7 +938,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_MX-5"
   },
   {
-    "id": 83,
+    "id": 68,
     "make": "Mazda",
     "model": "MX-5 (NB)",
     "year": 1998,
@@ -1162,7 +952,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_MX-5"
   },
   {
-    "id": 84,
+    "id": 69,
     "make": "Mazda",
     "model": "MX-5 (NC)",
     "year": 2005,
@@ -1176,7 +966,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_MX-5"
   },
   {
-    "id": 85,
+    "id": 70,
     "make": "Mazda",
     "model": "MX-5 (ND)",
     "year": 2015,
@@ -1190,35 +980,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mazda_MX-5"
   },
   {
-    "id": 86,
-    "make": "Mazda",
-    "model": "Cosmo Sport",
-    "year": 1967,
-    "country": "Japan",
-    "horsepower": 110,
-    "weight_kg": 940,
-    "engine": "Rotary",
-    "drivetrain": "RWD",
-    "image": "/cars/mazda-cosmo-sport.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mazda_Cosmo_Sport"
-  },
-  {
-    "id": 87,
-    "make": "Mazda",
-    "model": "3 MPS / Mazdaspeed3",
-    "year": 2007,
-    "country": "Japan",
-    "horsepower": 263,
-    "weight_kg": 1385,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/mazda-3-mps-mazdaspeed3.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mazda_3_MPS_/_Mazdaspeed3"
-  },
-  {
-    "id": 88,
+    "id": 71,
     "make": "Subaru",
     "model": "Impreza WRX STI (GC8)",
     "year": 1994,
@@ -1232,7 +994,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Subaru_Impreza_WRX_STI"
   },
   {
-    "id": 89,
+    "id": 72,
     "make": "Subaru",
     "model": "Impreza WRX STI (GDB)",
     "year": 2001,
@@ -1246,7 +1008,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Subaru_Impreza_WRX_STI"
   },
   {
-    "id": 90,
+    "id": 73,
     "make": "Subaru",
     "model": "WRX STI (VAB)",
     "year": 2014,
@@ -1260,7 +1022,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Subaru_WRX_STI"
   },
   {
-    "id": 91,
+    "id": 74,
     "make": "Subaru",
     "model": "BRZ",
     "year": 2012,
@@ -1274,7 +1036,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Subaru_BRZ"
   },
   {
-    "id": 92,
+    "id": 75,
     "make": "Subaru",
     "model": "Legacy RS",
     "year": 1989,
@@ -1288,21 +1050,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Subaru_Legacy_RS"
   },
   {
-    "id": 93,
-    "make": "Mitsubishi",
-    "model": "Lancer Evolution VI",
-    "year": 1999,
-    "country": "Japan",
-    "horsepower": 280,
-    "weight_kg": 1360,
-    "engine": "I4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/mitsubishi-lancer-evolution-vi.webp",
-    "fact": "Tommi Mäkinen drove the Evo VI to win the 1999 WRC Drivers' Championship — making it four consecutive titles and cementing the Evo as the ultimate rally weapon of its era.",
-    "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Lancer_Evolution_VI"
-  },
-  {
-    "id": 94,
+    "id": 76,
     "make": "Mitsubishi",
     "model": "Lancer Evolution IX",
     "year": 2005,
@@ -1316,7 +1064,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Lancer_Evolution_IX"
   },
   {
-    "id": 95,
+    "id": 77,
     "make": "Mitsubishi",
     "model": "Lancer Evolution X",
     "year": 2007,
@@ -1330,35 +1078,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Lancer_Evolution_X"
   },
   {
-    "id": 96,
-    "make": "Mitsubishi",
-    "model": "3000GT VR-4",
-    "year": 1990,
-    "country": "Japan",
-    "horsepower": 300,
-    "weight_kg": 1710,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/mitsubishi-3000gt-vr-4.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_3000GT_VR-4"
-  },
-  {
-    "id": 97,
-    "make": "Mitsubishi",
-    "model": "Eclipse GSX",
-    "year": 1990,
-    "country": "Japan",
-    "horsepower": 195,
-    "weight_kg": 1391,
-    "engine": "I4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/mitsubishi-eclipse-gsx.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Eclipse_GSX"
-  },
-  {
-    "id": 98,
+    "id": 78,
     "make": "Mitsubishi",
     "model": "Pajero Evolution",
     "year": 1997,
@@ -1372,7 +1092,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Pajero_Evolution"
   },
   {
-    "id": 99,
+    "id": 79,
     "make": "Suzuki",
     "model": "Cappuccino",
     "year": 1991,
@@ -1386,7 +1106,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Suzuki_Cappuccino"
   },
   {
-    "id": 100,
+    "id": 80,
     "make": "Suzuki",
     "model": "Swift Sport (ZC31S)",
     "year": 2005,
@@ -1400,7 +1120,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Suzuki_Swift_Sport"
   },
   {
-    "id": 101,
+    "id": 81,
     "make": "Suzuki",
     "model": "Jimny (JB74)",
     "year": 2018,
@@ -1414,7 +1134,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Suzuki_Jimny"
   },
   {
-    "id": 102,
+    "id": 82,
     "make": "Daihatsu",
     "model": "Copen",
     "year": 2002,
@@ -1428,7 +1148,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Daihatsu_Copen"
   },
   {
-    "id": 103,
+    "id": 83,
     "make": "Porsche",
     "model": "911 Carrera (993)",
     "year": 1995,
@@ -1442,7 +1162,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_911_Carrera"
   },
   {
-    "id": 104,
+    "id": 84,
     "make": "Porsche",
     "model": "911 Carrera (996)",
     "year": 1998,
@@ -1456,7 +1176,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_911_Carrera"
   },
   {
-    "id": 105,
+    "id": 85,
     "make": "Porsche",
     "model": "911 Carrera (997)",
     "year": 2004,
@@ -1470,49 +1190,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_911_Carrera"
   },
   {
-    "id": 106,
-    "make": "Porsche",
-    "model": "911 Turbo (930)",
-    "year": 1975,
-    "country": "Germany",
-    "horsepower": 260,
-    "weight_kg": 1195,
-    "engine": "Flat-6 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-911-turbo-930.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_911_Turbo"
-  },
-  {
-    "id": 107,
-    "make": "Porsche",
-    "model": "911 Turbo (964)",
-    "year": 1990,
-    "country": "Germany",
-    "horsepower": 320,
-    "weight_kg": 1470,
-    "engine": "Flat-6 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/porsche-911-turbo-964.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_911_Turbo"
-  },
-  {
-    "id": 108,
-    "make": "Porsche",
-    "model": "911 GT3 (996)",
-    "year": 1999,
-    "country": "Germany",
-    "horsepower": 360,
-    "weight_kg": 1350,
-    "engine": "Flat-6",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-911-gt3-996.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_911_GT3"
-  },
-  {
-    "id": 109,
+    "id": 86,
     "make": "Porsche",
     "model": "911 GT3 RS (997)",
     "year": 2006,
@@ -1526,35 +1204,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_911_GT3_RS"
   },
   {
-    "id": 110,
-    "make": "Porsche",
-    "model": "911 (991)",
-    "year": 2011,
-    "country": "Germany",
-    "horsepower": 350,
-    "weight_kg": 1380,
-    "engine": "Flat-6",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-911-991.webp",
-    "fact": "The Porsche 911 model seri.e.s (pronounced Nine Eleven or in German: Neunhundertelf, or colloquially Neunelfer) is a family of two-door, high performance rear-engine sports cars, introduced in September 1964 by Porsche of Stuttgart, Germany, and now in its eighth generation.",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_911"
-  },
-  {
-    "id": 111,
-    "make": "Porsche",
-    "model": "911 (992)",
-    "year": 2019,
-    "country": "Germany",
-    "horsepower": 385,
-    "weight_kg": 1505,
-    "engine": "Flat-6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-911-992.webp",
-    "fact": "The Porsche 911 model seri.e.s (pronounced Nine Eleven or in German: Neunhundertelf, or colloquially Neunelfer) is a family of two-door, high performance rear-engine sports cars, introduced in September 1964 by Porsche of Stuttgart, Germany, and now in its eighth generation.",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_911"
-  },
-  {
-    "id": 112,
+    "id": 87,
     "make": "Porsche",
     "model": "918 Spyder",
     "year": 2013,
@@ -1568,7 +1218,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_918_Spyder"
   },
   {
-    "id": 113,
+    "id": 88,
     "make": "Porsche",
     "model": "Carrera GT",
     "year": 2004,
@@ -1582,7 +1232,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_Carrera_GT"
   },
   {
-    "id": 114,
+    "id": 89,
     "make": "Porsche",
     "model": "959",
     "year": 1986,
@@ -1596,7 +1246,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_959"
   },
   {
-    "id": 115,
+    "id": 90,
     "make": "Porsche",
     "model": "356",
     "year": 1948,
@@ -1610,7 +1260,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_356"
   },
   {
-    "id": 116,
+    "id": 91,
     "make": "Porsche",
     "model": "550 Spyder",
     "year": 1953,
@@ -1624,7 +1274,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_550_Spyder"
   },
   {
-    "id": 117,
+    "id": 92,
     "make": "Porsche",
     "model": "944 Turbo",
     "year": 1985,
@@ -1638,7 +1288,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_944_Turbo"
   },
   {
-    "id": 118,
+    "id": 93,
     "make": "Porsche",
     "model": "968",
     "year": 1992,
@@ -1652,21 +1302,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_968"
   },
   {
-    "id": 119,
-    "make": "Porsche",
-    "model": "Boxster (986)",
-    "year": 1996,
-    "country": "Germany",
-    "horsepower": 201,
-    "weight_kg": 1250,
-    "engine": "Flat-6",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-boxster-986.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_Boxster"
-  },
-  {
-    "id": 120,
+    "id": 94,
     "make": "Porsche",
     "model": "Cayman S (987)",
     "year": 2005,
@@ -1680,7 +1316,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_Cayman_S"
   },
   {
-    "id": 121,
+    "id": 95,
     "make": "Porsche",
     "model": "Cayenne Turbo (9PA)",
     "year": 2002,
@@ -1694,35 +1330,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_Cayenne_Turbo"
   },
   {
-    "id": 122,
-    "make": "Porsche",
-    "model": "Panamera Turbo",
-    "year": 2009,
-    "country": "Germany",
-    "horsepower": 500,
-    "weight_kg": 1970,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/porsche-panamera-turbo.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_Panamera_Turbo"
-  },
-  {
-    "id": 123,
-    "make": "Porsche",
-    "model": "Taycan Turbo S",
-    "year": 2020,
-    "country": "Germany",
-    "horsepower": 750,
-    "weight_kg": 2295,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/porsche-taycan-turbo-s.webp",
-    "fact": "The Porsche Taycan is a battery electric luxury sports sedan and shooting brake car produced by German automobile manufacturer Porsche.",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_Taycan_Turbo_S"
-  },
-  {
-    "id": 124,
+    "id": 96,
     "make": "BMW",
     "model": "M3 (E30)",
     "year": 1986,
@@ -1736,7 +1344,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M3"
   },
   {
-    "id": 125,
+    "id": 97,
     "make": "BMW",
     "model": "M3 (E36)",
     "year": 1992,
@@ -1750,7 +1358,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M3"
   },
   {
-    "id": 126,
+    "id": 98,
     "make": "BMW",
     "model": "M3 (E46)",
     "year": 2000,
@@ -1764,7 +1372,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M3"
   },
   {
-    "id": 127,
+    "id": 99,
     "make": "BMW",
     "model": "M3 (E90)",
     "year": 2007,
@@ -1778,7 +1386,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M3"
   },
   {
-    "id": 128,
+    "id": 100,
     "make": "BMW",
     "model": "M3 (F80)",
     "year": 2014,
@@ -1792,7 +1400,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M3"
   },
   {
-    "id": 129,
+    "id": 101,
     "make": "BMW",
     "model": "M5 (E28)",
     "year": 1985,
@@ -1806,7 +1414,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5"
   },
   {
-    "id": 130,
+    "id": 102,
     "make": "BMW",
     "model": "M5 (E34)",
     "year": 1988,
@@ -1820,7 +1428,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5"
   },
   {
-    "id": 131,
+    "id": 103,
     "make": "BMW",
     "model": "M5 (E39)",
     "year": 1998,
@@ -1834,7 +1442,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5"
   },
   {
-    "id": 132,
+    "id": 104,
     "make": "BMW",
     "model": "M5 (E60)",
     "year": 2005,
@@ -1848,7 +1456,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5"
   },
   {
-    "id": 133,
+    "id": 105,
     "make": "BMW",
     "model": "M5 (F10)",
     "year": 2011,
@@ -1862,35 +1470,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5"
   },
   {
-    "id": 134,
-    "make": "BMW",
-    "model": "E30 325i",
-    "year": 1985,
-    "country": "Germany",
-    "horsepower": 171,
-    "weight_kg": 1220,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/bmw-e30-325i.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_E30_325i"
-  },
-  {
-    "id": 135,
-    "make": "BMW",
-    "model": "Z3 M Coupe",
-    "year": 1998,
-    "country": "Germany",
-    "horsepower": 321,
-    "weight_kg": 1400,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/bmw-z3-m-coupe.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_Z3_M_Coupe"
-  },
-  {
-    "id": 136,
+    "id": 106,
     "make": "BMW",
     "model": "Z4 M (E85)",
     "year": 2006,
@@ -1904,7 +1484,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_Z4_M"
   },
   {
-    "id": 137,
+    "id": 107,
     "make": "BMW",
     "model": "Z8",
     "year": 2000,
@@ -1918,7 +1498,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_Z8"
   },
   {
-    "id": 138,
+    "id": 108,
     "make": "BMW",
     "model": "i8",
     "year": 2014,
@@ -1932,7 +1512,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_i8"
   },
   {
-    "id": 139,
+    "id": 109,
     "make": "BMW",
     "model": "2002 Turbo",
     "year": 1973,
@@ -1946,7 +1526,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_2002_Turbo"
   },
   {
-    "id": 140,
+    "id": 110,
     "make": "BMW",
     "model": "M1",
     "year": 1978,
@@ -1960,77 +1540,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M1"
   },
   {
-    "id": 141,
-    "make": "BMW",
-    "model": "1M Coupe",
-    "year": 2011,
-    "country": "Germany",
-    "horsepower": 340,
-    "weight_kg": 1495,
-    "engine": "I6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/bmw-1m-coupe.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_1M_Coupe"
-  },
-  {
-    "id": 142,
-    "make": "BMW",
-    "model": "M2 (F87)",
-    "year": 2016,
-    "country": "Germany",
-    "horsepower": 365,
-    "weight_kg": 1495,
-    "engine": "I6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/bmw-m2-f87.webp",
-    "fact": "The BMW M2 is a high-performance version of the BMW 2 Seri.e.s automobile developed by BMW's motorsport division, BMW M GmbH.",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_M2"
-  },
-  {
-    "id": 143,
-    "make": "Mercedes-Benz",
-    "model": "300SL Gullwing",
-    "year": 1954,
-    "country": "Germany",
-    "horsepower": 215,
-    "weight_kg": 1295,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-300sl-gullwing.webp",
-    "fact": "The 300SL was the first production car with fuel injection and its iconic gullwing doors weren't a styling choice — the tubular spaceframe chassis was so high-sided that conventional doors were impossible.",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_300SL_Gullwing"
-  },
-  {
-    "id": 144,
-    "make": "Mercedes-Benz",
-    "model": "190E 2.5-16 Evo II",
-    "year": 1990,
-    "country": "Germany",
-    "horsepower": 235,
-    "weight_kg": 1340,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-190e-25-16-evo-ii.webp",
-    "fact": "Only 502 Evo IIs were ever built, and its outrageous rear wing was derived directly from DTM racing — making it one of the most collectible and aggressive-looking Mercedes sedans of all time.",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_190E_2.5-16_Evo_II"
-  },
-  {
-    "id": 145,
-    "make": "Mercedes-Benz",
-    "model": "SL500 (R129)",
-    "year": 1989,
-    "country": "Germany",
-    "horsepower": 326,
-    "weight_kg": 1810,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-sl500-r129.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_SL500"
-  },
-  {
-    "id": 146,
+    "id": 111,
     "make": "Mercedes-Benz",
     "model": "CLK GTR",
     "year": 1998,
@@ -2044,7 +1554,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_CLK_GTR"
   },
   {
-    "id": 147,
+    "id": 112,
     "make": "Mercedes-Benz",
     "model": "SLS AMG",
     "year": 2010,
@@ -2058,35 +1568,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_SLS_AMG"
   },
   {
-    "id": 148,
-    "make": "Mercedes-Benz",
-    "model": "AMG GT R",
-    "year": 2017,
-    "country": "Germany",
-    "horsepower": 577,
-    "weight_kg": 1555,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-amg-gt-r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_AMG_GT_R"
-  },
-  {
-    "id": 149,
-    "make": "Mercedes-Benz",
-    "model": "C63 AMG (W204)",
-    "year": 2008,
-    "country": "Germany",
-    "horsepower": 451,
-    "weight_kg": 1655,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-c63-amg-w204.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_C63_AMG"
-  },
-  {
-    "id": 150,
+    "id": 113,
     "make": "Mercedes-Benz",
     "model": "E63 AMG (W212)",
     "year": 2009,
@@ -2100,7 +1582,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_E63_AMG"
   },
   {
-    "id": 151,
+    "id": 114,
     "make": "Mercedes-Benz",
     "model": "S-Class (W140)",
     "year": 1991,
@@ -2114,21 +1596,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_S-Class"
   },
   {
-    "id": 152,
-    "make": "Mercedes-Benz",
-    "model": "G-Wagen (W463)",
-    "year": 1990,
-    "country": "Germany",
-    "horsepower": 241,
-    "weight_kg": 2380,
-    "engine": "V8",
-    "drivetrain": "4WD",
-    "image": "/cars/mercedes-benz-g-wagen-w463.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_G-Wagen"
-  },
-  {
-    "id": 153,
+    "id": 115,
     "make": "Mercedes-Benz",
     "model": "SLR McLaren",
     "year": 2003,
@@ -2142,49 +1610,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_SLR_McLaren"
   },
   {
-    "id": 154,
-    "make": "Mercedes-Benz",
-    "model": "AMG ONE",
-    "year": 2022,
-    "country": "Germany",
-    "horsepower": 1063,
-    "weight_kg": 1695,
-    "engine": "V6 Turbo Hybrid",
-    "drivetrain": "AWD",
-    "image": "/cars/mercedes-benz-amg-one.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_AMG_ONE"
-  },
-  {
-    "id": 155,
-    "make": "Mercedes-Benz",
-    "model": "W124 500E",
-    "year": 1991,
-    "country": "Germany",
-    "horsepower": 326,
-    "weight_kg": 1690,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-w124-500e.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_W124_500E"
-  },
-  {
-    "id": 156,
-    "make": "Mercedes-Benz",
-    "model": "CLK 55 AMG",
-    "year": 1999,
-    "country": "Germany",
-    "horsepower": 342,
-    "weight_kg": 1590,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-clk-55-amg.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_CLK_55_AMG"
-  },
-  {
-    "id": 157,
+    "id": 116,
     "make": "Audi",
     "model": "Quattro",
     "year": 1980,
@@ -2198,7 +1624,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_Quattro"
   },
   {
-    "id": 158,
+    "id": 117,
     "make": "Audi",
     "model": "RS4 (B5)",
     "year": 2000,
@@ -2212,7 +1638,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS4"
   },
   {
-    "id": 159,
+    "id": 118,
     "make": "Audi",
     "model": "RS6 (C5)",
     "year": 2002,
@@ -2226,21 +1652,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS6"
   },
   {
-    "id": 160,
-    "make": "Audi",
-    "model": "R8 V10",
-    "year": 2009,
-    "country": "Germany",
-    "horsepower": 525,
-    "weight_kg": 1620,
-    "engine": "V10",
-    "drivetrain": "AWD",
-    "image": "/cars/audi-r8-v10.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Audi_R8_V10"
-  },
-  {
-    "id": 161,
+    "id": 119,
     "make": "Audi",
     "model": "TT (8N)",
     "year": 1998,
@@ -2254,7 +1666,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_TT"
   },
   {
-    "id": 162,
+    "id": 120,
     "make": "Audi",
     "model": "S4 (B5)",
     "year": 1997,
@@ -2268,7 +1680,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_S4"
   },
   {
-    "id": 163,
+    "id": 121,
     "make": "Audi",
     "model": "Sport Quattro",
     "year": 1984,
@@ -2282,7 +1694,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_Sport_Quattro"
   },
   {
-    "id": 164,
+    "id": 122,
     "make": "Audi",
     "model": "RS3 (8V)",
     "year": 2015,
@@ -2296,21 +1708,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS3"
   },
   {
-    "id": 165,
-    "make": "Audi",
-    "model": "e-tron GT RS",
-    "year": 2021,
-    "country": "Germany",
-    "horsepower": 637,
-    "weight_kg": 2347,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/audi-e-tron-gt-rs.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Audi_e-tron_GT_RS"
-  },
-  {
-    "id": 166,
+    "id": 123,
     "make": "Volkswagen",
     "model": "Golf GTI (Mk1)",
     "year": 1976,
@@ -2324,7 +1722,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_GTI"
   },
   {
-    "id": 167,
+    "id": 124,
     "make": "Volkswagen",
     "model": "Golf GTI (Mk2)",
     "year": 1984,
@@ -2338,7 +1736,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_GTI"
   },
   {
-    "id": 168,
+    "id": 125,
     "make": "Volkswagen",
     "model": "Golf GTI (Mk5)",
     "year": 2004,
@@ -2352,49 +1750,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_GTI"
   },
   {
-    "id": 169,
-    "make": "Volkswagen",
-    "model": "Golf R (Mk7)",
-    "year": 2014,
-    "country": "Germany",
-    "horsepower": 296,
-    "weight_kg": 1476,
-    "engine": "I4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/volkswagen-golf-r-mk7.webp",
-    "fact": "The Volkswagen Golf (Mk7) is a C-se.g.ment car manufactured by German automobile manufacturer Volkswagen. It is the seventh generation in the Golf seri.e.s and the successor to the Golf Mk6, and was introduced in Berlin on 4 September 2012, before a public launch at the 2012 P...",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_R"
-  },
-  {
-    "id": 170,
-    "make": "Volkswagen",
-    "model": "Corrado VR6",
-    "year": 1991,
-    "country": "Germany",
-    "horsepower": 190,
-    "weight_kg": 1243,
-    "engine": "VR6",
-    "drivetrain": "FWD",
-    "image": "/cars/volkswagen-corrado-vr6.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Corrado_VR6"
-  },
-  {
-    "id": 171,
-    "make": "Volkswagen",
-    "model": "Beetle (Classic)",
-    "year": 1938,
-    "country": "Germany",
-    "horsepower": 25,
-    "weight_kg": 750,
-    "engine": "Flat-4",
-    "drivetrain": "RWD",
-    "image": "/cars/volkswagen-beetle-classic.webp",
-    "fact": "The Volkswagen Beetle, officially the Volkswagen Type 1, is a small family car produced by the German company Volkswagen from 1938 to 2003.",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Beetle"
-  },
-  {
-    "id": 172,
+    "id": 126,
     "make": "Volkswagen",
     "model": "Scirocco R",
     "year": 2009,
@@ -2408,7 +1764,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Scirocco_R"
   },
   {
-    "id": 173,
+    "id": 127,
     "make": "Volkswagen",
     "model": "Golf GTI (Mk7)",
     "year": 2013,
@@ -2422,7 +1778,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_GTI"
   },
   {
-    "id": 174,
+    "id": 128,
     "make": "Volkswagen",
     "model": "Polo GTI (6R)",
     "year": 2010,
@@ -2436,21 +1792,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Polo_GTI"
   },
   {
-    "id": 175,
-    "make": "Opel",
-    "model": "Manta A GT/E",
-    "year": 1974,
-    "country": "Germany",
-    "horsepower": 105,
-    "weight_kg": 960,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/opel-manta-a-gt-e.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Opel_Manta_A_GT/E"
-  },
-  {
-    "id": 176,
+    "id": 129,
     "make": "Opel",
     "model": "Speedster",
     "year": 2000,
@@ -2464,7 +1806,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Opel_Speedster"
   },
   {
-    "id": 177,
+    "id": 130,
     "make": "Ferrari",
     "model": "Testarossa",
     "year": 1984,
@@ -2478,7 +1820,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_Testarossa"
   },
   {
-    "id": 178,
+    "id": 131,
     "make": "Ferrari",
     "model": "F40",
     "year": 1987,
@@ -2492,7 +1834,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_F40"
   },
   {
-    "id": 179,
+    "id": 132,
     "make": "Ferrari",
     "model": "F50",
     "year": 1995,
@@ -2506,7 +1848,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_F50"
   },
   {
-    "id": 180,
+    "id": 133,
     "make": "Ferrari",
     "model": "Enzo",
     "year": 2002,
@@ -2520,7 +1862,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_Enzo"
   },
   {
-    "id": 181,
+    "id": 134,
     "make": "Ferrari",
     "model": "LaFerrari",
     "year": 2013,
@@ -2534,7 +1876,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_LaFerrari"
   },
   {
-    "id": 182,
+    "id": 135,
     "make": "Ferrari",
     "model": "288 GTO",
     "year": 1984,
@@ -2548,7 +1890,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_288_GTO"
   },
   {
-    "id": 183,
+    "id": 136,
     "make": "Ferrari",
     "model": "250 GTO",
     "year": 1962,
@@ -2562,7 +1904,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_250_GTO"
   },
   {
-    "id": 184,
+    "id": 137,
     "make": "Ferrari",
     "model": "308 GTB",
     "year": 1975,
@@ -2576,7 +1918,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_308_GTB"
   },
   {
-    "id": 185,
+    "id": 138,
     "make": "Ferrari",
     "model": "328 GTS",
     "year": 1985,
@@ -2590,7 +1932,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_328_GTS"
   },
   {
-    "id": 186,
+    "id": 139,
     "make": "Ferrari",
     "model": "348",
     "year": 1989,
@@ -2604,7 +1946,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_348"
   },
   {
-    "id": 187,
+    "id": 140,
     "make": "Ferrari",
     "model": "355",
     "year": 1994,
@@ -2618,7 +1960,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_355"
   },
   {
-    "id": 188,
+    "id": 141,
     "make": "Ferrari",
     "model": "360 Modena",
     "year": 1999,
@@ -2632,7 +1974,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_360_Modena"
   },
   {
-    "id": 189,
+    "id": 142,
     "make": "Ferrari",
     "model": "430 Scuderia",
     "year": 2007,
@@ -2646,7 +1988,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_430_Scuderia"
   },
   {
-    "id": 190,
+    "id": 143,
     "make": "Ferrari",
     "model": "458 Italia",
     "year": 2009,
@@ -2660,7 +2002,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_458_Italia"
   },
   {
-    "id": 191,
+    "id": 144,
     "make": "Ferrari",
     "model": "488 GTB",
     "year": 2015,
@@ -2674,7 +2016,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_488_GTB"
   },
   {
-    "id": 192,
+    "id": 145,
     "make": "Ferrari",
     "model": "SF90 Stradale",
     "year": 2019,
@@ -2688,7 +2030,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_SF90_Stradale"
   },
   {
-    "id": 193,
+    "id": 146,
     "make": "Ferrari",
     "model": "812 Superfast",
     "year": 2017,
@@ -2702,7 +2044,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_812_Superfast"
   },
   {
-    "id": 194,
+    "id": 147,
     "make": "Ferrari",
     "model": "F12berlinetta",
     "year": 2012,
@@ -2716,7 +2058,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_F12berlinetta"
   },
   {
-    "id": 195,
+    "id": 148,
     "make": "Ferrari",
     "model": "599 GTO",
     "year": 2010,
@@ -2730,7 +2072,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_599_GTO"
   },
   {
-    "id": 196,
+    "id": 149,
     "make": "Ferrari",
     "model": "Dino 246 GT",
     "year": 1969,
@@ -2744,7 +2086,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_Dino_246_GT"
   },
   {
-    "id": 197,
+    "id": 150,
     "make": "Ferrari",
     "model": "275 GTB",
     "year": 1964,
@@ -2758,7 +2100,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_275_GTB"
   },
   {
-    "id": 198,
+    "id": 151,
     "make": "Lamborghini",
     "model": "Countach (LP500S)",
     "year": 1982,
@@ -2772,21 +2114,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Countach"
   },
   {
-    "id": 199,
-    "make": "Lamborghini",
-    "model": "Diablo",
-    "year": 1990,
-    "country": "Italy",
-    "horsepower": 485,
-    "weight_kg": 1576,
-    "engine": "V12",
-    "drivetrain": "RWD",
-    "image": "/cars/lamborghini-diablo.webp",
-    "fact": "The Lamborghini Diablo (meaning \"devil\" in Spanish), is a seri.e.s of high-performance V12, rear mid-engined sports cars in the supercar market se.g.ment, built by Italian automobile manufacturer Lamborghini from 1990 through 2001.",
-    "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Diablo"
-  },
-  {
-    "id": 200,
+    "id": 152,
     "make": "Lamborghini",
     "model": "Murcielago",
     "year": 2001,
@@ -2800,7 +2128,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Murcielago"
   },
   {
-    "id": 201,
+    "id": 153,
     "make": "Lamborghini",
     "model": "Gallardo",
     "year": 2003,
@@ -2814,7 +2142,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Gallardo"
   },
   {
-    "id": 202,
+    "id": 154,
     "make": "Lamborghini",
     "model": "Aventador LP700-4",
     "year": 2011,
@@ -2828,7 +2156,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Aventador_LP700-4"
   },
   {
-    "id": 203,
+    "id": 155,
     "make": "Lamborghini",
     "model": "Huracan Performante",
     "year": 2017,
@@ -2842,21 +2170,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Huracan_Performante"
   },
   {
-    "id": 204,
-    "make": "Lamborghini",
-    "model": "Miura P400",
-    "year": 1966,
-    "country": "Italy",
-    "horsepower": 350,
-    "weight_kg": 1125,
-    "engine": "V12",
-    "drivetrain": "RWD",
-    "image": "/cars/lamborghini-miura-p400.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Miura_P400"
-  },
-  {
-    "id": 205,
+    "id": 156,
     "make": "Lamborghini",
     "model": "Sesto Elemento",
     "year": 2010,
@@ -2870,7 +2184,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Sesto_Elemento"
   },
   {
-    "id": 206,
+    "id": 157,
     "make": "Lamborghini",
     "model": "Urus",
     "year": 2018,
@@ -2884,7 +2198,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Urus"
   },
   {
-    "id": 207,
+    "id": 158,
     "make": "Lamborghini",
     "model": "Revuelto",
     "year": 2023,
@@ -2898,7 +2212,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Revuelto"
   },
   {
-    "id": 208,
+    "id": 159,
     "make": "Lamborghini",
     "model": "Diablo SV",
     "year": 1995,
@@ -2912,21 +2226,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Diablo_SV"
   },
   {
-    "id": 209,
-    "make": "Lamborghini",
-    "model": "Huracan STO",
-    "year": 2021,
-    "country": "Italy",
-    "horsepower": 631,
-    "weight_kg": 1339,
-    "engine": "V10",
-    "drivetrain": "RWD",
-    "image": "/cars/lamborghini-huracan-sto.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Lamborghini_Huracan_STO"
-  },
-  {
-    "id": 210,
+    "id": 160,
     "make": "Maserati",
     "model": "MC12",
     "year": 2004,
@@ -2940,7 +2240,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Maserati_MC12"
   },
   {
-    "id": 211,
+    "id": 161,
     "make": "Maserati",
     "model": "GranTurismo",
     "year": 2007,
@@ -2954,7 +2254,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Maserati_GranTurismo"
   },
   {
-    "id": 212,
+    "id": 162,
     "make": "Maserati",
     "model": "Ghibli (Tipo AM115)",
     "year": 1967,
@@ -2968,7 +2268,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Maserati_Ghibli"
   },
   {
-    "id": 213,
+    "id": 163,
     "make": "Maserati",
     "model": "3200 GT",
     "year": 1998,
@@ -2982,21 +2282,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Maserati_3200_GT"
   },
   {
-    "id": 214,
-    "make": "Alfa Romeo",
-    "model": "Giulia GTA",
-    "year": 1965,
-    "country": "Italy",
-    "horsepower": 170,
-    "weight_kg": 790,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/alfa-romeo-giulia-gta.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_Giulia_GTA"
-  },
-  {
-    "id": 215,
+    "id": 164,
     "make": "Alfa Romeo",
     "model": "8C Competizione",
     "year": 2007,
@@ -3010,7 +2296,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_8C_Competizione"
   },
   {
-    "id": 216,
+    "id": 165,
     "make": "Alfa Romeo",
     "model": "4C",
     "year": 2013,
@@ -3024,7 +2310,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_4C"
   },
   {
-    "id": 217,
+    "id": 166,
     "make": "Alfa Romeo",
     "model": "33 Stradale",
     "year": 1967,
@@ -3038,7 +2324,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_33_Stradale"
   },
   {
-    "id": 218,
+    "id": 167,
     "make": "Alfa Romeo",
     "model": "GTV6",
     "year": 1980,
@@ -3052,7 +2338,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_GTV6"
   },
   {
-    "id": 219,
+    "id": 168,
     "make": "Alfa Romeo",
     "model": "Spider (Series 4)",
     "year": 1990,
@@ -3066,21 +2352,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_Spider"
   },
   {
-    "id": 220,
-    "make": "Alfa Romeo",
-    "model": "Giulia Quadrifoglio",
-    "year": 2016,
-    "country": "Italy",
-    "horsepower": 505,
-    "weight_kg": 1524,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/alfa-romeo-giulia-quadrifoglio.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_Giulia_Quadrifoglio"
-  },
-  {
-    "id": 221,
+    "id": 169,
     "make": "Alfa Romeo",
     "model": "156 GTA",
     "year": 2002,
@@ -3094,7 +2366,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alfa_Romeo_156_GTA"
   },
   {
-    "id": 222,
+    "id": 170,
     "make": "Fiat",
     "model": "500 Abarth",
     "year": 2008,
@@ -3108,21 +2380,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Fiat_500_Abarth"
   },
   {
-    "id": 223,
-    "make": "Fiat",
-    "model": "124 Spider Abarth",
-    "year": 1972,
-    "country": "Italy",
-    "horsepower": 128,
-    "weight_kg": 960,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/fiat-124-spider-abarth.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Fiat_124_Spider_Abarth"
-  },
-  {
-    "id": 224,
+    "id": 171,
     "make": "Fiat",
     "model": "X1/9",
     "year": 1972,
@@ -3136,21 +2394,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Fiat_X1/9"
   },
   {
-    "id": 225,
-    "make": "Lancia",
-    "model": "Delta Integrale HF",
-    "year": 1987,
-    "country": "Italy",
-    "horsepower": 210,
-    "weight_kg": 1300,
-    "engine": "I4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/lancia-delta-integrale-hf.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Lancia_Delta_Integrale_HF"
-  },
-  {
-    "id": 226,
+    "id": 172,
     "make": "Lancia",
     "model": "Stratos HF",
     "year": 1973,
@@ -3164,7 +2408,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lancia_Stratos_HF"
   },
   {
-    "id": 227,
+    "id": 173,
     "make": "Lancia",
     "model": "037",
     "year": 1982,
@@ -3178,7 +2422,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lancia_037"
   },
   {
-    "id": 228,
+    "id": 174,
     "make": "De Tomaso",
     "model": "Pantera",
     "year": 1971,
@@ -3192,7 +2436,7 @@
     "wiki": "https://en.wikipedia.org/wiki/De_Tomaso_Pantera"
   },
   {
-    "id": 229,
+    "id": 175,
     "make": "Pagani",
     "model": "Zonda C12",
     "year": 1999,
@@ -3206,7 +2450,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pagani_Zonda_C12"
   },
   {
-    "id": 230,
+    "id": 176,
     "make": "Pagani",
     "model": "Huayra",
     "year": 2012,
@@ -3220,7 +2464,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pagani_Huayra"
   },
   {
-    "id": 231,
+    "id": 177,
     "make": "Lotus",
     "model": "Elise (Series 1)",
     "year": 1996,
@@ -3234,7 +2478,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Elise"
   },
   {
-    "id": 232,
+    "id": 178,
     "make": "Lotus",
     "model": "Exige S",
     "year": 2006,
@@ -3248,7 +2492,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Exige_S"
   },
   {
-    "id": 233,
+    "id": 179,
     "make": "Lotus",
     "model": "Esprit V8",
     "year": 1996,
@@ -3262,7 +2506,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Esprit_V8"
   },
   {
-    "id": 234,
+    "id": 180,
     "make": "Lotus",
     "model": "Esprit Turbo",
     "year": 1980,
@@ -3276,7 +2520,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Esprit_Turbo"
   },
   {
-    "id": 235,
+    "id": 181,
     "make": "Lotus",
     "model": "Elan (M100)",
     "year": 1989,
@@ -3290,7 +2534,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Elan"
   },
   {
-    "id": 236,
+    "id": 182,
     "make": "Lotus",
     "model": "Europa",
     "year": 1966,
@@ -3304,7 +2548,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Europa"
   },
   {
-    "id": 237,
+    "id": 183,
     "make": "Lotus",
     "model": "Seven",
     "year": 1957,
@@ -3318,7 +2562,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Seven"
   },
   {
-    "id": 238,
+    "id": 184,
     "make": "Lotus",
     "model": "Emira",
     "year": 2022,
@@ -3332,7 +2576,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Emira"
   },
   {
-    "id": 239,
+    "id": 185,
     "make": "Lotus",
     "model": "Evija",
     "year": 2024,
@@ -3346,7 +2590,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lotus_Evija"
   },
   {
-    "id": 240,
+    "id": 186,
     "make": "Jaguar",
     "model": "E-Type",
     "year": 1961,
@@ -3360,7 +2604,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_E-Type"
   },
   {
-    "id": 241,
+    "id": 187,
     "make": "Jaguar",
     "model": "XJ220",
     "year": 1992,
@@ -3374,7 +2618,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_XJ220"
   },
   {
-    "id": 242,
+    "id": 188,
     "make": "Jaguar",
     "model": "XKR (X100)",
     "year": 1998,
@@ -3388,21 +2632,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_XKR"
   },
   {
-    "id": 243,
-    "make": "Jaguar",
-    "model": "F-Type R",
-    "year": 2013,
-    "country": "UK",
-    "horsepower": 550,
-    "weight_kg": 1665,
-    "engine": "V8 Supercharged",
-    "drivetrain": "RWD",
-    "image": "/cars/jaguar-f-type-r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Jaguar_F-Type_R"
-  },
-  {
-    "id": 244,
+    "id": 189,
     "make": "Jaguar",
     "model": "XJ13",
     "year": 1966,
@@ -3416,7 +2646,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_XJ13"
   },
   {
-    "id": 245,
+    "id": 190,
     "make": "Jaguar",
     "model": "XK120",
     "year": 1948,
@@ -3430,7 +2660,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_XK120"
   },
   {
-    "id": 246,
+    "id": 191,
     "make": "Aston Martin",
     "model": "DB5",
     "year": 1963,
@@ -3444,7 +2674,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_DB5"
   },
   {
-    "id": 247,
+    "id": 192,
     "make": "Aston Martin",
     "model": "DB9",
     "year": 2004,
@@ -3458,21 +2688,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_DB9"
   },
   {
-    "id": 248,
-    "make": "Aston Martin",
-    "model": "V8 Vantage (2005)",
-    "year": 2005,
-    "country": "UK",
-    "horsepower": 380,
-    "weight_kg": 1570,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/aston-martin-v8-vantage-2005.webp",
-    "fact": "Aston Martin V8 Vantage may refer to:.",
-    "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_V8_Vantage"
-  },
-  {
-    "id": 249,
+    "id": 193,
     "make": "Aston Martin",
     "model": "DBS Superleggera",
     "year": 2018,
@@ -3486,7 +2702,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_DBS_Superleggera"
   },
   {
-    "id": 250,
+    "id": 194,
     "make": "Aston Martin",
     "model": "Vanquish",
     "year": 2001,
@@ -3500,7 +2716,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_Vanquish"
   },
   {
-    "id": 251,
+    "id": 195,
     "make": "Aston Martin",
     "model": "Valkyrie",
     "year": 2021,
@@ -3514,7 +2730,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_Valkyrie"
   },
   {
-    "id": 252,
+    "id": 196,
     "make": "Aston Martin",
     "model": "One-77",
     "year": 2009,
@@ -3528,7 +2744,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_One-77"
   },
   {
-    "id": 253,
+    "id": 197,
     "make": "Aston Martin",
     "model": "DB11",
     "year": 2016,
@@ -3542,7 +2758,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_DB11"
   },
   {
-    "id": 254,
+    "id": 198,
     "make": "McLaren",
     "model": "F1",
     "year": 1992,
@@ -3556,7 +2772,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_F1"
   },
   {
-    "id": 255,
+    "id": 199,
     "make": "McLaren",
     "model": "P1",
     "year": 2013,
@@ -3570,7 +2786,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_P1"
   },
   {
-    "id": 256,
+    "id": 200,
     "make": "McLaren",
     "model": "720S",
     "year": 2017,
@@ -3584,7 +2800,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_720S"
   },
   {
-    "id": 257,
+    "id": 201,
     "make": "McLaren",
     "model": "570S",
     "year": 2015,
@@ -3598,7 +2814,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_570S"
   },
   {
-    "id": 258,
+    "id": 202,
     "make": "McLaren",
     "model": "MP4-12C",
     "year": 2011,
@@ -3612,7 +2828,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_MP4-12C"
   },
   {
-    "id": 259,
+    "id": 203,
     "make": "McLaren",
     "model": "Senna",
     "year": 2018,
@@ -3626,7 +2842,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_Senna"
   },
   {
-    "id": 260,
+    "id": 204,
     "make": "McLaren",
     "model": "Speedtail",
     "year": 2019,
@@ -3640,7 +2856,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_Speedtail"
   },
   {
-    "id": 261,
+    "id": 205,
     "make": "McLaren",
     "model": "Artura",
     "year": 2022,
@@ -3654,7 +2870,7 @@
     "wiki": "https://en.wikipedia.org/wiki/McLaren_Artura"
   },
   {
-    "id": 262,
+    "id": 206,
     "make": "Bentley",
     "model": "Continental GT",
     "year": 2003,
@@ -3668,21 +2884,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Bentley_Continental_GT"
   },
   {
-    "id": 263,
-    "make": "Bentley",
-    "model": "Continental GT Speed",
-    "year": 2007,
-    "country": "UK",
-    "horsepower": 600,
-    "weight_kg": 2320,
-    "engine": "W12 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/bentley-continental-gt-speed.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Bentley_Continental_GT_Speed"
-  },
-  {
-    "id": 264,
+    "id": 207,
     "make": "Rolls-Royce",
     "model": "Silver Shadow",
     "year": 1965,
@@ -3696,7 +2898,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Rolls-Royce_Silver_Shadow"
   },
   {
-    "id": 265,
+    "id": 208,
     "make": "Rolls-Royce",
     "model": "Phantom VII",
     "year": 2003,
@@ -3710,7 +2912,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Rolls-Royce_Phantom_VII"
   },
   {
-    "id": 266,
+    "id": 209,
     "make": "Land Rover",
     "model": "Defender (L316)",
     "year": 1983,
@@ -3724,7 +2926,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Land_Rover_Defender"
   },
   {
-    "id": 267,
+    "id": 210,
     "make": "Land Rover",
     "model": "Range Rover (L322)",
     "year": 2002,
@@ -3738,35 +2940,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Land_Rover_Range_Rover"
   },
   {
-    "id": 268,
-    "make": "Land Rover",
-    "model": "Range Rover Sport SVR",
-    "year": 2015,
-    "country": "UK",
-    "horsepower": 550,
-    "weight_kg": 2310,
-    "engine": "V8 Supercharged",
-    "drivetrain": "AWD",
-    "image": "/cars/land-rover-range-rover-sport-svr.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Land_Rover_Range_Rover_Sport_SVR"
-  },
-  {
-    "id": 269,
-    "make": "Mini",
-    "model": "Cooper S (R53)",
-    "year": 2002,
-    "country": "UK",
-    "horsepower": 163,
-    "weight_kg": 1140,
-    "engine": "I4 Supercharged",
-    "drivetrain": "FWD",
-    "image": "/cars/mini-cooper-s-r53.webp",
-    "fact": "The Mini is a two-door, four-seat small car produced for four decades over a single generation, with many names and variants, by the British Motor Corporation (BMC) and its successors British Leyland and the Rover Group, and finally (bri.e.fly) under BMW ownership.",
-    "wiki": "https://en.wikipedia.org/wiki/Mini_Cooper_S"
-  },
-  {
-    "id": 270,
+    "id": 211,
     "make": "Mini",
     "model": "John Cooper Works (R56)",
     "year": 2008,
@@ -3780,21 +2954,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mini_John_Cooper_Works"
   },
   {
-    "id": 271,
-    "make": "Mini",
-    "model": "Classic Cooper S",
-    "year": 1963,
-    "country": "UK",
-    "horsepower": 76,
-    "weight_kg": 660,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/mini-classic-cooper-s.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mini_Classic_Cooper_S"
-  },
-  {
-    "id": 272,
+    "id": 212,
     "make": "TVR",
     "model": "Sagaris",
     "year": 2004,
@@ -3808,35 +2968,7 @@
     "wiki": "https://en.wikipedia.org/wiki/TVR_Sagaris"
   },
   {
-    "id": 273,
-    "make": "TVR",
-    "model": "Tuscan",
-    "year": 1999,
-    "country": "UK",
-    "horsepower": 350,
-    "weight_kg": 1100,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/tvr-tuscan.webp",
-    "fact": "TVR Tuscan may refer to:.",
-    "wiki": "https://en.wikipedia.org/wiki/TVR_Tuscan"
-  },
-  {
-    "id": 274,
-    "make": "TVR",
-    "model": "Cerbera Speed Six",
-    "year": 1996,
-    "country": "UK",
-    "horsepower": 350,
-    "weight_kg": 1130,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/tvr-cerbera-speed-six.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/TVR_Cerbera_Speed_Six"
-  },
-  {
-    "id": 275,
+    "id": 213,
     "make": "Morgan",
     "model": "Aero 8",
     "year": 2001,
@@ -3850,21 +2982,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Morgan_Aero_8"
   },
   {
-    "id": 276,
-    "make": "Caterham",
-    "model": "Seven 620R",
-    "year": 2013,
-    "country": "UK",
-    "horsepower": 311,
-    "weight_kg": 545,
-    "engine": "I4 Supercharged",
-    "drivetrain": "RWD",
-    "image": "/cars/caterham-seven-620r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Caterham_Seven_620R"
-  },
-  {
-    "id": 277,
+    "id": 214,
     "make": "Ariel",
     "model": "Atom 500",
     "year": 2011,
@@ -3878,7 +2996,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ariel_Atom_500"
   },
   {
-    "id": 278,
+    "id": 215,
     "make": "Noble",
     "model": "M600",
     "year": 2010,
@@ -3892,7 +3010,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Noble_M600"
   },
   {
-    "id": 279,
+    "id": 216,
     "make": "Gordon Murray",
     "model": "T.50",
     "year": 2022,
@@ -3906,7 +3024,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Gordon_Murray_T.50"
   },
   {
-    "id": 280,
+    "id": 217,
     "make": "Peugeot",
     "model": "205 GTI",
     "year": 1984,
@@ -3920,21 +3038,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Peugeot_205_GTI"
   },
   {
-    "id": 281,
-    "make": "Peugeot",
-    "model": "306 GTi-6",
-    "year": 1996,
-    "country": "France",
-    "horsepower": 167,
-    "weight_kg": 1215,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/peugeot-306-gti-6.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Peugeot_306_GTi-6"
-  },
-  {
-    "id": 282,
+    "id": 218,
     "make": "Peugeot",
     "model": "106 Rallye",
     "year": 1994,
@@ -3948,21 +3052,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Peugeot_106_Rallye"
   },
   {
-    "id": 283,
-    "make": "Peugeot",
-    "model": "308 GTi",
-    "year": 2015,
-    "country": "France",
-    "horsepower": 270,
-    "weight_kg": 1205,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/peugeot-308-gti.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Peugeot_308_GTi"
-  },
-  {
-    "id": 284,
+    "id": 219,
     "make": "Renault",
     "model": "5 Turbo",
     "year": 1980,
@@ -3976,7 +3066,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Renault_5_Turbo"
   },
   {
-    "id": 285,
+    "id": 220,
     "make": "Renault",
     "model": "Clio V6",
     "year": 2001,
@@ -3990,7 +3080,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Renault_Clio_V6"
   },
   {
-    "id": 286,
+    "id": 221,
     "make": "Renault",
     "model": "Clio Williams",
     "year": 1993,
@@ -4004,35 +3094,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Renault_Clio_Williams"
   },
   {
-    "id": 287,
-    "make": "Renault",
-    "model": "Megane RS (Mk3)",
-    "year": 2009,
-    "country": "France",
-    "horsepower": 250,
-    "weight_kg": 1387,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/renault-megane-rs-mk3.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Renault_Megane_RS"
-  },
-  {
-    "id": 288,
-    "make": "Renault",
-    "model": "Megane RS Trophy-R",
-    "year": 2019,
-    "country": "France",
-    "horsepower": 300,
-    "weight_kg": 1306,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/renault-megane-rs-trophy-r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Renault_Megane_RS_Trophy-R"
-  },
-  {
-    "id": 289,
+    "id": 222,
     "make": "Renault",
     "model": "Alpine A110 (2017)",
     "year": 2017,
@@ -4046,7 +3108,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Renault_Alpine_A110"
   },
   {
-    "id": 290,
+    "id": 223,
     "make": "Renault",
     "model": "Alpine A110 (Original)",
     "year": 1962,
@@ -4060,21 +3122,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Renault_Alpine_A110"
   },
   {
-    "id": 291,
-    "make": "Citroën",
-    "model": "DS",
-    "year": 1955,
-    "country": "France",
-    "horsepower": 75,
-    "weight_kg": 1180,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/citroën-ds.webp",
-    "fact": "The Citroën DS (French pronunciation: [si.tʁɔ.ɛn de.ɛs]) is a front mid-engined, front-wheel drive executive car manufactured and marketed by Citroën from 1955 to 1975, in fastback/sedan, wagon/estate, and convertible body configurations, across a single generation comprising ...",
-    "wiki": "https://en.wikipedia.org/wiki/Citroën_DS"
-  },
-  {
-    "id": 292,
+    "id": 224,
     "make": "Citroën",
     "model": "SM",
     "year": 1970,
@@ -4088,7 +3136,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Citroën_SM"
   },
   {
-    "id": 293,
+    "id": 225,
     "make": "Citroën",
     "model": "2CV",
     "year": 1948,
@@ -4102,7 +3150,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Citroën_2CV"
   },
   {
-    "id": 294,
+    "id": 226,
     "make": "Bugatti",
     "model": "Veyron 16.4",
     "year": 2005,
@@ -4116,7 +3164,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Bugatti_Veyron_16.4"
   },
   {
-    "id": 295,
+    "id": 227,
     "make": "Bugatti",
     "model": "Chiron",
     "year": 2016,
@@ -4130,7 +3178,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Bugatti_Chiron"
   },
   {
-    "id": 296,
+    "id": 228,
     "make": "Bugatti",
     "model": "EB110",
     "year": 1991,
@@ -4144,7 +3192,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Bugatti_EB110"
   },
   {
-    "id": 297,
+    "id": 229,
     "make": "Bugatti",
     "model": "Divo",
     "year": 2019,
@@ -4158,7 +3206,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Bugatti_Divo"
   },
   {
-    "id": 298,
+    "id": 230,
     "make": "Volvo",
     "model": "240 Turbo",
     "year": 1980,
@@ -4172,49 +3220,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volvo_240_Turbo"
   },
   {
-    "id": 299,
-    "make": "Volvo",
-    "model": "850 T-5R",
-    "year": 1995,
-    "country": "Sweden",
-    "horsepower": 240,
-    "weight_kg": 1430,
-    "engine": "I5 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/volvo-850-t-5r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Volvo_850_T-5R"
-  },
-  {
-    "id": 300,
-    "make": "Volvo",
-    "model": "C30 Polestar",
-    "year": 2009,
-    "country": "Sweden",
-    "horsepower": 227,
-    "weight_kg": 1347,
-    "engine": "I5 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/volvo-c30-polestar.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Volvo_C30_Polestar"
-  },
-  {
-    "id": 301,
-    "make": "Volvo",
-    "model": "P1800",
-    "year": 1961,
-    "country": "Sweden",
-    "horsepower": 108,
-    "weight_kg": 1140,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/volvo-p1800.webp",
-    "fact": "The Volvo P1800 (pronounced eighteen-hundred) is a 2+2, front-engine, rear-drive sports car manufactured and marketed by Volvo Cars between 1961 and 1973.",
-    "wiki": "https://en.wikipedia.org/wiki/Volvo_P1800"
-  },
-  {
-    "id": 302,
+    "id": 231,
     "make": "Volvo",
     "model": "S60 Polestar",
     "year": 2014,
@@ -4228,7 +3234,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volvo_S60_Polestar"
   },
   {
-    "id": 303,
+    "id": 232,
     "make": "Saab",
     "model": "9-3 Viggen",
     "year": 1999,
@@ -4242,7 +3248,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Saab_9-3_Viggen"
   },
   {
-    "id": 304,
+    "id": 233,
     "make": "Saab",
     "model": "900 Turbo",
     "year": 1978,
@@ -4256,7 +3262,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Saab_900_Turbo"
   },
   {
-    "id": 305,
+    "id": 234,
     "make": "Koenigsegg",
     "model": "CCX",
     "year": 2006,
@@ -4270,7 +3276,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Koenigsegg_CCX"
   },
   {
-    "id": 306,
+    "id": 235,
     "make": "Koenigsegg",
     "model": "Agera RS",
     "year": 2015,
@@ -4284,7 +3290,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Koenigsegg_Agera_RS"
   },
   {
-    "id": 307,
+    "id": 236,
     "make": "Koenigsegg",
     "model": "Jesko",
     "year": 2019,
@@ -4298,7 +3304,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Koenigsegg_Jesko"
   },
   {
-    "id": 308,
+    "id": 237,
     "make": "Koenigsegg",
     "model": "Regera",
     "year": 2016,
@@ -4312,7 +3318,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Koenigsegg_Regera"
   },
   {
-    "id": 309,
+    "id": 238,
     "make": "Polestar",
     "model": "1",
     "year": 2019,
@@ -4326,7 +3332,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Polestar_1"
   },
   {
-    "id": 310,
+    "id": 239,
     "make": "Polestar",
     "model": "2",
     "year": 2020,
@@ -4340,7 +3346,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Polestar_2"
   },
   {
-    "id": 311,
+    "id": 240,
     "make": "Shelby",
     "model": "Cobra 427",
     "year": 1965,
@@ -4354,21 +3360,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Shelby_Cobra_427"
   },
   {
-    "id": 312,
-    "make": "Shelby",
-    "model": "GT350",
-    "year": 1965,
-    "country": "USA",
-    "horsepower": 306,
-    "weight_kg": 1247,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/shelby-gt350.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Shelby_GT350"
-  },
-  {
-    "id": 313,
+    "id": 241,
     "make": "Shelby",
     "model": "GT500 (S550)",
     "year": 2020,
@@ -4382,7 +3374,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Shelby_GT500"
   },
   {
-    "id": 314,
+    "id": 242,
     "make": "Cadillac",
     "model": "CTS-V (2nd Gen)",
     "year": 2009,
@@ -4396,35 +3388,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Cadillac_CTS-V"
   },
   {
-    "id": 315,
-    "make": "Cadillac",
-    "model": "CT5-V Blackwing",
-    "year": 2022,
-    "country": "USA",
-    "horsepower": 668,
-    "weight_kg": 1885,
-    "engine": "V8 Supercharged",
-    "drivetrain": "RWD",
-    "image": "/cars/cadillac-ct5-v-blackwing.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Cadillac_CT5-V_Blackwing"
-  },
-  {
-    "id": 316,
-    "make": "Cadillac",
-    "model": "Escalade (4th Gen)",
-    "year": 2015,
-    "country": "USA",
-    "horsepower": 420,
-    "weight_kg": 2630,
-    "engine": "V8",
-    "drivetrain": "4WD",
-    "image": "/cars/cadillac-escalade-4th-gen.webp",
-    "fact": "The Cadillac Escalade is a full-size luxury SUV manufactured by General Motors and marketed by Cadillac as its first major entry into the SUV market.",
-    "wiki": "https://en.wikipedia.org/wiki/Cadillac_Escalade"
-  },
-  {
-    "id": 317,
+    "id": 243,
     "make": "Cadillac",
     "model": "Eldorado (1959)",
     "year": 1959,
@@ -4438,7 +3402,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Cadillac_Eldorado"
   },
   {
-    "id": 318,
+    "id": 244,
     "make": "Lincoln",
     "model": "Continental (4th Gen)",
     "year": 1961,
@@ -4452,7 +3416,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lincoln_Continental"
   },
   {
-    "id": 319,
+    "id": 245,
     "make": "Jeep",
     "model": "Wrangler (TJ)",
     "year": 1996,
@@ -4466,21 +3430,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jeep_Wrangler"
   },
   {
-    "id": 320,
-    "make": "Jeep",
-    "model": "Grand Cherokee SRT8 (WK2)",
-    "year": 2012,
-    "country": "USA",
-    "horsepower": 470,
-    "weight_kg": 2260,
-    "engine": "V8",
-    "drivetrain": "AWD",
-    "image": "/cars/jeep-grand-cherokee-srt8-wk2.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Jeep_Grand_Cherokee_SRT8"
-  },
-  {
-    "id": 321,
+    "id": 246,
     "make": "Jeep",
     "model": "CJ-7",
     "year": 1976,
@@ -4494,7 +3444,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jeep_CJ-7"
   },
   {
-    "id": 322,
+    "id": 247,
     "make": "GMC",
     "model": "Syclone",
     "year": 1991,
@@ -4508,35 +3458,7 @@
     "wiki": "https://en.wikipedia.org/wiki/GMC_Syclone"
   },
   {
-    "id": 323,
-    "make": "Buick",
-    "model": "Grand National GNX",
-    "year": 1987,
-    "country": "USA",
-    "horsepower": 276,
-    "weight_kg": 1643,
-    "engine": "V6 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/buick-grand-national-gnx.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Buick_Grand_National_GNX"
-  },
-  {
-    "id": 324,
-    "make": "Chevrolet",
-    "model": "El Camino SS",
-    "year": 1970,
-    "country": "USA",
-    "horsepower": 450,
-    "weight_kg": 1716,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-el-camino-ss.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_El_Camino_SS"
-  },
-  {
-    "id": 325,
+    "id": 248,
     "make": "Chevrolet",
     "model": "Monte Carlo SS",
     "year": 1987,
@@ -4550,7 +3472,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Monte_Carlo_SS"
   },
   {
-    "id": 326,
+    "id": 249,
     "make": "Chevrolet",
     "model": "SSR",
     "year": 2003,
@@ -4564,7 +3486,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_SSR"
   },
   {
-    "id": 327,
+    "id": 250,
     "make": "Chevrolet",
     "model": "Silverado (3rd Gen)",
     "year": 2019,
@@ -4578,7 +3500,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Silverado"
   },
   {
-    "id": 328,
+    "id": 251,
     "make": "Tesla",
     "model": "Model S Plaid",
     "year": 2021,
@@ -4592,49 +3514,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Tesla_Model_S_Plaid"
   },
   {
-    "id": 329,
-    "make": "Tesla",
-    "model": "Model 3 Performance",
-    "year": 2018,
-    "country": "USA",
-    "horsepower": 450,
-    "weight_kg": 1847,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/tesla-model-3-performance.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Tesla_Model_3_Performance"
-  },
-  {
-    "id": 330,
-    "make": "Tesla",
-    "model": "Roadster (1st Gen)",
-    "year": 2008,
-    "country": "USA",
-    "horsepower": 248,
-    "weight_kg": 1235,
-    "engine": "Electric",
-    "drivetrain": "RWD",
-    "image": "/cars/tesla-roadster-1st-gen.webp",
-    "fact": "Tesla Roadster may refer to:\n\nTesla Roadster (first generation), an electric sports car produced by Tesla Motors between 2008 and 2012\nElon Musk's Tesla Roadster, a first generation Tesla Roadster that was launched into space in February 2018\nTesla Roadster (second generation)...",
-    "wiki": "https://en.wikipedia.org/wiki/Tesla_Roadster"
-  },
-  {
-    "id": 331,
-    "make": "Tesla",
-    "model": "Model X Plaid",
-    "year": 2021,
-    "country": "USA",
-    "horsepower": 1020,
-    "weight_kg": 2455,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/tesla-model-x-plaid.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Tesla_Model_X_Plaid"
-  },
-  {
-    "id": 332,
+    "id": 252,
     "make": "Tesla",
     "model": "Cybertruck",
     "year": 2023,
@@ -4648,7 +3528,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Tesla_Cybertruck"
   },
   {
-    "id": 333,
+    "id": 253,
     "make": "Rivian",
     "model": "R1T",
     "year": 2021,
@@ -4662,7 +3542,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Rivian_R1T"
   },
   {
-    "id": 334,
+    "id": 254,
     "make": "Lucid",
     "model": "Air Sapphire",
     "year": 2023,
@@ -4676,7 +3556,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lucid_Air_Sapphire"
   },
   {
-    "id": 335,
+    "id": 255,
     "make": "Hennessey",
     "model": "Venom GT",
     "year": 2012,
@@ -4690,7 +3570,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Hennessey_Venom_GT"
   },
   {
-    "id": 336,
+    "id": 256,
     "make": "SSC",
     "model": "Tuatara",
     "year": 2020,
@@ -4704,7 +3584,7 @@
     "wiki": "https://en.wikipedia.org/wiki/SSC_Tuatara"
   },
   {
-    "id": 337,
+    "id": 257,
     "make": "Saleen",
     "model": "S7 Twin Turbo",
     "year": 2005,
@@ -4718,7 +3598,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Saleen_S7_Twin_Turbo"
   },
   {
-    "id": 338,
+    "id": 258,
     "make": "Vector",
     "model": "W8",
     "year": 1990,
@@ -4732,7 +3612,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Vector_W8"
   },
   {
-    "id": 339,
+    "id": 259,
     "make": "DeLorean",
     "model": "DMC-12",
     "year": 1981,
@@ -4746,35 +3626,7 @@
     "wiki": "https://en.wikipedia.org/wiki/DeLorean_DMC-12"
   },
   {
-    "id": 340,
-    "make": "Hummer",
-    "model": "H1 Alpha",
-    "year": 2006,
-    "country": "USA",
-    "horsepower": 300,
-    "weight_kg": 3610,
-    "engine": "V8 Turbo Diesel",
-    "drivetrain": "4WD",
-    "image": "/cars/hummer-h1-alpha.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Hummer_H1_Alpha"
-  },
-  {
-    "id": 341,
-    "make": "RAM",
-    "model": "1500 TRX",
-    "year": 2021,
-    "country": "USA",
-    "horsepower": 702,
-    "weight_kg": 2870,
-    "engine": "V8 Supercharged",
-    "drivetrain": "4WD",
-    "image": "/cars/ram-1500-trx.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/RAM_1500_TRX"
-  },
-  {
-    "id": 342,
+    "id": 260,
     "make": "Ford",
     "model": "Explorer (1st Gen)",
     "year": 1991,
@@ -4788,7 +3640,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Explorer"
   },
   {
-    "id": 343,
+    "id": 261,
     "make": "Ford",
     "model": "Taurus SHO (1st Gen)",
     "year": 1989,
@@ -4802,21 +3654,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Taurus_SHO"
   },
   {
-    "id": 344,
-    "make": "Chevrolet",
-    "model": "Cobalt SS Turbo",
-    "year": 2008,
-    "country": "USA",
-    "horsepower": 260,
-    "weight_kg": 1311,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/chevrolet-cobalt-ss-turbo.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Cobalt_SS_Turbo"
-  },
-  {
-    "id": 345,
+    "id": 262,
     "make": "Pontiac",
     "model": "Solstice GXP",
     "year": 2007,
@@ -4830,21 +3668,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Pontiac_Solstice_GXP"
   },
   {
-    "id": 346,
-    "make": "Saturn",
-    "model": "Sky Red Line",
-    "year": 2007,
-    "country": "USA",
-    "horsepower": 260,
-    "weight_kg": 1310,
-    "engine": "I4 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/saturn-sky-red-line.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Saturn_Sky_Red_Line"
-  },
-  {
-    "id": 347,
+    "id": 263,
     "make": "Hyundai",
     "model": "Veloster N",
     "year": 2019,
@@ -4858,7 +3682,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Hyundai_Veloster_N"
   },
   {
-    "id": 348,
+    "id": 264,
     "make": "Hyundai",
     "model": "i30 N",
     "year": 2017,
@@ -4872,63 +3696,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Hyundai_i30_N"
   },
   {
-    "id": 349,
-    "make": "Hyundai",
-    "model": "Genesis Coupe 3.8",
-    "year": 2008,
-    "country": "South Korea",
-    "horsepower": 306,
-    "weight_kg": 1540,
-    "engine": "V6",
-    "drivetrain": "RWD",
-    "image": "/cars/hyundai-genesis-coupe-38.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Hyundai_Genesis_Coupe_3.8"
-  },
-  {
-    "id": 350,
-    "make": "Hyundai",
-    "model": "IONIQ 5 N",
-    "year": 2024,
-    "country": "South Korea",
-    "horsepower": 601,
-    "weight_kg": 2190,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/hyundai-ioniq-5-n.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Hyundai_IONIQ_5_N"
-  },
-  {
-    "id": 351,
-    "make": "Genesis",
-    "model": "G70 3.3T",
-    "year": 2017,
-    "country": "South Korea",
-    "horsepower": 365,
-    "weight_kg": 1715,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/genesis-g70-33t.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Genesis_G70_3.3T"
-  },
-  {
-    "id": 352,
-    "make": "Genesis",
-    "model": "GV70 3.5T",
-    "year": 2021,
-    "country": "South Korea",
-    "horsepower": 375,
-    "weight_kg": 1955,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/genesis-gv70-35t.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Genesis_GV70_3.5T"
-  },
-  {
-    "id": 353,
+    "id": 265,
     "make": "Kia",
     "model": "Stinger GT",
     "year": 2017,
@@ -4942,49 +3710,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Kia_Stinger_GT"
   },
   {
-    "id": 354,
-    "make": "Kia",
-    "model": "EV6 GT",
-    "year": 2022,
-    "country": "South Korea",
-    "horsepower": 577,
-    "weight_kg": 2090,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/kia-ev6-gt.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Kia_EV6_GT"
-  },
-  {
-    "id": 355,
-    "make": "Holden",
-    "model": "Commodore VL Turbo",
-    "year": 1986,
-    "country": "Australia",
-    "horsepower": 204,
-    "weight_kg": 1330,
-    "engine": "I6 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/holden-commodore-vl-turbo.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Holden_Commodore_VL_Turbo"
-  },
-  {
-    "id": 356,
-    "make": "Holden",
-    "model": "Commodore (VE) SS-V",
-    "year": 2006,
-    "country": "Australia",
-    "horsepower": 362,
-    "weight_kg": 1744,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/holden-commodore-ve-ss-v.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Holden_Commodore_SS-V"
-  },
-  {
-    "id": 357,
+    "id": 266,
     "make": "Holden",
     "model": "Monaro CV8",
     "year": 2001,
@@ -4998,35 +3724,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Holden_Monaro_CV8"
   },
   {
-    "id": 358,
-    "make": "Holden",
-    "model": "Torana A9X",
-    "year": 1978,
-    "country": "Australia",
-    "horsepower": 199,
-    "weight_kg": 1260,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/holden-torana-a9x.webp",
-    "fact": "The Holden Torana is a mid-size car that was manufactured by Holden from 1967 to 1980. The name apparently comes from a word meaning \"to fly\" in an unconfirmed Aboriginal Australian language.",
-    "wiki": "https://en.wikipedia.org/wiki/Holden_Torana_A9X"
-  },
-  {
-    "id": 359,
-    "make": "Ford",
-    "model": "Falcon GT-HO Phase III",
-    "year": 1971,
-    "country": "Australia",
-    "horsepower": 300,
-    "weight_kg": 1524,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/ford-falcon-gt-ho-phase-iii.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Ford_Falcon_GT-HO_Phase_III"
-  },
-  {
-    "id": 360,
+    "id": 267,
     "make": "Ford",
     "model": "Falcon XR6 Turbo (FG)",
     "year": 2008,
@@ -5040,7 +3738,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Falcon_XR6_Turbo"
   },
   {
-    "id": 361,
+    "id": 268,
     "make": "HSV",
     "model": "GTS (E Series)",
     "year": 2006,
@@ -5054,7 +3752,7 @@
     "wiki": "https://en.wikipedia.org/wiki/HSV_GTS"
   },
   {
-    "id": 362,
+    "id": 269,
     "make": "Tata",
     "model": "Nano",
     "year": 2008,
@@ -5068,7 +3766,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Tata_Nano"
   },
   {
-    "id": 363,
+    "id": 270,
     "make": "Mahindra",
     "model": "Thar",
     "year": 2010,
@@ -5082,7 +3780,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mahindra_Thar"
   },
   {
-    "id": 364,
+    "id": 271,
     "make": "Proton",
     "model": "Satria GTi",
     "year": 1998,
@@ -5096,35 +3794,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Proton_Satria_GTi"
   },
   {
-    "id": 365,
-    "make": "Skoda",
-    "model": "Octavia RS (Mk3)",
-    "year": 2013,
-    "country": "Czech Republic",
-    "horsepower": 220,
-    "weight_kg": 1365,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/skoda-octavia-rs-mk3.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Skoda_Octavia_RS"
-  },
-  {
-    "id": 366,
-    "make": "SEAT",
-    "model": "Leon Cupra R",
-    "year": 2009,
-    "country": "Spain",
-    "horsepower": 265,
-    "weight_kg": 1375,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/seat-leon-cupra-r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/SEAT_Leon_Cupra_R"
-  },
-  {
-    "id": 367,
+    "id": 272,
     "make": "Dacia",
     "model": "Sandero Stepway",
     "year": 2009,
@@ -5138,21 +3808,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Dacia_Sandero_Stepway"
   },
   {
-    "id": 368,
-    "make": "BYD",
-    "model": "Han EV",
-    "year": 2020,
-    "country": "China",
-    "horsepower": 517,
-    "weight_kg": 2170,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/byd-han-ev.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BYD_Han_EV"
-  },
-  {
-    "id": 369,
+    "id": 273,
     "make": "BYD",
     "model": "Seal",
     "year": 2022,
@@ -5166,7 +3822,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BYD_Seal"
   },
   {
-    "id": 370,
+    "id": 274,
     "make": "NIO",
     "model": "ET7",
     "year": 2022,
@@ -5180,7 +3836,7 @@
     "wiki": "https://en.wikipedia.org/wiki/NIO_ET7"
   },
   {
-    "id": 371,
+    "id": 275,
     "make": "NIO",
     "model": "EP9",
     "year": 2016,
@@ -5194,7 +3850,7 @@
     "wiki": "https://en.wikipedia.org/wiki/NIO_EP9"
   },
   {
-    "id": 372,
+    "id": 276,
     "make": "Xpeng",
     "model": "P7",
     "year": 2020,
@@ -5208,7 +3864,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Xpeng_P7"
   },
   {
-    "id": 373,
+    "id": 277,
     "make": "Xiaomi",
     "model": "SU7",
     "year": 2024,
@@ -5222,21 +3878,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Xiaomi_SU7"
   },
   {
-    "id": 374,
-    "make": "Geely",
-    "model": "Zeekr 001",
-    "year": 2021,
-    "country": "China",
-    "horsepower": 544,
-    "weight_kg": 2310,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/geely-zeekr-001.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Geely_Zeekr_001"
-  },
-  {
-    "id": 375,
+    "id": 278,
     "make": "Toyota",
     "model": "Century (3rd Gen)",
     "year": 1997,
@@ -5250,7 +3892,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Century"
   },
   {
-    "id": 376,
+    "id": 279,
     "make": "Toyota",
     "model": "Crown Athlete",
     "year": 2003,
@@ -5264,35 +3906,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Crown_Athlete"
   },
   {
-    "id": 377,
-    "make": "Toyota",
-    "model": "Chaser JZX100",
-    "year": 1996,
-    "country": "Japan",
-    "horsepower": 280,
-    "weight_kg": 1480,
-    "engine": "I6 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/toyota-chaser-jzx100.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Toyota_Chaser_JZX100"
-  },
-  {
-    "id": 378,
-    "make": "Toyota",
-    "model": "Soarer (Z30)",
-    "year": 1991,
-    "country": "Japan",
-    "horsepower": 280,
-    "weight_kg": 1660,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/toyota-soarer-z30.webp",
-    "fact": "The Toyota Soarer (Japanese: トヨタ・ソアラ, Hepburn: Toyota Soara) is a personal luxury GT coupé produced from 1981 to 2005 by Toyota and sold in Japan.",
-    "wiki": "https://en.wikipedia.org/wiki/Toyota_Soarer"
-  },
-  {
-    "id": 379,
+    "id": 280,
     "make": "Toyota",
     "model": "GR86",
     "year": 2022,
@@ -5306,7 +3920,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_GR86"
   },
   {
-    "id": 380,
+    "id": 281,
     "make": "Toyota",
     "model": "RAV4 (XA50)",
     "year": 2019,
@@ -5320,21 +3934,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_RAV4"
   },
   {
-    "id": 381,
-    "make": "Nissan",
-    "model": "Stagea RS Four (WC34)",
-    "year": 1997,
-    "country": "Japan",
-    "horsepower": 280,
-    "weight_kg": 1630,
-    "engine": "I6 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/nissan-stagea-rs-four-wc34.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Nissan_Stagea_RS_Four"
-  },
-  {
-    "id": 382,
+    "id": 282,
     "make": "Nissan",
     "model": "Pulsar GTI-R",
     "year": 1990,
@@ -5348,7 +3948,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Pulsar_GTI-R"
   },
   {
-    "id": 383,
+    "id": 283,
     "make": "Nissan",
     "model": "Leaf (1st Gen)",
     "year": 2010,
@@ -5362,7 +3962,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Nissan_Leaf"
   },
   {
-    "id": 384,
+    "id": 284,
     "make": "Honda",
     "model": "Accord Euro R (CL1)",
     "year": 2000,
@@ -5376,21 +3976,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_Accord_Euro_R"
   },
   {
-    "id": 385,
-    "make": "Honda",
-    "model": "City Turbo II",
-    "year": 1983,
-    "country": "Japan",
-    "horsepower": 110,
-    "weight_kg": 735,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/honda-city-turbo-ii.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Honda_City_Turbo_II"
-  },
-  {
-    "id": 386,
+    "id": 285,
     "make": "Honda",
     "model": "e",
     "year": 2020,
@@ -5404,7 +3990,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Honda_e"
   },
   {
-    "id": 387,
+    "id": 286,
     "make": "Lexus",
     "model": "LFA",
     "year": 2010,
@@ -5418,7 +4004,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_LFA"
   },
   {
-    "id": 388,
+    "id": 287,
     "make": "Lexus",
     "model": "IS F",
     "year": 2007,
@@ -5432,7 +4018,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_IS_F"
   },
   {
-    "id": 389,
+    "id": 288,
     "make": "Lexus",
     "model": "LC 500",
     "year": 2017,
@@ -5446,7 +4032,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_LC_500"
   },
   {
-    "id": 390,
+    "id": 289,
     "make": "Lexus",
     "model": "RC F",
     "year": 2014,
@@ -5460,7 +4046,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_RC_F"
   },
   {
-    "id": 391,
+    "id": 290,
     "make": "Lexus",
     "model": "LS 400 (UCF10)",
     "year": 1989,
@@ -5474,35 +4060,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_LS_400"
   },
   {
-    "id": 392,
-    "make": "Infiniti",
-    "model": "G35 Coupe",
-    "year": 2003,
-    "country": "Japan",
-    "horsepower": 260,
-    "weight_kg": 1544,
-    "engine": "V6",
-    "drivetrain": "RWD",
-    "image": "/cars/infiniti-g35-coupe.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Infiniti_G35_Coupe"
-  },
-  {
-    "id": 393,
-    "make": "Infiniti",
-    "model": "Q50 Red Sport 400",
-    "year": 2016,
-    "country": "Japan",
-    "horsepower": 400,
-    "weight_kg": 1718,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/infiniti-q50-red-sport-400.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Infiniti_Q50_Red_Sport_400"
-  },
-  {
-    "id": 394,
+    "id": 291,
     "make": "Acura",
     "model": "Integra Type R (DC2)",
     "year": 1997,
@@ -5516,7 +4074,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Acura_Integra_Type_R"
   },
   {
-    "id": 395,
+    "id": 292,
     "make": "Acura",
     "model": "NSX (2016)",
     "year": 2016,
@@ -5530,7 +4088,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Acura_NSX"
   },
   {
-    "id": 396,
+    "id": 293,
     "make": "Isuzu",
     "model": "Vehicross",
     "year": 1997,
@@ -5544,7 +4102,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Isuzu_Vehicross"
   },
   {
-    "id": 397,
+    "id": 294,
     "make": "Datsun",
     "model": "240Z (S30)",
     "year": 1969,
@@ -5558,21 +4116,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Datsun_240Z"
   },
   {
-    "id": 398,
-    "make": "Datsun",
-    "model": "510 SSS",
-    "year": 1967,
-    "country": "Japan",
-    "horsepower": 96,
-    "weight_kg": 870,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/datsun-510-sss.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Datsun_510_SSS"
-  },
-  {
-    "id": 399,
+    "id": 295,
     "make": "Audi",
     "model": "RS5 (B8)",
     "year": 2010,
@@ -5586,7 +4130,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS5"
   },
   {
-    "id": 400,
+    "id": 296,
     "make": "Audi",
     "model": "RS7 (C7)",
     "year": 2013,
@@ -5600,7 +4144,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS7"
   },
   {
-    "id": 401,
+    "id": 297,
     "make": "Audi",
     "model": "TT RS (8S)",
     "year": 2017,
@@ -5614,21 +4158,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_TT_RS"
   },
   {
-    "id": 402,
-    "make": "Volkswagen",
-    "model": "Golf R32 (Mk4)",
-    "year": 2002,
-    "country": "Germany",
-    "horsepower": 240,
-    "weight_kg": 1477,
-    "engine": "VR6",
-    "drivetrain": "AWD",
-    "image": "/cars/volkswagen-golf-r32-mk4.webp",
-    "fact": "Volkswagen Golf R32 may refer to two different Volkswagen Golf models:.",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Golf_R32"
-  },
-  {
-    "id": 403,
+    "id": 298,
     "make": "Volkswagen",
     "model": "Type 2 (T1)",
     "year": 1950,
@@ -5642,7 +4172,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Type_2"
   },
   {
-    "id": 404,
+    "id": 299,
     "make": "Volkswagen",
     "model": "Karmann Ghia",
     "year": 1955,
@@ -5656,35 +4186,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Karmann_Ghia"
   },
   {
-    "id": 405,
-    "make": "Volkswagen",
-    "model": "Up! GTI",
-    "year": 2018,
-    "country": "Germany",
-    "horsepower": 115,
-    "weight_kg": 1070,
-    "engine": "I3 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/volkswagen-up-gti.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_Up!_GTI"
-  },
-  {
-    "id": 406,
-    "make": "Volkswagen",
-    "model": "ID.4 GTX",
-    "year": 2021,
-    "country": "Germany",
-    "horsepower": 295,
-    "weight_kg": 2224,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/volkswagen-id4-gtx.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Volkswagen_ID.4_GTX"
-  },
-  {
-    "id": 407,
+    "id": 300,
     "make": "Mercedes-Benz",
     "model": "300 SEL 6.3",
     "year": 1968,
@@ -5698,35 +4200,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_300_SEL_6.3"
   },
   {
-    "id": 408,
-    "make": "Mercedes-Benz",
-    "model": "A45 AMG (W176)",
-    "year": 2013,
-    "country": "Germany",
-    "horsepower": 355,
-    "weight_kg": 1480,
-    "engine": "I4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/mercedes-benz-a45-amg-w176.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_A45_AMG"
-  },
-  {
-    "id": 409,
-    "make": "Mercedes-Benz",
-    "model": "EQS 580",
-    "year": 2021,
-    "country": "Germany",
-    "horsepower": 516,
-    "weight_kg": 2480,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/mercedes-benz-eqs-580.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_EQS_580"
-  },
-  {
-    "id": 410,
+    "id": 301,
     "make": "BMW",
     "model": "X5 M (E70)",
     "year": 2009,
@@ -5740,49 +4214,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_X5_M"
   },
   {
-    "id": 411,
-    "make": "BMW",
-    "model": "M4 GTS (F82)",
-    "year": 2016,
-    "country": "Germany",
-    "horsepower": 493,
-    "weight_kg": 1510,
-    "engine": "I6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/bmw-m4-gts-f82.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_M4_GTS"
-  },
-  {
-    "id": 412,
-    "make": "BMW",
-    "model": "i4 M50",
-    "year": 2022,
-    "country": "Germany",
-    "horsepower": 536,
-    "weight_kg": 2215,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/bmw-i4-m50.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_i4_M50"
-  },
-  {
-    "id": 413,
-    "make": "BMW",
-    "model": "M8 Competition",
-    "year": 2019,
-    "country": "Germany",
-    "horsepower": 617,
-    "weight_kg": 1885,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/bmw-m8-competition.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_M8_Competition"
-  },
-  {
-    "id": 414,
+    "id": 302,
     "make": "BMW",
     "model": "850CSi (E31)",
     "year": 1992,
@@ -5796,91 +4228,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_850CSi"
   },
   {
-    "id": 415,
-    "make": "Porsche",
-    "model": "Macan GTS",
-    "year": 2015,
-    "country": "Germany",
-    "horsepower": 360,
-    "weight_kg": 1895,
-    "engine": "V6 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/porsche-macan-gts.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_Macan_GTS"
-  },
-  {
-    "id": 416,
-    "make": "Porsche",
-    "model": "GT2 RS (991)",
-    "year": 2017,
-    "country": "Germany",
-    "horsepower": 700,
-    "weight_kg": 1470,
-    "engine": "Flat-6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-gt2-rs-991.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_GT2_RS"
-  },
-  {
-    "id": 417,
-    "make": "Porsche",
-    "model": "914",
-    "year": 1969,
-    "country": "Germany",
-    "horsepower": 80,
-    "weight_kg": 940,
-    "engine": "Flat-4",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-914.webp",
-    "fact": "The Porsche 914 or VW-Porsche 914 is a mid-engined sports car designed, manufactured and marketed collaboratively by Volkswagen and Porsche for model years 1969-1976.",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_914"
-  },
-  {
-    "id": 418,
-    "make": "Porsche",
-    "model": "928 GTS",
-    "year": 1992,
-    "country": "Germany",
-    "horsepower": 350,
-    "weight_kg": 1545,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-928-gts.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_928_GTS"
-  },
-  {
-    "id": 419,
-    "make": "Mercedes-AMG",
-    "model": "GT Black Series",
-    "year": 2020,
-    "country": "Germany",
-    "horsepower": 720,
-    "weight_kg": 1575,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-amg-gt-black-series.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-AMG_GT_Black_Series"
-  },
-  {
-    "id": 420,
-    "make": "Wiesmann",
-    "model": "GT MF5",
-    "year": 2009,
-    "country": "Germany",
-    "horsepower": 507,
-    "weight_kg": 1350,
-    "engine": "V10",
-    "drivetrain": "RWD",
-    "image": "/cars/wiesmann-gt-mf5.webp",
-    "fact": "Wi.e.smann GmbH is a German automobile manufacturer that specializes in hand-built custom convertibles and coupes. Brothers Martin Wi.e.smann and Fri.e.dhelm Wi.e.smann founded the company in 1988 which has its headquarters located in Dülmen.",
-    "wiki": "https://en.wikipedia.org/wiki/Wiesmann_GT_MF5"
-  },
-  {
-    "id": 421,
+    "id": 303,
     "make": "Gumpert",
     "model": "Apollo",
     "year": 2005,
@@ -5894,21 +4242,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Gumpert_Apollo"
   },
   {
-    "id": 422,
-    "make": "Ruf",
-    "model": "CTR Yellow Bird",
-    "year": 1987,
-    "country": "Germany",
-    "horsepower": 469,
-    "weight_kg": 1150,
-    "engine": "Flat-6 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/ruf-ctr-yellow-bird.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Ruf_CTR_Yellow_Bird"
-  },
-  {
-    "id": 423,
+    "id": 304,
     "make": "Ruf",
     "model": "CTR3",
     "year": 2007,
@@ -5922,7 +4256,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ruf_CTR3"
   },
   {
-    "id": 424,
+    "id": 305,
     "make": "Alpina",
     "model": "B10 Biturbo",
     "year": 1989,
@@ -5936,35 +4270,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Alpina_B10_Biturbo"
   },
   {
-    "id": 425,
-    "make": "Renault",
-    "model": "Clio RS 200",
-    "year": 2006,
-    "country": "France",
-    "horsepower": 197,
-    "weight_kg": 1204,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/renault-clio-rs-200.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Renault_Clio_RS_200"
-  },
-  {
-    "id": 426,
-    "make": "Peugeot",
-    "model": "207 GTi",
-    "year": 2007,
-    "country": "France",
-    "horsepower": 175,
-    "weight_kg": 1193,
-    "engine": "I4 Turbo",
-    "drivetrain": "FWD",
-    "image": "/cars/peugeot-207-gti.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Peugeot_207_GTi"
-  },
-  {
-    "id": 427,
+    "id": 306,
     "make": "Peugeot",
     "model": "405 Mi16",
     "year": 1988,
@@ -5978,21 +4284,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Peugeot_405_Mi16"
   },
   {
-    "id": 428,
-    "make": "Citroën",
-    "model": "Saxo VTS",
-    "year": 1996,
-    "country": "France",
-    "horsepower": 120,
-    "weight_kg": 935,
-    "engine": "I4",
-    "drivetrain": "FWD",
-    "image": "/cars/citroën-saxo-vts.webp",
-    "fact": "The Citroën Saxo is a supermini car which was produced by the French manufacturer Citroën from 1996 to 2003. It was sold in Japan as the Citroën Chanson, because Honda had re.g.istered the \"Saxo\" name.",
-    "wiki": "https://en.wikipedia.org/wiki/Citroën_Saxo_VTS"
-  },
-  {
-    "id": 429,
+    "id": 307,
     "make": "Citroën",
     "model": "C2 VTS",
     "year": 2003,
@@ -6006,7 +4298,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Citroën_C2_VTS"
   },
   {
-    "id": 430,
+    "id": 308,
     "make": "Rimac",
     "model": "Nevera",
     "year": 2021,
@@ -6020,21 +4312,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Rimac_Nevera"
   },
   {
-    "id": 431,
-    "make": "Rimac",
-    "model": "Concept One",
-    "year": 2013,
-    "country": "Croatia",
-    "horsepower": 1224,
-    "weight_kg": 1850,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/rimac-concept-one.webp",
-    "fact": "The Rimac Concept One, sometimes stylized as Concept_One, is a two-seat high-performance electric car designed and manufactured in Croatia by Rimac Automobili.",
-    "wiki": "https://en.wikipedia.org/wiki/Rimac_Concept_One"
-  },
-  {
-    "id": 432,
+    "id": 309,
     "make": "Vauxhall",
     "model": "VXR8",
     "year": 2007,
@@ -6048,7 +4326,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Vauxhall_VXR8"
   },
   {
-    "id": 433,
+    "id": 310,
     "make": "Vauxhall",
     "model": "Lotus Carlton",
     "year": 1990,
@@ -6062,35 +4340,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Vauxhall_Lotus_Carlton"
   },
   {
-    "id": 434,
-    "make": "Ginetta",
-    "model": "G60",
-    "year": 2015,
-    "country": "UK",
-    "horsepower": 310,
-    "weight_kg": 1080,
-    "engine": "V6 Supercharged",
-    "drivetrain": "RWD",
-    "image": "/cars/ginetta-g60.webp",
-    "fact": "The Ginetta G60 is a mid-engined sports car produced by British car manufacturer Ginetta Cars, based on the Ginetta F400, which itself was based on the Farbio GTS.",
-    "wiki": "https://en.wikipedia.org/wiki/Ginetta_G60"
-  },
-  {
-    "id": 435,
-    "make": "BAC",
-    "model": "Mono",
-    "year": 2011,
-    "country": "UK",
-    "horsepower": 305,
-    "weight_kg": 540,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/bac-mono.webp",
-    "fact": "Briggs Automotive Company (BAC) Limited is a British car manufacturer that created Mono, a road-le.g.al sports car with only one seat.",
-    "wiki": "https://en.wikipedia.org/wiki/BAC_Mono"
-  },
-  {
-    "id": 436,
+    "id": 311,
     "make": "Radical",
     "model": "SR8",
     "year": 2005,
@@ -6104,7 +4354,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Radical_SR8"
   },
   {
-    "id": 437,
+    "id": 312,
     "make": "MG",
     "model": "F",
     "year": 1995,
@@ -6118,21 +4368,7 @@
     "wiki": "https://en.wikipedia.org/wiki/MG_F"
   },
   {
-    "id": 438,
-    "make": "MG",
-    "model": "MGB GT",
-    "year": 1965,
-    "country": "UK",
-    "horsepower": 95,
-    "weight_kg": 1020,
-    "engine": "I4",
-    "drivetrain": "RWD",
-    "image": "/cars/mg-mgb-gt.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/MG_MGB_GT"
-  },
-  {
-    "id": 439,
+    "id": 313,
     "make": "Triumph",
     "model": "TR6",
     "year": 1968,
@@ -6146,35 +4382,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Triumph_TR6"
   },
   {
-    "id": 440,
-    "make": "Austin-Healey",
-    "model": "3000 Mk III",
-    "year": 1963,
-    "country": "UK",
-    "horsepower": 150,
-    "weight_kg": 1178,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/austin-healey-3000-mk-iii.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Austin-Healey_3000_Mk_III"
-  },
-  {
-    "id": 441,
-    "make": "Toyota",
-    "model": "Tacoma TRD Pro (3rd Gen)",
-    "year": 2016,
-    "country": "Japan",
-    "horsepower": 278,
-    "weight_kg": 1955,
-    "engine": "V6",
-    "drivetrain": "4WD",
-    "image": "/cars/toyota-tacoma-trd-pro-3rd-gen.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Toyota_Tacoma_TRD_Pro"
-  },
-  {
-    "id": 442,
+    "id": 314,
     "make": "Toyota",
     "model": "4Runner (5th Gen)",
     "year": 2010,
@@ -6188,7 +4396,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_4Runner"
   },
   {
-    "id": 443,
+    "id": 315,
     "make": "Ford",
     "model": "Ranger Raptor",
     "year": 2018,
@@ -6202,7 +4410,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_Ranger_Raptor"
   },
   {
-    "id": 444,
+    "id": 316,
     "make": "Chevrolet",
     "model": "Tahoe (4th Gen)",
     "year": 2015,
@@ -6216,49 +4424,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Tahoe"
   },
   {
-    "id": 445,
-    "make": "Nissan",
-    "model": "Frontier PRO-4X",
-    "year": 2005,
-    "country": "Japan",
-    "horsepower": 261,
-    "weight_kg": 1927,
-    "engine": "V6",
-    "drivetrain": "4WD",
-    "image": "/cars/nissan-frontier-pro-4x.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Nissan_Frontier_PRO-4X"
-  },
-  {
-    "id": 446,
-    "make": "Jeep",
-    "model": "Gladiator Rubicon",
-    "year": 2020,
-    "country": "USA",
-    "horsepower": 285,
-    "weight_kg": 2320,
-    "engine": "V6",
-    "drivetrain": "4WD",
-    "image": "/cars/jeep-gladiator-rubicon.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Jeep_Gladiator_Rubicon"
-  },
-  {
-    "id": 447,
-    "make": "Mercedes-Benz",
-    "model": "G63 AMG (W463)",
-    "year": 2012,
-    "country": "Germany",
-    "horsepower": 544,
-    "weight_kg": 2550,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "4WD",
-    "image": "/cars/mercedes-benz-g63-amg-w463.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_G63_AMG"
-  },
-  {
-    "id": 448,
+    "id": 317,
     "make": "Zenvo",
     "model": "TSR-S",
     "year": 2018,
@@ -6272,35 +4438,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Zenvo_TSR-S"
   },
   {
-    "id": 449,
-    "make": "Spyker",
-    "model": "C8 Aileron",
-    "year": 2008,
-    "country": "Netherlands",
-    "horsepower": 400,
-    "weight_kg": 1400,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/spyker-c8-aileron.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Spyker_C8_Aileron"
-  },
-  {
-    "id": 450,
-    "make": "Donkervoort",
-    "model": "D8 GTO",
-    "year": 2013,
-    "country": "Netherlands",
-    "horsepower": 380,
-    "weight_kg": 700,
-    "engine": "I5 Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/donkervoort-d8-gto.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Donkervoort_D8_GTO"
-  },
-  {
-    "id": 451,
+    "id": 318,
     "make": "W Motors",
     "model": "Lykan HyperSport",
     "year": 2013,
@@ -6314,7 +4452,7 @@
     "wiki": "https://en.wikipedia.org/wiki/W_Motors_Lykan_HyperSport"
   },
   {
-    "id": 452,
+    "id": 319,
     "make": "Hispano-Suiza",
     "model": "Carmen",
     "year": 2019,
@@ -6328,7 +4466,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Hispano-Suiza_Carmen"
   },
   {
-    "id": 453,
+    "id": 320,
     "make": "Czinger",
     "model": "21C",
     "year": 2022,
@@ -6342,21 +4480,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Czinger_21C"
   },
   {
-    "id": 454,
-    "make": "Lancia",
-    "model": "Fulvia 1.6 HF",
-    "year": 1969,
-    "country": "Italy",
-    "horsepower": 132,
-    "weight_kg": 960,
-    "engine": "V4",
-    "drivetrain": "FWD",
-    "image": "/cars/lancia-fulvia-16-hf.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Lancia_Fulvia_1.6_HF"
-  },
-  {
-    "id": 455,
+    "id": 321,
     "make": "Ford",
     "model": "RS200",
     "year": 1984,
@@ -6370,7 +4494,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ford_RS200"
   },
   {
-    "id": 456,
+    "id": 322,
     "make": "MG",
     "model": "Metro 6R4",
     "year": 1985,
@@ -6384,7 +4508,7 @@
     "wiki": "https://en.wikipedia.org/wiki/MG_Metro_6R4"
   },
   {
-    "id": 457,
+    "id": 323,
     "make": "Peugeot",
     "model": "205 T16",
     "year": 1984,
@@ -6398,7 +4522,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Peugeot_205_T16"
   },
   {
-    "id": 458,
+    "id": 324,
     "make": "Toyota",
     "model": "Celica GT-Four (ST185)",
     "year": 1990,
@@ -6412,7 +4536,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Toyota_Celica_GT-Four"
   },
   {
-    "id": 459,
+    "id": 325,
     "make": "Mitsubishi",
     "model": "Lancer Evolution III",
     "year": 1995,
@@ -6426,49 +4550,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Mitsubishi_Lancer_Evolution_III"
   },
   {
-    "id": 460,
-    "make": "Subaru",
-    "model": "Impreza 22B STI",
-    "year": 1998,
-    "country": "Japan",
-    "horsepower": 280,
-    "weight_kg": 1270,
-    "engine": "Flat-4 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/subaru-impreza-22b-sti.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Subaru_Impreza_22B_STI"
-  },
-  {
-    "id": 461,
-    "make": "Audi",
-    "model": "RS2 Avant",
-    "year": 1994,
-    "country": "Germany",
-    "horsepower": 315,
-    "weight_kg": 1595,
-    "engine": "I5 Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/audi-rs2-avant.webp",
-    "fact": "The Audi RS 2 Avant is a high-performance version of the Audi 80 Avant estate car, manufactured from March 1994 to July 1995.",
-    "wiki": "https://en.wikipedia.org/wiki/Audi_RS2_Avant"
-  },
-  {
-    "id": 462,
-    "make": "Audi",
-    "model": "RS4 Avant (B7)",
-    "year": 2006,
-    "country": "Germany",
-    "horsepower": 420,
-    "weight_kg": 1710,
-    "engine": "V8",
-    "drivetrain": "AWD",
-    "image": "/cars/audi-rs4-avant-b7.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Audi_RS4_Avant"
-  },
-  {
-    "id": 463,
+    "id": 326,
     "make": "Audi",
     "model": "RS6 Avant (C6)",
     "year": 2008,
@@ -6482,7 +4564,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Audi_RS6_Avant"
   },
   {
-    "id": 464,
+    "id": 327,
     "make": "BMW",
     "model": "M5 Touring (E34)",
     "year": 1992,
@@ -6496,7 +4578,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5_Touring"
   },
   {
-    "id": 465,
+    "id": 328,
     "make": "BMW",
     "model": "M5 Touring (E61)",
     "year": 2007,
@@ -6510,21 +4592,7 @@
     "wiki": "https://en.wikipedia.org/wiki/BMW_M5_Touring"
   },
   {
-    "id": 466,
-    "make": "Mercedes-Benz",
-    "model": "E63 AMG Estate (S212)",
-    "year": 2009,
-    "country": "Germany",
-    "horsepower": 518,
-    "weight_kg": 1920,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-e63-amg-estate-s212.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_E63_AMG_Estate"
-  },
-  {
-    "id": 467,
+    "id": 329,
     "make": "Volvo",
     "model": "V60 Polestar",
     "year": 2014,
@@ -6538,49 +4606,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Volvo_V60_Polestar"
   },
   {
-    "id": 468,
-    "make": "Chevrolet",
-    "model": "Corvette Stingray (C2)",
-    "year": 1963,
-    "country": "USA",
-    "horsepower": 360,
-    "weight_kg": 1399,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-corvette-stingray-c2.webp",
-    "fact": "The 1963 split-window Corvette Stingray is one of the most iconic American cars ever built — the split rear window was only offered for one year, making it one of the most sought-after Corvettes.",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette_Stingray"
-  },
-  {
-    "id": 469,
-    "make": "Ford",
-    "model": "Shelby Mustang GT500 (1967)",
-    "year": 1967,
-    "country": "USA",
-    "horsepower": 355,
-    "weight_kg": 1511,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/ford-shelby-mustang-gt500-1967.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Ford_Shelby_Mustang_GT500"
-  },
-  {
-    "id": 470,
-    "make": "Porsche",
-    "model": "904 Carrera GTS",
-    "year": 1964,
-    "country": "Germany",
-    "horsepower": 180,
-    "weight_kg": 655,
-    "engine": "Flat-4",
-    "drivetrain": "RWD",
-    "image": "/cars/porsche-904-carrera-gts.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Porsche_904_Carrera_GTS"
-  },
-  {
-    "id": 471,
+    "id": 330,
     "make": "Jaguar",
     "model": "XKSS",
     "year": 1957,
@@ -6594,21 +4620,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Jaguar_XKSS"
   },
   {
-    "id": 472,
-    "make": "Mercedes-Benz",
-    "model": "SLR 300",
-    "year": 1955,
-    "country": "Germany",
-    "horsepower": 310,
-    "weight_kg": 1293,
-    "engine": "I6",
-    "drivetrain": "RWD",
-    "image": "/cars/mercedes-benz-slr-300.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_SLR_300"
-  },
-  {
-    "id": 473,
+    "id": 331,
     "make": "Ferrari",
     "model": "250 GT California",
     "year": 1957,
@@ -6622,7 +4634,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_250_GT_California"
   },
   {
-    "id": 474,
+    "id": 332,
     "make": "Aston Martin",
     "model": "DB4 GT Zagato",
     "year": 1960,
@@ -6636,49 +4648,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_DB4_GT_Zagato"
   },
   {
-    "id": 475,
-    "make": "AC",
-    "model": "Cobra 427",
-    "year": 1965,
-    "country": "UK",
-    "horsepower": 425,
-    "weight_kg": 1063,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/ac-cobra-427.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/AC_Cobra_427"
-  },
-  {
-    "id": 476,
-    "make": "Chevrolet",
-    "model": "Nova SS",
-    "year": 1966,
-    "country": "USA",
-    "horsepower": 350,
-    "weight_kg": 1408,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/chevrolet-nova-ss.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Nova_SS"
-  },
-  {
-    "id": 477,
-    "make": "Oldsmobile",
-    "model": "442 W-30",
-    "year": 1970,
-    "country": "USA",
-    "horsepower": 370,
-    "weight_kg": 1619,
-    "engine": "V8",
-    "drivetrain": "RWD",
-    "image": "/cars/oldsmobile-442-w-30.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Oldsmobile_442_W-30"
-  },
-  {
-    "id": 478,
+    "id": 333,
     "make": "Plymouth",
     "model": "Superbird",
     "year": 1970,
@@ -6692,7 +4662,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Plymouth_Superbird"
   },
   {
-    "id": 479,
+    "id": 334,
     "make": "AMC",
     "model": "Javelin AMX",
     "year": 1971,
@@ -6706,7 +4676,7 @@
     "wiki": "https://en.wikipedia.org/wiki/AMC_Javelin_AMX"
   },
   {
-    "id": 480,
+    "id": 335,
     "make": "Porsche",
     "model": "Taycan 4S",
     "year": 2020,
@@ -6720,91 +4690,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Porsche_Taycan_4S"
   },
   {
-    "id": 481,
-    "make": "BMW",
-    "model": "iX M60",
-    "year": 2022,
-    "country": "Germany",
-    "horsepower": 610,
-    "weight_kg": 2560,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/bmw-ix-m60.webp",
-    "fact": "The BMW iX is a battery-electric mid-size luxury crossover SUV manufactured and marketed by the German automobile manufacturer BMW.",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_iX_M60"
-  },
-  {
-    "id": 482,
-    "make": "Mercedes-Benz",
-    "model": "EQE AMG",
-    "year": 2022,
-    "country": "Germany",
-    "horsepower": 677,
-    "weight_kg": 2525,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/mercedes-benz-eqe-amg.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-Benz_EQE_AMG"
-  },
-  {
-    "id": 483,
-    "make": "Lotus",
-    "model": "Eletre R",
-    "year": 2023,
-    "country": "UK",
-    "horsepower": 905,
-    "weight_kg": 2640,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/lotus-eletre-r.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Lotus_Eletre_R"
-  },
-  {
-    "id": 484,
-    "make": "Hyundai",
-    "model": "IONIQ 6",
-    "year": 2023,
-    "country": "South Korea",
-    "horsepower": 320,
-    "weight_kg": 1985,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/hyundai-ioniq-6.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Hyundai_IONIQ_6"
-  },
-  {
-    "id": 485,
-    "make": "Ford",
-    "model": "Mustang Mach-E GT",
-    "year": 2021,
-    "country": "USA",
-    "horsepower": 480,
-    "weight_kg": 2218,
-    "engine": "Electric",
-    "drivetrain": "AWD",
-    "image": "/cars/ford-mustang-mach-e-gt.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Ford_Mustang_Mach-E_GT"
-  },
-  {
-    "id": 486,
-    "make": "Chevrolet",
-    "model": "Corvette E-Ray",
-    "year": 2024,
-    "country": "USA",
-    "horsepower": 655,
-    "weight_kg": 1736,
-    "engine": "V8 Hybrid",
-    "drivetrain": "AWD",
-    "image": "/cars/chevrolet-corvette-e-ray.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Chevrolet_Corvette_E-Ray"
-  },
-  {
-    "id": 487,
+    "id": 336,
     "make": "Dodge",
     "model": "Charger Daytona SRT",
     "year": 2024,
@@ -6818,7 +4704,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Dodge_Charger_Daytona_SRT"
   },
   {
-    "id": 488,
+    "id": 337,
     "make": "Aston Martin",
     "model": "Vantage (2018)",
     "year": 2018,
@@ -6832,21 +4718,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Aston_Martin_Vantage"
   },
   {
-    "id": 489,
-    "make": "BMW",
-    "model": "M850i (G15)",
-    "year": 2018,
-    "country": "Germany",
-    "horsepower": 523,
-    "weight_kg": 1890,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/bmw-m850i-g15.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/BMW_M850i"
-  },
-  {
-    "id": 490,
+    "id": 338,
     "make": "Lexus",
     "model": "LC 500h",
     "year": 2017,
@@ -6860,7 +4732,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Lexus_LC_500h"
   },
   {
-    "id": 491,
+    "id": 339,
     "make": "Maserati",
     "model": "MC20",
     "year": 2020,
@@ -6874,7 +4746,7 @@
     "wiki": "https://en.wikipedia.org/wiki/Maserati_MC20"
   },
   {
-    "id": 492,
+    "id": 340,
     "make": "Ferrari",
     "model": "Roma",
     "year": 2020,
@@ -6886,33 +4758,5 @@
     "image": "/cars/ferrari-roma.webp",
     "fact": "The Ferrari Roma (Type F169) is a grand touring car by Italian manufacturer Ferrari. It has a front mid-engine, rear-wheel-drive layout with a twin turbocharged V8 engine and a 2+2 seating arrangement.",
     "wiki": "https://en.wikipedia.org/wiki/Ferrari_Roma"
-  },
-  {
-    "id": 493,
-    "make": "Bentley",
-    "model": "Continental GT V8",
-    "year": 2019,
-    "country": "UK",
-    "horsepower": 542,
-    "weight_kg": 2165,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/bentley-continental-gt-v8.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Bentley_Continental_GT_V8"
-  },
-  {
-    "id": 494,
-    "make": "Mercedes-AMG",
-    "model": "GT 63 S 4-Door",
-    "year": 2019,
-    "country": "Germany",
-    "horsepower": 630,
-    "weight_kg": 2075,
-    "engine": "V8 Twin Turbo",
-    "drivetrain": "AWD",
-    "image": "/cars/mercedes-amg-gt-63-s-4-door.webp",
-    "fact": "",
-    "wiki": "https://en.wikipedia.org/wiki/Mercedes-AMG_GT_63_S_4-Door"
   }
 ]

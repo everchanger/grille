@@ -114,44 +114,38 @@ def _wiki_api_request(params: dict, timeout: int = 60) -> dict:
     return {}
 
 
-def _build_title_reverse_map(
+def _resolve_titles_forward(
     query: dict, batch: list[str],
 ) -> dict[str, str]:
     """
-    Build a mapping from Wikipedia API response titles back to originally
-    requested titles, accounting for normalization and redirects.
+    Build a mapping from each originally-requested title to its final
+    Wikipedia API page title, walking the normalisation → redirect chain
+    forward.
+
+    Returns {original_batch_title: final_api_page_title}.
+
+    This avoids the collision problem of a reverse map: when multiple
+    requested titles redirect to the same page, every original title
+    still gets its own entry.
     """
-    # Direct mapping: normalize underscores to spaces
-    sent = {t.replace("_", " "): t for t in batch}
+    # Forward normalisation: "Chevrolet_Camaro" → "Chevrolet Camaro"
+    norm_to: dict[str, str] = {
+        n["from"]: n["to"] for n in query.get("normalized", [])
+    }
+    # Forward redirect: "Chevrolet Camaro" → "Chevrolet Camaro (5th gen)"
+    redir_to: dict[str, str] = {
+        r["from"]: r["to"] for r in query.get("redirects", [])
+    }
 
-    # API normalization chain (from → to)
-    norm_from: dict[str, str] = {}
-    for n in query.get("normalized", []):
-        norm_from[n["to"]] = n["from"]
-
-    # API redirect chain (from → to)
-    redir_from: dict[str, str] = {}
-    for r in query.get("redirects", []):
-        redir_from[r["to"]] = r["from"]
-
-    def resolve(api_title: str) -> str:
-        """Walk the chain: api_title → redirect source → normalized source."""
-        title = api_title
-        if title in redir_from:
-            title = redir_from[title]
-        if title in norm_from:
-            title = norm_from[title]
-        # Try matching against sent batch
-        if title in sent:
-            return sent[title]
-        # Fallback: match by normalized form
-        normalized = title.replace("_", " ")
-        if normalized in sent:
-            return sent[normalized]
-        return api_title
-
-    return {api_title: resolve(api_title) for api_title in
-            [p.get("title", "") for p in query.get("pages", [])]}
+    resolved: dict[str, str] = {}
+    for orig in batch:
+        title = orig
+        if title in norm_to:
+            title = norm_to[title]
+        if title in redir_to:
+            title = redir_to[title]
+        resolved[orig] = title
+    return resolved
 
 
 def fetch_wikipedia_images(
@@ -177,16 +171,22 @@ def fetch_wikipedia_images(
         })
 
         query = data.get("query", {})
-        reverse = _build_title_reverse_map(query, batch)
 
+        # Build page_title → thumbnail lookup from API response
+        page_thumbs: dict[str, str] = {}
         for page in query.get("pages", []):
             if page.get("missing"):
                 continue
             api_title = page.get("title", "")
             thumb = page.get("thumbnail", {}).get("source", "")
             if thumb:
-                orig = reverse.get(api_title, api_title)
-                all_images[orig] = thumb
+                page_thumbs[api_title] = thumb
+
+        # Resolve each original title forward through the chain
+        forward = _resolve_titles_forward(query, batch)
+        for orig, final_title in forward.items():
+            if final_title in page_thumbs:
+                all_images[orig] = page_thumbs[final_title]
 
         if i + batch_size < len(page_titles):
             time.sleep(1)
@@ -220,16 +220,22 @@ def fetch_wikipedia_extracts(
         })
 
         query = data.get("query", {})
-        reverse = _build_title_reverse_map(query, batch)
 
+        # Build page_title → extract lookup from API response
+        page_extracts: dict[str, str] = {}
         for page in query.get("pages", []):
             if page.get("missing"):
                 continue
             api_title = page.get("title", "")
             extract = page.get("extract", "").strip()
             if extract:
-                orig = reverse.get(api_title, api_title)
-                all_extracts[orig] = extract
+                page_extracts[api_title] = extract
+
+        # Resolve each original title forward through the chain
+        forward = _resolve_titles_forward(query, batch)
+        for orig, final_title in forward.items():
+            if final_title in page_extracts:
+                all_extracts[orig] = page_extracts[final_title]
 
         if i + batch_size < len(page_titles):
             time.sleep(1)
@@ -481,11 +487,30 @@ def main():
           f"Generated: {facts_generated}, Missing: {facts_missing}")
 
     # ------------------------------------------------------------------
-    # Step 7: Write clean output (Car interface fields only)
+    # Step 7: Filter out cars without an actual image file
     # ------------------------------------------------------------------
-    print("Step 7: Writing output...")
-    clean_cars = []
+    print("Step 7: Filtering cars without images...")
+    filtered_cars = []
+    removed = 0
     for car in cars:
+        img_rel = car["image"].lstrip("/").split("/", 1)[-1]
+        if (cars_dir / img_rel).exists():
+            filtered_cars.append(car)
+        else:
+            removed += 1
+    print(f"  Kept: {len(filtered_cars)}, "
+          f"Removed (no image): {removed}")
+
+    # Re-number IDs sequentially
+    for idx, car in enumerate(filtered_cars, 1):
+        car["id"] = idx
+
+    # ------------------------------------------------------------------
+    # Step 8: Write clean output (Car interface fields only)
+    # ------------------------------------------------------------------
+    print("Step 8: Writing output...")
+    clean_cars = []
+    for car in filtered_cars:
         clean_cars.append({
             "id": car["id"],
             "make": car["make"],
