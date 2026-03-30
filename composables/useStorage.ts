@@ -25,24 +25,25 @@ const defaultGameState = (): GameState => ({
   failed: false,
 })
 
-const todayKey = () => {
+const dateKey = (dateStr?: string) => {
+  if (dateStr) return `grille_state_${dateStr}`
   const d = new Date()
   return `grille_state_${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
 }
 
 export const useStorage = () => {
-  const loadGameState = (): GameState => {
+  const loadGameState = (dateStr?: string): GameState => {
     if (!import.meta.client) return defaultGameState()
     try {
-      const raw = localStorage.getItem(todayKey())
+      const raw = localStorage.getItem(dateKey(dateStr))
       if (raw) return JSON.parse(raw) as GameState
     } catch {}
     return defaultGameState()
   }
 
-  const saveGameState = (state: GameState) => {
+  const saveGameState = (state: GameState, dateStr?: string) => {
     if (!import.meta.client) return
-    localStorage.setItem(todayKey(), JSON.stringify(state))
+    localStorage.setItem(dateKey(dateStr), JSON.stringify(state))
   }
 
   const loadStats = (): StatsState => {

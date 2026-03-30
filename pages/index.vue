@@ -29,7 +29,55 @@
     </header>
 
     <main class="max-w-lg mx-auto px-4 py-6">
-      <p class="text-center text-gray-500 text-xs font-medium tracking-wide mb-4">Puzzle #{{ dayNumber }} · {{ todaysDate }}</p>
+      <!-- Date navigation -->
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <button
+          class="p-1.5 rounded-full bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white border border-white/10 transition-all duration-200"
+          title="Previous day"
+          @click="goToPreviousDay"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+        </button>
+
+        <div class="relative">
+          <button
+            class="px-3 py-1 rounded-lg text-xs font-medium text-gray-400 hover:text-white bg-white/[0.06] hover:bg-white/10 border border-white/10 transition-all duration-200 cursor-pointer"
+            title="Pick a date"
+            @click="openDatePicker"
+          >
+            <span class="text-gray-500 text-[10px] tracking-wider uppercase">Puzzle #{{ dayNumber }}</span>
+            <span class="mx-1.5 text-gray-600">·</span>
+            <span>{{ displayDate }}</span>
+          </button>
+          <input
+            ref="datePickerRef"
+            type="date"
+            :value="selectedDateStr"
+            :min="epochDateStr"
+            :max="todayDateStr"
+            class="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+            @change="onDatePick"
+          />
+        </div>
+
+        <button
+          v-if="!isToday"
+          class="p-1.5 rounded-full bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white border border-white/10 transition-all duration-200"
+          title="Next day"
+          @click="goToNextDay"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>
+        </button>
+        <div v-else class="w-[30px]" />
+
+        <button
+          v-if="!isToday"
+          class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 hover:text-indigo-200 border border-indigo-500/30 transition-all duration-200"
+          @click="goToToday"
+        >
+          Today
+        </button>
+      </div>
 
       <CarImage
         :src="todaysCar.image"
@@ -64,8 +112,10 @@
         :open="postGameOpen"
         :car="todaysCar"
         :solved="state.solved"
+        :is-today="isToday"
         @share="share"
         @close="postGameOpen = false"
+        @go-to-today="goToToday"
       />
     </main>
 
@@ -97,7 +147,8 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import { useGame, MAX_GUESSES } from '~/composables/useGame'
+import { useRoute, useRouter } from 'vue-router'
+import { useGame, MAX_GUESSES, getTodayDateStr, dateToDayNumber, dayNumberToDate } from '~/composables/useGame'
 import { useUnits } from '~/composables/useUnits'
 import { useStorage } from '~/composables/useStorage'
 import { carLabel } from '~/utils/carLabel'
@@ -106,14 +157,41 @@ import carsData from '~/data/cars.json'
 import type { Car } from '~/types'
 
 const cars = carsData as Car[]
-const { todaysCar, dayNumber, state, guessCount, imageState, canGuess, submitGuess, generateShareText } = useGame()
+const route = useRoute()
+const router = useRouter()
+
+const epochDateStr = '2025-01-01'
+const todayDateStr = computed(() => getTodayDateStr())
+
+// Read date from query param, validate it
+const dateFromQuery = computed<string | undefined>(() => {
+  const q = route.query.date
+  if (!q || typeof q !== 'string') return undefined
+  // Validate format YYYY-MM-DD
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(q)) return undefined
+  // Validate it's not in the future and not before epoch
+  if (q > todayDateStr.value) return undefined
+  if (q < epochDateStr) return undefined
+  // Validate it's a real date
+  const [y, m, d] = q.split('-').map(Number)
+  const date = new Date(Date.UTC(y, m - 1, d))
+  if (date.getUTCFullYear() !== y || date.getUTCMonth() !== m - 1 || date.getUTCDate() !== d) return undefined
+  // If the date is today, treat as no override (canonical URL)
+  if (q === todayDateStr.value) return undefined
+  return q
+})
+
+const { todaysCar, dayNumber, selectedDateStr, isToday, state, guessCount, imageState, canGuess, submitGuess, generateShareText } = useGame(dateFromQuery)
 const { unit, toggleUnit } = useUnits()
 const { loadStats } = useStorage()
 
-const todaysDate = computed(() => {
-  const now = new Date()
-  return now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+const displayDate = computed(() => {
+  const [y, m, d] = selectedDateStr.value.split('-').map(Number)
+  const date = new Date(Date.UTC(y, m - 1, d))
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
 })
+
+const datePickerRef = ref<HTMLInputElement | null>(null)
 
 const statsOpen = ref(false)
 const howToPlayOpen = ref(false)
@@ -125,6 +203,11 @@ watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) =
   if (solved || failed) {
     postGameOpen.value = true
   }
+})
+
+// Close post-game modal when navigating to a different date
+watch(selectedDateStr, () => {
+  postGameOpen.value = false
 })
 
 onMounted(() => {
@@ -158,8 +241,50 @@ const onGuess = (carName: string) => {
   submitGuess(carName)
 }
 
+// Date navigation
+const navigateToDate = (dateStr: string) => {
+  if (dateStr === getTodayDateStr()) {
+    router.push({ query: {} })
+  } else {
+    router.push({ query: { date: dateStr } })
+  }
+}
+
+const goToPreviousDay = () => {
+  const prevDay = dayNumber.value - 1
+  if (prevDay < 0) return
+  navigateToDate(dayNumberToDate(prevDay))
+}
+
+const goToNextDay = () => {
+  const todayDayNum = dateToDayNumber(getTodayDateStr())
+  if (dayNumber.value >= todayDayNum) return
+  navigateToDate(dayNumberToDate(dayNumber.value + 1))
+}
+
+const goToToday = () => {
+  navigateToDate(getTodayDateStr())
+}
+
+const openDatePicker = () => {
+  datePickerRef.value?.showPicker?.()
+}
+
+const onDatePick = (event: Event) => {
+  const input = event.target as HTMLInputElement
+  if (input.value) {
+    navigateToDate(input.value)
+  }
+}
+
 const share = () => {
-  const text = generateShareText()
+  let text = generateShareText()
+  // Add the puzzle URL so friends can play the same day
+  const origin = window.location.origin
+  const baseURL = useRuntimeConfig().app.baseURL || '/'
+  const base = `${origin}${baseURL}`
+  const url = isToday.value ? base : `${base}?date=${selectedDateStr.value}`
+  text += `\n${url}`
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
       alert('Copied to clipboard!')
