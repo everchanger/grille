@@ -312,6 +312,18 @@ const showConfetti = ref(false)
 const confettiCanvas = ref<HTMLCanvasElement | null>(null)
 let confettiCleanupTimer: ReturnType<typeof setTimeout> | undefined
 let confettiAnimId: number | undefined
+// Guard flag: when true, a date navigation caused the state change, not a fresh solve
+let isNavigating = false
+
+// When navigating between dates, reset tab based on game state
+watch(selectedDateStr, () => {
+  isNavigating = true
+  showConfetti.value = false
+  nextTick(() => {
+    activeTab.value = gameComplete.value ? 'details' : 'guesses'
+    isNavigating = false
+  })
+})
 
 // Watch for game completion (fresh solve/fail)
 watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
@@ -321,22 +333,14 @@ watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) =
     setTimeout(() => {
       activeTab.value = 'details'
     }, TAB_SWITCH_DELAY_MS)
-    // Fire confetti only on fresh win
-    if (solved) {
+    // Fire confetti only on fresh win, not when loading a previously-solved puzzle
+    if (solved && !isNavigating) {
       showConfetti.value = true
       nextTick(() => {
         setTimeout(launchConfetti, CONFETTI_LAUNCH_DELAY_MS)
       })
     }
   }
-})
-
-// When navigating between dates, reset tab based on game state
-watch(selectedDateStr, () => {
-  showConfetti.value = false
-  nextTick(() => {
-    activeTab.value = gameComplete.value ? 'details' : 'guesses'
-  })
 })
 
 onMounted(() => {
