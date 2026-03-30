@@ -21,6 +21,7 @@ import argparse
 import importlib.util
 import io
 import json
+import random
 import sys
 import time
 import urllib.error
@@ -358,6 +359,30 @@ def validate_car(car: dict) -> tuple[bool, list[str]]:
 
 
 # ---------------------------------------------------------------------------
+# Deterministic shuffle
+# ---------------------------------------------------------------------------
+
+# Fixed seed so every run of the pipeline (and every player) sees the same
+# order.  Changing this constant will re-shuffle the entire list and alter
+# which car appears on which day.
+SHUFFLE_SEED = 20250101
+
+
+def shuffle_cars(cars: list[dict], seed: int = SHUFFLE_SEED) -> list[dict]:
+    """
+    Deterministically shuffle the car list so that cars of the same make
+    are spread apart rather than clustered together.
+
+    Uses a seeded Fisher-Yates shuffle (via random.shuffle) to guarantee a
+    reproducible ordering that is identical across Python versions ≥ 3.2.
+    """
+    shuffled = list(cars)
+    rng = random.Random(seed)
+    rng.shuffle(shuffled)
+    return shuffled
+
+
+# ---------------------------------------------------------------------------
 # Main pipeline
 # ---------------------------------------------------------------------------
 
@@ -500,6 +525,12 @@ def main():
             removed += 1
     print(f"  Kept: {len(filtered_cars)}, "
           f"Removed (no image): {removed}")
+
+    # ------------------------------------------------------------------
+    # Step 7b: Shuffle cars so same-make entries aren't clustered
+    # ------------------------------------------------------------------
+    print("Step 7b: Shuffling car order (deterministic seed)...")
+    filtered_cars = shuffle_cars(filtered_cars)
 
     # Re-number IDs sequentially
     for idx, car in enumerate(filtered_cars, 1):
