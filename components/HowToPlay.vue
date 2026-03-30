@@ -20,7 +20,7 @@
           </div>
 
           <p class="text-gray-300 text-sm mb-4">
-            Guess the iconic car in <span class="text-white font-bold">6 tries</span>. Each guess reveals clues about the mystery car.
+            Guess the iconic car in <span class="text-white font-bold">5 tries</span>. Each guess reveals clues about the mystery car.
           </p>
 
           <h3 class="text-indigo-400/70 text-[10px] font-bold uppercase tracking-wider mb-3">Feedback Guide</h3>
@@ -34,7 +34,14 @@
               </div>
             </div>
             <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-600/10 border border-amber-500/20">
-              <span class="text-lg">🔼</span>
+              <span class="text-lg">🟡</span>
+              <div>
+                <span class="text-white text-sm font-semibold">Yellow Circle</span>
+                <span class="text-gray-400 text-xs block">Close — same region or origin</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-600/10 border border-amber-500/20">
+              <span class="text-lg">🔼🔽</span>
               <div>
                 <span class="text-white text-sm font-semibold">Yellow Arrow</span>
                 <span class="text-gray-400 text-xs block">Close — almost there, arrow shows direction</span>

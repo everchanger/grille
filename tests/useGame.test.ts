@@ -54,19 +54,36 @@ describe('useGame', () => {
 
     it('returns wrong for different make and model', async () => {
       const computeFeedback = await getComputeFeedback()
-      const guessed = makeCar({ make: 'Mazda', model: 'RX-7 (FD)' })
-      const answer = makeCar({ make: 'Toyota', model: 'Supra (A80)' })
+      const guessed = makeCar({ make: 'Mazda', model: 'RX-7 (FD)', country: 'Japan' })
+      const answer = makeCar({ make: 'Toyota', model: 'Supra (A80)', country: 'Japan' })
       const feedback = computeFeedback(guessed, answer)
-      expect(feedback.make).toBe('wrong')
+      // Same country → make is 'close', not 'wrong'
+      expect(feedback.make).toBe('close')
       expect(feedback.model).toBe('wrong')
     })
 
-    it('returns wrong for different country', async () => {
+    it('returns wrong for make from different country', async () => {
+      const computeFeedback = await getComputeFeedback()
+      const guessed = makeCar({ make: 'Ford', country: 'USA' })
+      const answer = makeCar({ make: 'Toyota', country: 'Japan' })
+      const feedback = computeFeedback(guessed, answer)
+      expect(feedback.make).toBe('wrong')
+    })
+
+    it('returns wrong for different country on different continent', async () => {
       const computeFeedback = await getComputeFeedback()
       const guessed = makeCar({ country: 'USA' })
       const answer = makeCar({ country: 'Japan' })
       const feedback = computeFeedback(guessed, answer)
       expect(feedback.country).toBe('wrong')
+    })
+
+    it('returns close for country on same continent', async () => {
+      const computeFeedback = await getComputeFeedback()
+      const guessed = makeCar({ country: 'Germany' })
+      const answer = makeCar({ country: 'Italy' })
+      const feedback = computeFeedback(guessed, answer)
+      expect(feedback.country).toBe('close')
     })
 
     it('returns higher when guessed year is less than answer year', async () => {
@@ -164,10 +181,10 @@ describe('useGame', () => {
       expect(game.state.value.failed).toBe(false)
     })
 
-    it('imageState starts with maximum blur', async () => {
+    it('imageState starts as placeholder (hidden)', async () => {
       const { useGame } = await import('~/composables/useGame')
       const game = useGame()
-      expect(game.imageState.value).toBe(40)
+      expect(game.imageState.value).toBe(-1)
     })
 
     it('todaysCar selects from the car list deterministically', async () => {
@@ -191,10 +208,10 @@ describe('useGame', () => {
       const game = useGame()
       const text = game.generateShareText()
       expect(text).toContain('Grille #')
-      expect(text).toContain('/6')
-      // Should have 6 rows of emojis
+      expect(text).toContain('/5')
+      // Should have 5 rows of emojis
       const lines = text.split('\n').filter(l => l.includes('⬜') || l.includes('🟥') || l.includes('✅'))
-      expect(lines).toHaveLength(6)
+      expect(lines).toHaveLength(5)
     })
   })
 })

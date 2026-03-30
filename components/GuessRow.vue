@@ -40,6 +40,7 @@ const columns: Column[] = [
 const icon = (key: keyof GuessFeedback): string => {
   const result: FeedbackResult = props.feedback[key]
   if (result === 'correct') return '✅'
+  if (result === 'close') return '🟡'
   if (result === 'close_higher') return '🔼'
   if (result === 'close_lower') return '🔽'
   if (result === 'higher') return '🔼'
@@ -50,7 +51,7 @@ const icon = (key: keyof GuessFeedback): string => {
 const cellClass = (key: keyof GuessFeedback): string => {
   const result: FeedbackResult = props.feedback[key]
   if (result === 'correct') return 'bg-gradient-to-br from-emerald-600 to-green-700 text-white shadow-sm shadow-green-500/20'
-  if (result === 'close_higher' || result === 'close_lower') return 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-sm shadow-yellow-500/20'
+  if (result === 'close' || result === 'close_higher' || result === 'close_lower') return 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-sm shadow-yellow-500/20'
   return 'bg-white/[0.06] text-gray-300'
 }
 

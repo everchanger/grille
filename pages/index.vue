@@ -44,7 +44,7 @@
         />
         <div class="mt-3 flex items-center justify-center gap-1.5">
           <div
-            v-for="n in 6"
+            v-for="n in MAX_GUESSES"
             :key="n"
             :class="[
               'w-2 h-2 rounded-full transition-all duration-300',
@@ -53,17 +53,18 @@
                 : 'bg-white/10 border border-white/10',
             ]"
           />
-          <span class="ml-2 text-gray-500 text-xs">{{ guessCount }}/6</span>
+          <span class="ml-2 text-gray-500 text-xs">{{ guessCount }}/{{ MAX_GUESSES }}</span>
         </div>
       </div>
 
       <ClueGrid :entries="guessEntries" />
 
       <PostGame
-        v-if="state.solved || state.failed"
+        :open="postGameOpen"
         :car="todaysCar"
         :solved="state.solved"
         @share="share"
+        @close="postGameOpen = false"
       />
     </main>
 
@@ -81,8 +82,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useGame } from '~/composables/useGame'
+import { ref, computed, watch, onMounted } from 'vue'
+import { useGame, MAX_GUESSES } from '~/composables/useGame'
 import { useUnits } from '~/composables/useUnits'
 import { useStorage } from '~/composables/useStorage'
 import { carLabel } from '~/utils/carLabel'
@@ -97,13 +98,24 @@ const { loadStats } = useStorage()
 
 const statsOpen = ref(false)
 const howToPlayOpen = ref(false)
-const gameStats = computed(() => loadStats())
+const postGameOpen = ref(false)
+const gameStats = ref(loadStats())
+
+watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
+  gameStats.value = loadStats()
+  if (solved || failed) {
+    postGameOpen.value = true
+  }
+})
 
 onMounted(() => {
   if (import.meta.client) {
     const seen = localStorage.getItem('grille_instructions_seen')
     if (!seen) {
       howToPlayOpen.value = true
+    }
+    if (state.value.solved || state.value.failed) {
+      postGameOpen.value = true
     }
   }
 })

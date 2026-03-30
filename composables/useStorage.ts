@@ -5,7 +5,7 @@ const defaultStats = (): StatsState => ({
   wins: 0,
   currentStreak: 0,
   maxStreak: 0,
-  guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
+  guessDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
 })
 
 const defaultSettings = (): SettingsState => {
@@ -18,8 +18,8 @@ const defaultSettings = (): SettingsState => {
 }
 
 const defaultGameState = (): GameState => ({
-  guesses: [null, null, null, null, null, null],
-  guessResults: [null, null, null, null, null, null],
+  guesses: [null, null, null, null, null],
+  guessResults: [null, null, null, null, null],
   cluesRevealed: 0,
   solved: false,
   failed: false,
