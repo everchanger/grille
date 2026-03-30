@@ -6,32 +6,32 @@
         class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
         @click.self="$emit('close')"
       >
-        <div class="bg-gray-900/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-sm mx-4 border border-white/10 ring-1 ring-indigo-500/10 shadow-2xl shadow-black/40 animate-scale-in">
+        <div class="bg-gray-900/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-sm mx-4 border border-white/10 ring-1 ring-white/5 shadow-2xl shadow-black/40 animate-scale-in">
           <div class="flex justify-between items-center mb-5">
-            <h2 class="text-white font-extrabold text-lg bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">📊 Statistics</h2>
+            <h2 class="text-white font-extrabold text-lg">📊 Statistics</h2>
             <button class="text-gray-500 hover:text-white text-xl transition-colors duration-200" @click="$emit('close')">✕</button>
           </div>
 
           <div class="grid grid-cols-4 gap-2 mb-6">
             <div class="text-center p-2 rounded-lg bg-white/[0.04]">
               <p class="text-white text-2xl font-extrabold">{{ stats.played }}</p>
-              <p class="text-indigo-400/60 text-[10px] font-medium uppercase tracking-wider">Played</p>
+              <p class="text-gray-500 text-[10px] font-medium uppercase tracking-wider">Played</p>
             </div>
             <div class="text-center p-2 rounded-lg bg-white/[0.04]">
               <p class="text-white text-2xl font-extrabold">{{ winPercent }}%</p>
-              <p class="text-indigo-400/60 text-[10px] font-medium uppercase tracking-wider">Win %</p>
+              <p class="text-gray-500 text-[10px] font-medium uppercase tracking-wider">Win %</p>
             </div>
             <div class="text-center p-2 rounded-lg bg-white/[0.04]">
               <p class="text-white text-2xl font-extrabold">{{ stats.currentStreak }}</p>
-              <p class="text-indigo-400/60 text-[10px] font-medium uppercase tracking-wider">Streak</p>
+              <p class="text-gray-500 text-[10px] font-medium uppercase tracking-wider">Streak</p>
             </div>
             <div class="text-center p-2 rounded-lg bg-white/[0.04]">
               <p class="text-white text-2xl font-extrabold">{{ stats.maxStreak }}</p>
-              <p class="text-indigo-400/60 text-[10px] font-medium uppercase tracking-wider">Best</p>
+              <p class="text-gray-500 text-[10px] font-medium uppercase tracking-wider">Best</p>
             </div>
           </div>
 
-          <h3 class="text-indigo-400/60 text-[10px] font-bold uppercase tracking-wider mb-3">Guess Distribution</h3>
+          <h3 class="text-gray-500 text-[10px] font-bold uppercase tracking-wider mb-3">Guess Distribution</h3>
           <div class="space-y-1.5">
             <div
               v-for="n in 5"
@@ -41,7 +41,7 @@
               <span class="text-gray-500 text-xs w-3 font-medium">{{ n }}</span>
               <div class="flex-1 bg-white/[0.04] rounded-md overflow-hidden h-6">
                 <div
-                  class="bg-gradient-to-r from-indigo-600 to-blue-500 h-full flex items-center justify-end pr-2 rounded-md transition-all duration-500"
+                  class="bg-white/20 h-full flex items-center justify-end pr-2 rounded-md transition-all duration-500"
                   :style="{ width: barWidth(n) }"
                 >
                   <span class="text-white text-xs font-semibold">{{ stats.guessDistribution[n] ?? 0 }}</span>

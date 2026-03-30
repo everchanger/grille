@@ -1,6 +1,6 @@
 # 🚗 Grille
 
-**Grille** is a daily car guessing game — think Wordle, but for iconic cars. Every day a new car is chosen. You have 6 guesses to identify it using colour-coded feedback on Make, Model, Year, Horsepower, and Weight. The car image progressively reveals itself the more guesses you use.
+**Grille** is a daily car guessing game — think Wordle, but for cars. Every day a new car is chosen. You have 5 guesses to identify it using colour-coded feedback on Make, Model, Year, Country, Horsepower, and Weight. The car image progressively reveals itself the more guesses you use.
 
 Play it live → **[GitHub Pages](https://everchanger.github.io/grille/)**
 
@@ -10,7 +10,7 @@ Play it live → **[GitHub Pages](https://everchanger.github.io/grille/)**
 
 - 🗓 **Daily puzzle** — same car for everyone worldwide, resets at midnight UTC
 - 🔍 **Autocomplete search** — type any make, model, or year to find a car
-- 🎨 **Progressive image reveal** — silhouette → blurred → full colour
+- 🎨 **Progressive image reveal** — blurred → clearer → full colour
 - 📊 **Statistics** — track wins, streaks, and guess distribution
 - 📋 **Share** — copy a spoiler-free emoji grid to your clipboard
 - ⚖️ **Unit toggle** — switch between kg and lbs (auto-detected from browser locale)
@@ -40,9 +40,10 @@ grille/
 │   └── index.vue             # Main game page
 ├── components/
 │   ├── CarImage.vue          # Progressive image reveal
-│   ├── ClueGrid.vue          # 6-row guess grid
+│   ├── ClueGrid.vue          # 5-row guess grid
 │   ├── GuessInput.vue        # Autocomplete search input
 │   ├── GuessRow.vue          # Single feedback row
+│   ├── HowToPlay.vue         # How-to-play instructions overlay
 │   ├── PostGame.vue          # Win/lose reveal panel
 │   └── StatsModal.vue        # Statistics overlay
 ├── composables/
@@ -50,15 +51,22 @@ grille/
 │   ├── useStorage.ts         # localStorage persistence
 │   └── useUnits.ts           # kg/lbs toggle
 ├── data/
-│   └── cars.json             # Car database (10 cars, expandable)
+│   └── cars.json             # Car database (~375 cars)
 ├── types/
 │   └── index.ts              # TypeScript interfaces
+├── utils/
+│   ├── carLabel.ts           # Car display label helper
+│   └── useAssetUrl.ts        # Asset URL resolution
+├── scripts/
+│   ├── fetch-cars.py         # Wikipedia car data fetcher
+│   └── seed-cars.py          # Curated seed car data
 ├── public/
 │   └── cars/                 # Car images (.webp)
 ├── nuxt.config.ts
 ├── tailwind.config.ts
 └── .github/workflows/
-    └── deploy.yml            # CI/CD → GitHub Pages
+    ├── deploy.yml            # CI/CD → GitHub Pages
+    └── fetch-cars.yml        # Automated car data refresh
 ```
 
 ---
@@ -67,7 +75,7 @@ grille/
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 22+
 - npm 10+
 
 ### Install & Run
@@ -89,11 +97,21 @@ npm run generate
 npm run preview
 ```
 
+### Run Tests
+
+```bash
+# TypeScript tests
+npx vitest run
+
+# Python script tests
+python -m pytest scripts/test_fetch_cars.py scripts/test_seed_cars.py -v
+```
+
 ---
 
 ## Adding Cars
 
-Edit `data/cars.json` and add a new entry following the existing schema:
+Cars are sourced automatically via `scripts/fetch-cars.py` which pulls data from Wikipedia. To add cars manually, edit `data/cars.json`:
 
 ```jsonc
 {

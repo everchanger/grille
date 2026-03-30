@@ -5,7 +5,7 @@
       <div
         v-for="col in columns"
         :key="col"
-        class="text-center text-[10px] font-bold text-indigo-400/70 uppercase tracking-wider"
+        class="text-center text-[10px] font-bold text-gray-500 uppercase tracking-wider"
       >
         {{ col }}
       </div>
