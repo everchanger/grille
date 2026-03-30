@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch, type Ref } from 'vue'
 import type { Car, GameState, GuessFeedback, StatsState, ImageState } from '~/types'
 import { useStorage } from '~/composables/useStorage'
 import { carLabel } from '~/utils/carLabel'
@@ -6,6 +6,26 @@ import carsData from '~/data/cars.json'
 
 const EPOCH = new Date('2025-01-01T00:00:00Z')
 export const MAX_GUESSES = 5
+
+/** Return the UTC date string (YYYY-MM-DD) for "today". */
+export const getTodayDateStr = (): string => {
+  const now = new Date()
+  return `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`
+}
+
+/** Convert a YYYY-MM-DD string to a day number (days since EPOCH). */
+export const dateToDayNumber = (dateStr: string): number => {
+  const parts = dateStr.split('-').map(Number)
+  const utc = Date.UTC(parts[0], parts[1] - 1, parts[2])
+  return Math.floor((utc - EPOCH.getTime()) / 86400000)
+}
+
+/** Convert a day number to a YYYY-MM-DD string. */
+export const dayNumberToDate = (day: number): string => {
+  const ms = EPOCH.getTime() + day * 86400000
+  const d = new Date(ms)
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
+}
 
 const CONTINENT_MAP: Record<string, string> = {
   'USA': 'North America',
@@ -28,21 +48,36 @@ const CONTINENT_MAP: Record<string, string> = {
   'Lebanon': 'Asia',
 }
 
-export const useGame = () => {
+export const useGame = (dateOverride?: Ref<string | undefined>) => {
   const cars = carsData as Car[]
   const { loadGameState, saveGameState, loadStats, saveStats } = useStorage()
 
+  /** The date string (YYYY-MM-DD) for the puzzle being played. */
+  const selectedDateStr = computed<string>(() => {
+    return dateOverride?.value || getTodayDateStr()
+  })
+
   const dayNumber = computed<number>(() => {
-    const now = new Date()
-    const utcNow = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
-    return Math.floor((utcNow - EPOCH.getTime()) / 86400000)
+    return dateToDayNumber(selectedDateStr.value)
+  })
+
+  /** Whether we are viewing today's puzzle. */
+  const isToday = computed<boolean>(() => {
+    return selectedDateStr.value === getTodayDateStr()
   })
 
   const todaysCar = computed<Car>(() => {
     return cars[dayNumber.value % cars.length]
   })
 
-  const state = ref<GameState>(loadGameState())
+  const state = ref<GameState>(loadGameState(dateOverride?.value))
+
+  // Reload state when the selected date changes
+  if (dateOverride) {
+    watch(selectedDateStr, (newDate) => {
+      state.value = loadGameState(newDate)
+    })
+  }
 
   const guessCount = computed(() => state.value.guesses.filter(g => g !== null).length)
 
@@ -125,13 +160,13 @@ export const useGame = () => {
 
     if (solved) {
       state.value.solved = true
-      updateStats(true, idx + 1)
+      if (isToday.value) updateStats(true, idx + 1)
     } else if (idx + 1 >= MAX_GUESSES) {
       state.value.failed = true
-      updateStats(false, idx + 1)
+      if (isToday.value) updateStats(false, idx + 1)
     }
 
-    saveGameState(state.value)
+    saveGameState(state.value, selectedDateStr.value)
   }
 
   const updateStats = (won: boolean, guessNum: number) => {
@@ -166,6 +201,8 @@ export const useGame = () => {
     cars,
     todaysCar,
     dayNumber,
+    selectedDateStr,
+    isToday,
     state,
     guessCount,
     imageState,

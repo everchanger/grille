@@ -69,9 +69,16 @@
             >
               📋 Share Result
             </button>
+            <button
+              v-if="!isToday"
+              class="w-full py-2.5 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 rounded-xl font-semibold text-sm border border-indigo-500/30 transition-all duration-200"
+              @click="$emit('goToToday')"
+            >
+              ▶ Play Today's Puzzle
+            </button>
           </div>
 
-          <div class="mt-4 text-center text-gray-500 text-xs">
+          <div v-if="isToday" class="mt-4 text-center text-gray-500 text-xs">
             <p>Next puzzle in <span class="text-white font-semibold">{{ countdown }}</span></p>
           </div>
         </div>
@@ -110,11 +117,13 @@ const props = defineProps<{
   open: boolean
   car: Car
   solved: boolean
+  isToday: boolean
 }>()
 
 defineEmits<{
   (e: 'share'): void
   (e: 'close'): void
+  (e: 'goToToday'): void
 }>()
 
 const { formatWeight } = useUnits()
