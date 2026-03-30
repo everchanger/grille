@@ -7,49 +7,45 @@
     xmlns="http://www.w3.org/2000/svg"
     :class="className"
   >
-    <!-- Outer car silhouette -->
+    <!-- Minimal body frame — just a thin band around the front fascia -->
     <path
-      d="M8 36 C8 30 14 22 20 20 L24 16 C28 12 36 12 40 16 L44 20 C50 22 56 30 56 36 L56 42 C56 44 54 46 52 46 L12 46 C10 46 8 44 8 42 Z"
+      d="M4 28 C4 24 8 20 14 20 L50 20 C56 20 60 24 60 28 L60 48 C60 50 58 52 56 52 L8 52 C6 52 4 50 4 48 Z"
       :fill="bodyColor"
     />
-    <!-- Grille -->
-    <rect x="22" y="30" width="20" height="12" rx="2" :fill="grillColor" />
-    <!-- Grille horizontal bars -->
-    <line x1="22" y1="33" x2="42" y2="33" :stroke="barColor" stroke-width="1.2" />
-    <line x1="22" y1="36" x2="42" y2="36" :stroke="barColor" stroke-width="1.2" />
-    <line x1="22" y1="39" x2="42" y2="39" :stroke="barColor" stroke-width="1.2" />
+    <!-- Left headlight (large, prominent) -->
+    <ellipse cx="11" cy="36" rx="6" ry="8" :fill="headlightColor">
+      <animate
+        v-if="animate"
+        attributeName="opacity"
+        values="0.7;1;0.7"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+    </ellipse>
+    <ellipse cx="11" cy="34" rx="3" ry="3" fill="white" opacity="0.85" />
+    <!-- Right headlight (large, prominent) -->
+    <ellipse cx="53" cy="36" rx="6" ry="8" :fill="headlightColor">
+      <animate
+        v-if="animate"
+        attributeName="opacity"
+        values="0.7;1;0.7"
+        dur="2s"
+        repeatCount="indefinite"
+      />
+    </ellipse>
+    <ellipse cx="53" cy="34" rx="3" ry="3" fill="white" opacity="0.85" />
+    <!-- Grille (large, central focus) -->
+    <rect x="18" y="24" width="28" height="24" rx="3" :fill="grillColor" />
+    <!-- Grille horizontal bars (5 bars for more detail) -->
+    <line x1="18" y1="28" x2="46" y2="28" :stroke="barColor" stroke-width="1.4" />
+    <line x1="18" y1="32" x2="46" y2="32" :stroke="barColor" stroke-width="1.4" />
+    <line x1="18" y1="36" x2="46" y2="36" :stroke="barColor" stroke-width="1.4" />
+    <line x1="18" y1="40" x2="46" y2="40" :stroke="barColor" stroke-width="1.4" />
+    <line x1="18" y1="44" x2="46" y2="44" :stroke="barColor" stroke-width="1.4" />
     <!-- Grille center divider -->
-    <line x1="32" y1="30" x2="32" y2="42" :stroke="barColor" stroke-width="1.2" />
-    <!-- Left headlight -->
-    <ellipse cx="14" cy="34" rx="4" ry="3.5" :fill="headlightColor">
-      <animate
-        v-if="animate"
-        attributeName="opacity"
-        values="0.7;1;0.7"
-        dur="2s"
-        repeatCount="indefinite"
-      />
-    </ellipse>
-    <ellipse cx="14" cy="34" rx="2" ry="2" fill="white" opacity="0.9" />
-    <!-- Right headlight -->
-    <ellipse cx="50" cy="34" rx="4" ry="3.5" :fill="headlightColor">
-      <animate
-        v-if="animate"
-        attributeName="opacity"
-        values="0.7;1;0.7"
-        dur="2s"
-        repeatCount="indefinite"
-      />
-    </ellipse>
-    <ellipse cx="50" cy="34" rx="2" ry="2" fill="white" opacity="0.9" />
-    <!-- Hood line -->
-    <path
-      d="M20 20 C24 18 40 18 44 20"
-      stroke="currentColor"
-      stroke-width="1"
-      opacity="0.3"
-      fill="none"
-    />
+    <line x1="32" y1="24" x2="32" y2="48" :stroke="barColor" stroke-width="1.4" />
+    <!-- Subtle hood edge -->
+    <line x1="14" y1="21" x2="50" y2="21" :stroke="bodyColor" stroke-width="1.5" opacity="0.4" />
   </svg>
 </template>
 
