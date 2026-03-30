@@ -696,11 +696,11 @@ def extract_horsepower(infobox: dict[str, str]) -> int:
         for val, unit in conversions:
             unit_lower = unit.lower()
             if unit_lower in ("ps", "metric horsepower"):
-                return round(val * 0.9863)  # PS to hp
+                return round(val * 0.98632)  # PS to hp
             if unit_lower in ("hp", "bhp"):
                 return round(val)
             if unit_lower in ("kw",):
-                return round(val * 1.341)
+                return round(val * 1.34102)
 
         # Try plain text patterns
         text = _strip_wiki_markup(raw)
@@ -713,9 +713,9 @@ def extract_horsepower(infobox: dict[str, str]) -> int:
             val = float(hp_match.group(1).replace(",", ""))
             unit = hp_match.group(2).lower()
             if unit == "kw":
-                return round(val * 1.341)
+                return round(val * 1.34102)
             if unit == "ps":
-                return round(val * 0.9863)
+                return round(val * 0.98632)
             return round(val)
 
     return 0
@@ -735,7 +735,7 @@ def extract_weight(infobox: dict[str, str]) -> int:
             if unit_lower == "kg":
                 return round(val)
             if unit_lower == "lb":
-                return round(val * 0.4536)
+                return round(val * 0.453592)
 
         # Try plain text patterns
         text = _strip_wiki_markup(raw)
@@ -753,7 +753,7 @@ def extract_weight(infobox: dict[str, str]) -> int:
             text, re.IGNORECASE,
         )
         if lb_match:
-            return round(float(lb_match.group(1).replace(",", "")) * 0.4536)
+            return round(float(lb_match.group(1).replace(",", "")) * 0.453592)
 
     return 0
 
