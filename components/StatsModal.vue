@@ -34,7 +34,7 @@
           <h3 class="text-indigo-400/60 text-[10px] font-bold uppercase tracking-wider mb-3">Guess Distribution</h3>
           <div class="space-y-1.5">
             <div
-              v-for="n in 6"
+              v-for="n in 5"
               :key="n"
               class="flex items-center gap-2"
             >

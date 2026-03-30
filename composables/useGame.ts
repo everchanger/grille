@@ -5,7 +5,28 @@ import { carLabel } from '~/utils/carLabel'
 import carsData from '~/data/cars.json'
 
 const EPOCH = new Date('2025-01-01T00:00:00Z')
-const MAX_GUESSES = 6
+export const MAX_GUESSES = 5
+
+const CONTINENT_MAP: Record<string, string> = {
+  'USA': 'North America',
+  'Germany': 'Europe',
+  'Japan': 'Asia',
+  'Italy': 'Europe',
+  'UK': 'Europe',
+  'France': 'Europe',
+  'Sweden': 'Europe',
+  'South Korea': 'Asia',
+  'Czech Republic': 'Europe',
+  'Spain': 'Europe',
+  'Romania': 'Europe',
+  'India': 'Asia',
+  'China': 'Asia',
+  'Australia': 'Oceania',
+  'Malaysia': 'Asia',
+  'Croatia': 'Europe',
+  'Denmark': 'Europe',
+  'Lebanon': 'Asia',
+}
 
 export const useGame = () => {
   const cars = carsData as Car[]
@@ -25,11 +46,12 @@ export const useGame = () => {
 
   const guessCount = computed(() => state.value.guesses.filter(g => g !== null).length)
 
-  const BLUR_STEPS = [40, 30, 20, 12, 6, 3]
+  const BLUR_STEPS = [30, 20, 10, 4]
 
   const imageState = computed<ImageState>(() => {
     if (state.value.solved || state.value.failed) return 0
-    return BLUR_STEPS[guessCount.value] ?? 0
+    if (guessCount.value === 0) return -1
+    return BLUR_STEPS[guessCount.value - 1] ?? 0
   })
 
   const canGuess = computed(() => !state.value.solved && !state.value.failed)
@@ -38,8 +60,16 @@ export const useGame = () => {
     const hpDiff = Math.abs(guessed.horsepower - answer.horsepower) / answer.horsepower
     const weightDiff = Math.abs(guessed.weight_kg - answer.weight_kg) / answer.weight_kg
 
+    const sameContinent = (a: string, b: string) =>
+      CONTINENT_MAP[a] && CONTINENT_MAP[b] && CONTINENT_MAP[a] === CONTINENT_MAP[b]
+
     return {
-      make: guessed.make === answer.make ? 'correct' : 'wrong',
+      make:
+        guessed.make === answer.make
+          ? 'correct'
+          : guessed.country === answer.country
+            ? 'close'
+            : 'wrong',
       model: guessed.model === answer.model ? 'correct' : 'wrong',
       year:
         guessed.year === answer.year
@@ -47,7 +77,12 @@ export const useGame = () => {
           : guessed.year < answer.year
             ? 'higher'
             : 'lower',
-      country: guessed.country === answer.country ? 'correct' : 'wrong',
+      country:
+        guessed.country === answer.country
+          ? 'correct'
+          : sameContinent(guessed.country, answer.country)
+            ? 'close'
+            : 'wrong',
       horsepower:
         guessed.horsepower === answer.horsepower
           ? 'correct'
@@ -116,7 +151,7 @@ export const useGame = () => {
 
   const generateShareText = (): string => {
     const filled = state.value.guesses.filter(g => g !== null).length
-    const lines: string[] = [`Grille #${dayNumber.value} ${state.value.solved ? filled : 'X'}/6`, '']
+    const lines: string[] = [`Grille #${dayNumber.value} ${state.value.solved ? filled : 'X'}/${MAX_GUESSES}`, '']
     const row = (idx: number) => {
       if (state.value.guesses[idx] === null) return '⬜⬜⬜⬜⬜⬜'
       return state.value.solved && state.value.guesses[idx] !== null && idx === filled - 1

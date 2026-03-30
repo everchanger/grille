@@ -1,6 +1,12 @@
 <template>
   <div class="w-full max-w-md mx-auto my-4 rounded-xl overflow-hidden bg-gray-800/50 backdrop-blur-sm ring-1 ring-white/10 shadow-lg shadow-indigo-500/10 transition-all duration-300">
-    <template v-if="imageError">
+    <template v-if="state < 0">
+      <div class="h-48 flex flex-col items-center justify-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 gap-2">
+        <span class="text-5xl opacity-40">🚗</span>
+        <span class="text-gray-500 text-xs font-medium">Make a guess to reveal the image</span>
+      </div>
+    </template>
+    <template v-else-if="imageError">
       <div class="h-48 flex items-center justify-center text-gray-500 text-4xl bg-gradient-to-br from-gray-800/50 to-gray-900/50">🚗</div>
     </template>
     <template v-else>

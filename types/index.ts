@@ -13,7 +13,7 @@ export interface Car {
   wiki: string
 }
 
-export type FeedbackResult = 'correct' | 'wrong' | 'higher' | 'lower' | 'close_higher' | 'close_lower'
+export type FeedbackResult = 'correct' | 'wrong' | 'higher' | 'lower' | 'close_higher' | 'close_lower' | 'close'
 
 export interface GuessFeedback {
   make: FeedbackResult

@@ -18,9 +18,9 @@ describe('useStorage', () => {
     const { useStorage } = await import('~/composables/useStorage')
     const { loadGameState } = useStorage()
     const state = loadGameState()
-    expect(state.guesses).toHaveLength(6)
+    expect(state.guesses).toHaveLength(5)
     expect(state.guesses.every(g => g === null)).toBe(true)
-    expect(state.guessResults).toHaveLength(6)
+    expect(state.guessResults).toHaveLength(5)
     expect(state.solved).toBe(false)
     expect(state.failed).toBe(false)
   })
@@ -30,10 +30,10 @@ describe('useStorage', () => {
     const { saveGameState, loadGameState } = useStorage()
 
     const state = {
-      guesses: ['Toyota Supra (A80) (1993)', null, null, null, null, null] as (string | null)[],
+      guesses: ['Toyota Supra (A80) (1993)', null, null, null, null] as (string | null)[],
       guessResults: [
         { make: 'correct' as const, model: 'correct' as const, year: 'correct' as const, horsepower: 'correct' as const, weight: 'correct' as const },
-        null, null, null, null, null,
+        null, null, null, null,
       ],
       cluesRevealed: 0,
       solved: true,
