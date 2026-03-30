@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       limit:
-        description: 'Number of cars to fetch (default: 500)'
+        description: 'Number of cars to generate (default: 500)'
         required: false
         default: '500'
         type: string
-      use_seed:
-        description: 'Use curated seed data instead of Wikidata API'
+      skip_images:
+        description: 'Skip downloading images (for faster testing)'
         required: false
         default: false
         type: boolean
@@ -43,32 +43,29 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Fetch car data from Wikidata
-        if: ${{ !inputs.use_seed }}
-        id: fetch
-        run: |
-          python scripts/fetch-cars.py "$CAR_LIMIT" 2>&1 | tee /tmp/fetch-output.txt
-          echo "source=wikidata" >> "$GITHUB_OUTPUT"
-        continue-on-error: true
+      - name: Install Python dependencies
+        run: pip install Pillow
 
-      - name: Fallback to seed data
-        if: ${{ inputs.use_seed || steps.fetch.outcome == 'failure' }}
-        id: seed
+      - name: Build car dataset
         run: |
-          if [ "${{ steps.fetch.outcome }}" = "failure" ]; then
-            echo "::warning::Wikidata API failed, falling back to curated seed data"
+          EXTRA_ARGS=""
+          if [ "${{ inputs.skip_images }}" = "true" ]; then
+            EXTRA_ARGS="--skip-images"
           fi
-          python scripts/seed-cars.py --limit "$CAR_LIMIT"
-          echo "source=seed" >> "$GITHUB_OUTPUT"
+          python scripts/fetch-cars.py $EXTRA_ARGS "$CAR_LIMIT" 2>&1 | tee /tmp/fetch-output.txt
 
-      - name: Verify output exists
+      - name: Verify output
         run: |
-          if [ ! -f data/cars-wikidata.json ]; then
+          if [ ! -f data/cars.json ]; then
             echo "::error::No output file generated"
             exit 1
           fi
-          COUNT=$(python -c "import json; print(len(json.load(open('data/cars-wikidata.json'))))")
+          COUNT=$(python -c "import json; print(len(json.load(open('data/cars.json'))))")
           echo "Generated $COUNT cars"
+          if [ "$COUNT" -lt 365 ]; then
+            echo "::error::Expected at least 365 cars, got $COUNT"
+            exit 1
+          fi
           echo "car_count=$COUNT" >> "$GITHUB_ENV"
 
       - name: Create Pull Request
@@ -82,16 +79,12 @@ jobs:
 
             This PR was created by the **Fetch Car Data** workflow.
 
-            - **Source:** ${{ steps.fetch.outcome != 'failure' && !inputs.use_seed && 'Wikidata SPARQL API' || 'Curated seed data' }}
+            - **Source:** Curated seed data enriched with Wikipedia images and facts
             - **Car count:** ${{ env.car_count }}
-            - **Limit requested:** ${{ inputs.limit }}
+            - **Images:** Downloaded from Wikipedia and converted to `.webp`
+            - **Facts:** Preserved from existing data or extracted from Wikipedia
 
-            ### Next steps
-            - [ ] Review the car list for accuracy
-            - [ ] Fill in missing specs where needed
-            - [ ] Download images from `image_source` URLs and convert to `.webp`
-            - [ ] Write fun facts for each car
-            - [ ] Remove extra metadata fields (`image_source`, `wikidata`, `sitelinks`) before merging into `cars.json`
+            This PR is **ready to merge** — no manual steps required.
           branch: data/update-car-dataset
           delete-branch: true
           labels: data
