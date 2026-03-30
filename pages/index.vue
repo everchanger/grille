@@ -312,6 +312,16 @@ const showConfetti = ref(false)
 const confettiCanvas = ref<HTMLCanvasElement | null>(null)
 let confettiCleanupTimer: ReturnType<typeof setTimeout> | undefined
 let confettiAnimId: number | undefined
+// Flag set before submitGuess so confetti only fires on a real user guess, not on date navigation
+let justGuessed = false
+
+// When navigating between dates, reset tab based on game state
+watch(selectedDateStr, () => {
+  showConfetti.value = false
+  nextTick(() => {
+    activeTab.value = gameComplete.value ? 'details' : 'guesses'
+  })
+})
 
 // Watch for game completion (fresh solve/fail)
 watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
@@ -321,22 +331,15 @@ watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) =
     setTimeout(() => {
       activeTab.value = 'details'
     }, TAB_SWITCH_DELAY_MS)
-    // Fire confetti only on fresh win
-    if (solved) {
+    // Fire confetti only on a fresh win triggered by a user guess
+    if (solved && justGuessed) {
       showConfetti.value = true
       nextTick(() => {
         setTimeout(launchConfetti, CONFETTI_LAUNCH_DELAY_MS)
       })
     }
+    justGuessed = false
   }
-})
-
-// When navigating between dates, reset tab based on game state
-watch(selectedDateStr, () => {
-  showConfetti.value = false
-  nextTick(() => {
-    activeTab.value = gameComplete.value ? 'details' : 'guesses'
-  })
 })
 
 onMounted(() => {
@@ -458,6 +461,7 @@ const guessedCarIds = computed(() =>
 )
 
 const onGuess = (carName: string) => {
+  justGuessed = true
   submitGuess(carName)
 }
 
