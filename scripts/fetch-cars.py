@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-Fetch car data from Wikidata to populate Grille's car database.
+Fetch car data from Wikidata + Wikipedia to populate Grille's car database.
 
-Queries the Wikidata SPARQL endpoint for the most notable automobile models,
-ranked by number of Wikipedia sitelinks (proxy for popularity/notability).
+Step 1: Queries the Wikidata SPARQL endpoint for the most notable automobile
+        models, ranked by Wikipedia sitelinks (proxy for popularity).
+Step 2: Fetches Wikipedia article infoboxes via the MediaWiki API to get
+        detailed specs (HP, weight, engine, drivetrain) that Wikidata lacks.
 
 Usage:
     python scripts/fetch-cars.py [limit]
@@ -14,6 +16,7 @@ Output:
 """
 
 import json
+import re
 import sys
 import time
 import urllib.error
@@ -231,6 +234,35 @@ def clean_drivetrain(dt_label: str) -> str:
     return dt_label
 
 
+WIKIPEDIA_API = "https://en.wikipedia.org/w/api.php"
+
+# Fields that may contain horsepower in Wikipedia infoboxes
+HP_FIELDS = ["power", "power_output", "max_power", "hp"]
+
+# Fields that may contain weight in Wikipedia infoboxes
+WEIGHT_FIELDS = ["curb_weight", "weight", "kerb_weight", "mass"]
+
+# Fields that may contain engine info in Wikipedia infoboxes
+ENGINE_FIELDS = ["engine", "motor", "powertrain", "electric_motor"]
+
+# Fields that may contain drivetrain/layout info in Wikipedia infoboxes
+LAYOUT_FIELDS = ["layout", "drive", "drivetrain"]
+
+# Regex patterns for extracting engine types from freetext
+ENGINE_TYPE_PATTERNS = [
+    (r'\b([Vv])[\s-]?(\d{1,2})\b', lambda m: f"V{m.group(2)}"),
+    (r'\b[Ii][\s-]?(\d)\b', lambda m: f"I{m.group(1)}"),
+    (r'\b[Ss]traight[\s-]?(\d)\b', lambda m: f"I{m.group(1)}"),
+    (r'\b[Ii]nline[\s-]?(\d)\b', lambda m: f"I{m.group(1)}"),
+    (r'\b[Ff]lat[\s-]?(\d)\b', lambda m: f"Flat-{m.group(1)}"),
+    (r'\b[Ww][\s-]?(\d{2})\b', lambda m: f"W{m.group(1)}"),
+    (r'\b[Ww]ankel\b', lambda _: "Rotary"),
+    (r'\b[Rr]otary\b', lambda _: "Rotary"),
+    (r'\b[Ee]lectric\b', lambda _: "Electric"),
+    (r'\b[Hh]ybrid\b', lambda _: "Hybrid"),
+]
+
+
 def sparql_query(query: str) -> list[dict]:
     """Execute a SPARQL query against Wikidata and return results."""
     url = WIKIDATA_SPARQL + "?" + urllib.parse.urlencode({
@@ -422,6 +454,452 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
         # Rate limit between batches
         if i + batch_size < len(entity_ids):
             time.sleep(2)
+
+    return all_specs
+
+
+# ---------------------------------------------------------------------------
+# Wikipedia infobox fetching & parsing (primary specs source)
+# ---------------------------------------------------------------------------
+
+
+def fetch_wikipedia_pages(page_titles: list[str]) -> dict[str, str]:
+    """
+    Batch-fetch the lead section wikitext for multiple Wikipedia pages.
+    Uses the MediaWiki API with up to 50 titles per request.
+    Returns {page_title: wikitext} for pages that exist.
+    """
+    all_pages: dict[str, str] = {}
+    batch_size = 50  # MediaWiki API limit for non-bot users
+
+    for i in range(0, len(page_titles), batch_size):
+        batch = page_titles[i:i + batch_size]
+        titles_param = "|".join(batch)
+
+        params = urllib.parse.urlencode({
+            "action": "query",
+            "titles": titles_param,
+            "prop": "revisions",
+            "rvprop": "content",
+            "rvsection": "0",
+            "rvslots": "main",
+            "format": "json",
+            "formatversion": "2",
+        })
+        url = f"{WIKIPEDIA_API}?{params}"
+        req = urllib.request.Request(url, headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/json",
+        })
+
+        for attempt in range(3):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    pages = data.get("query", {}).get("pages", [])
+                    for page in pages:
+                        title = page.get("title", "")
+                        revisions = page.get("revisions", [])
+                        if revisions and not page.get("missing"):
+                            content = (
+                                revisions[0]
+                                .get("slots", {})
+                                .get("main", {})
+                                .get("content", "")
+                            )
+                            if content:
+                                all_pages[title] = content
+                    break
+            except (urllib.error.URLError, urllib.error.HTTPError) as e:
+                print(
+                    f"  Wikipedia batch {i // batch_size + 1} "
+                    f"attempt {attempt + 1} failed: {e}",
+                    file=sys.stderr,
+                )
+                if attempt < 2:
+                    time.sleep(3 * (attempt + 1))
+                # On final failure, just skip this batch
+
+        batch_num = i // batch_size + 1
+        total_batches = (len(page_titles) + batch_size - 1) // batch_size
+        print(
+            f"  Wikipedia batch {batch_num}/{total_batches}: "
+            f"got {len(all_pages) - i} pages"
+        )
+
+        # Rate limit between batches
+        if i + batch_size < len(page_titles):
+            time.sleep(1)
+
+    return all_pages
+
+
+def _strip_wiki_markup(text: str) -> str:
+    """Remove common wiki markup, keeping just readable text."""
+    # Remove HTML comments
+    text = re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL)
+    # Remove <ref> tags and their contents
+    text = re.sub(r'<ref[^>]*>.*?</ref>', '', text, flags=re.DOTALL)
+    text = re.sub(r'<ref[^/]*/>', '', text)
+    # Remove HTML tags but keep content
+    text = re.sub(r'<br\s*/?>', ' ', text)
+    text = re.sub(r'</?(?:small|sup|sub|span|div|nowiki)[^>]*>', '', text)
+    # Resolve wikilinks: [[target|display]] → display, [[target]] → target
+    text = re.sub(r'\[\[[^\]]*\|([^\]]+)\]\]', r'\1', text)
+    text = re.sub(r'\[\[([^\]]+)\]\]', r'\1', text)
+    # Remove bold/italic markup
+    text = re.sub(r"'{2,3}", '', text)
+    # Remove {{nbsp}}, {{spaces}}, etc.
+    text = re.sub(r'\{\{(?:nbsp|spaces?|sp)\}\}', ' ', text, flags=re.IGNORECASE)
+    # Remove {{nowrap|text}} → text
+    text = re.sub(r'\{\{nowrap\|([^}]+)\}\}', r'\1', text, flags=re.IGNORECASE)
+    # Remove {{small|text}} → text
+    text = re.sub(r'\{\{small\|([^}]+)\}\}', r'\1', text, flags=re.IGNORECASE)
+    return text.strip()
+
+
+def _parse_convert_template(text: str) -> list[tuple[float, str]]:
+    """
+    Parse {{convert|value|unit|...}} templates into [(value, unit), ...].
+    Handles: {{convert|320|PS|kW hp}}, {{convert|1500|kg|lb}},
+             {{convert|1500|–|1600|kg|lb}}
+    """
+    results = []
+    pattern = r'\{\{convert\|([^}]+)\}\}'
+    for match in re.finditer(pattern, text, re.IGNORECASE):
+        parts = match.group(1).split("|")
+        if len(parts) < 2:
+            continue
+        # Find numeric values and the unit
+        values = []
+        unit = ""
+        for part in parts:
+            part = part.strip()
+            cleaned = part.replace(",", "").replace("−", "-")
+            try:
+                values.append(float(cleaned))
+            except ValueError:
+                # Skip range separators
+                if part in ("–", "-", "to", "and", "−"):
+                    continue
+                # First non-numeric, non-separator part is likely the unit
+                if not unit and part not in (
+                    "abbr=on", "abbr=off", "disp=or", "disp=s",
+                    "0", "1", "2", "3",
+                ):
+                    unit = part
+        for val in values:
+            if unit:
+                results.append((val, unit))
+    return results
+
+
+def parse_infobox(wikitext: str) -> dict[str, str]:
+    """
+    Extract key-value pairs from the first automobile infobox in wikitext.
+    Returns {field_name: raw_value} dict.
+    """
+    # Find infobox start — match common automobile infobox variants
+    infobox_pattern = (
+        r'\{\{\s*[Ii]nfobox\s+'
+        r'(?:[Aa]utomobile|[Cc]ar|[Aa]utomobile\s+generation)'
+    )
+    match = re.search(infobox_pattern, wikitext)
+    if not match:
+        return {}
+
+    # Find the matching closing braces by counting nesting
+    start = match.start()
+    depth = 0
+    pos = start
+    end = len(wikitext)
+    while pos < end:
+        if wikitext[pos:pos + 2] == '{{':
+            depth += 1
+            pos += 2
+        elif wikitext[pos:pos + 2] == '}}':
+            depth -= 1
+            if depth == 0:
+                pos += 2
+                break
+            pos += 2
+        else:
+            pos += 1
+
+    infobox_text = wikitext[start:pos]
+
+    # Parse field = value pairs.
+    # Fields start with | at the beginning of a line (or after other fields)
+    # and the value continues until the next | at line start or }}
+    fields: dict[str, str] = {}
+
+    # Split on top-level pipe characters (not inside nested templates
+    # or wikilinks)
+    # We'll track template {{...}} and wikilink [[...]] nesting depth
+    field_parts = []
+    current = ""
+    tmpl_depth = 0
+    link_depth = 0
+    i = 0
+    while i < len(infobox_text):
+        two_chars = infobox_text[i:i + 2]
+        if two_chars == '{{':
+            tmpl_depth += 1
+            current += '{{'
+            i += 2
+        elif two_chars == '}}':
+            tmpl_depth -= 1
+            current += '}}'
+            i += 2
+        elif two_chars == '[[':
+            link_depth += 1
+            current += '[['
+            i += 2
+        elif two_chars == ']]':
+            link_depth -= 1
+            current += ']]'
+            i += 2
+        elif infobox_text[i] == '|' and tmpl_depth <= 1 and link_depth == 0:
+            # Top-level pipe — marks a new field
+            field_parts.append(current)
+            current = ""
+            i += 1
+        else:
+            current += infobox_text[i]
+            i += 1
+    if current:
+        field_parts.append(current)
+
+    for part in field_parts:
+        if '=' not in part:
+            continue
+        eq_pos = part.index('=')
+        key = part[:eq_pos].strip().lower()
+        # Remove leading pipe from key
+        key = key.lstrip('|').lstrip('{').strip()
+        value = part[eq_pos + 1:].strip()
+        if key and value:
+            fields[key] = value
+
+    return fields
+
+
+def extract_horsepower(infobox: dict[str, str]) -> int:
+    """Extract horsepower from infobox fields."""
+    for field in HP_FIELDS + ENGINE_FIELDS:
+        raw = infobox.get(field, "")
+        if not raw:
+            continue
+
+        # Try {{convert|NUMBER|PS/hp/kW|...}} templates first
+        conversions = _parse_convert_template(raw)
+        for val, unit in conversions:
+            unit_lower = unit.lower()
+            if unit_lower in ("ps", "metric horsepower"):
+                return round(val * 0.98632)  # PS to hp
+            if unit_lower in ("hp", "bhp"):
+                return round(val)
+            if unit_lower in ("kw",):
+                return round(val * 1.34102)
+
+        # Try plain text patterns
+        text = _strip_wiki_markup(raw)
+        # Match patterns like "320 hp", "320 bhp", "320 PS", "320 kW"
+        hp_match = re.search(
+            r'(\d[\d,]*(?:\.\d+)?)\s*(?:&nbsp;)?\s*(hp|bhp|PS|kW)\b',
+            text, re.IGNORECASE,
+        )
+        if hp_match:
+            val = float(hp_match.group(1).replace(",", ""))
+            unit = hp_match.group(2).lower()
+            if unit == "kw":
+                return round(val * 1.34102)
+            if unit == "ps":
+                return round(val * 0.98632)
+            return round(val)
+
+    return 0
+
+
+def extract_weight(infobox: dict[str, str]) -> int:
+    """Extract curb weight in kg from infobox fields."""
+    for field in WEIGHT_FIELDS:
+        raw = infobox.get(field, "")
+        if not raw:
+            continue
+
+        # Try {{convert|NUMBER|kg|...}} templates first
+        conversions = _parse_convert_template(raw)
+        for val, unit in conversions:
+            unit_lower = unit.lower()
+            if unit_lower == "kg":
+                return round(val)
+            if unit_lower == "lb":
+                return round(val * 0.453592)
+
+        # Try plain text patterns
+        text = _strip_wiki_markup(raw)
+        # Match "1,500 kg" or "1500 kg"
+        kg_match = re.search(
+            r'(\d[\d,]*(?:\.\d+)?)\s*(?:&nbsp;)?\s*kg\b', text,
+            re.IGNORECASE,
+        )
+        if kg_match:
+            return round(float(kg_match.group(1).replace(",", "")))
+
+        # Match "3,300 lb" or "3300 lb"
+        lb_match = re.search(
+            r'(\d[\d,]*(?:\.\d+)?)\s*(?:&nbsp;)?\s*(?:lb|lbs|pounds?)\b',
+            text, re.IGNORECASE,
+        )
+        if lb_match:
+            return round(float(lb_match.group(1).replace(",", "")) * 0.453592)
+
+    return 0
+
+
+def extract_engine_type(infobox: dict[str, str]) -> str:
+    """Extract engine type (V8, I4, etc.) from infobox fields."""
+    for field in ENGINE_FIELDS:
+        raw = infobox.get(field, "")
+        if not raw:
+            continue
+
+        text = _strip_wiki_markup(raw)
+
+        # Try specific engine type patterns
+        for pattern, formatter in ENGINE_TYPE_PATTERNS:
+            match = re.search(pattern, text)
+            if match:
+                result = formatter(match)
+                # Validate it's a real engine type, not a model number
+                if result in (
+                    "V4", "V5", "V6", "V8", "V10", "V12", "V16",
+                    "I2", "I3", "I4", "I5", "I6", "I8",
+                    "Flat-2", "Flat-4", "Flat-6",
+                    "W12", "W16",
+                    "Rotary", "Electric", "Hybrid",
+                ):
+                    return result
+
+        # Try to detect from displacement + cylinder count:
+        # e.g. "2.0 L 4-cylinder" or "5.0-litre V8"
+        cyl_match = re.search(
+            r'(\d)[- ]?(?:cyl(?:inder)?s?)\b', text, re.IGNORECASE,
+        )
+        if cyl_match:
+            ncyl = int(cyl_match.group(1))
+            if ncyl <= 6:
+                return f"I{ncyl}"
+            return f"V{ncyl}"
+
+    return ""
+
+
+def extract_drivetrain(infobox: dict[str, str]) -> str:
+    """Extract drivetrain (FWD/RWD/AWD/4WD) from infobox fields."""
+    for field in LAYOUT_FIELDS:
+        raw = infobox.get(field, "")
+        if not raw:
+            continue
+
+        text = _strip_wiki_markup(raw).lower()
+
+        # Check for drivetrain keywords
+        if "all-wheel" in text or "awd" in text:
+            return "AWD"
+        if "four-wheel" in text or "4wd" in text or "4×4" in text:
+            return "4WD"
+        if "front-wheel" in text or "fwd" in text or "ff layout" in text:
+            return "FWD"
+        if "rear-wheel" in text or "rwd" in text:
+            return "RWD"
+
+        # Check layout patterns like "FR" (front-engine, rear-drive),
+        # "FF" (front-engine, front-drive), "MR" (mid-engine, rear-drive)
+        if re.search(r'\bfr\b', text):
+            return "RWD"
+        if re.search(r'\bff\b', text):
+            return "FWD"
+        if re.search(r'\bmr\b', text):
+            return "RWD"
+        if re.search(r'\brr\b', text):
+            return "RWD"
+        if re.search(r'\b[Ff]4\b', text) or "f4" in text:
+            return "AWD"
+
+        # Check for "front.engine" + "rear.drive" patterns
+        if "front" in text and "rear" in text and "drive" in text:
+            return "RWD"
+        if "front" in text and "front" in text.split("drive")[0]:
+            return "FWD"
+
+    return ""
+
+
+def fetch_wikipedia_specs(
+    entity_wiki_map: dict[str, str],
+) -> dict[str, dict]:
+    """
+    Fetch car specs from Wikipedia infoboxes.
+
+    Args:
+        entity_wiki_map: {entity_id: wikipedia_page_title}
+
+    Returns:
+        {entity_id: {horsepower, weight_kg, engine, drivetrain}}
+    """
+    page_titles = list(entity_wiki_map.values())
+    # Reverse mapping: title → entity_id
+    title_to_entity: dict[str, str] = {}
+    for eid, title in entity_wiki_map.items():
+        title_to_entity[title] = eid
+
+    print(f"Step 2: Fetching specs from Wikipedia for "
+          f"{len(page_titles)} cars...")
+
+    # Batch-fetch Wikipedia article wikitext
+    pages = fetch_wikipedia_pages(page_titles)
+    print(f"  Retrieved {len(pages)} Wikipedia articles")
+
+    all_specs: dict[str, dict] = {}
+    parsed = 0
+    for title, wikitext in pages.items():
+        entity_id = title_to_entity.get(title)
+        if not entity_id:
+            # Handle title normalization (Wikipedia may return
+            # slightly different titles)
+            for orig_title, eid in title_to_entity.items():
+                if orig_title.replace("_", " ") == title.replace("_", " "):
+                    entity_id = eid
+                    break
+        if not entity_id:
+            continue
+
+        infobox = parse_infobox(wikitext)
+        if not infobox:
+            continue
+
+        parsed += 1
+        hp = extract_horsepower(infobox)
+        weight = extract_weight(infobox)
+        engine = extract_engine_type(infobox)
+        drivetrain = extract_drivetrain(infobox)
+
+        all_specs[entity_id] = {
+            "horsepower": hp,
+            "weight_kg": weight,
+            "engine": engine,
+            "drivetrain": drivetrain,
+        }
+
+    print(f"  Parsed {parsed} infoboxes")
+    hp_count = sum(1 for s in all_specs.values() if s["horsepower"])
+    wt_count = sum(1 for s in all_specs.values() if s["weight_kg"])
+    en_count = sum(1 for s in all_specs.values() if s["engine"])
+    dt_count = sum(1 for s in all_specs.values() if s["drivetrain"])
+    print(f"  HP: {hp_count}, Weight: {wt_count}, "
+          f"Engine: {en_count}, Drivetrain: {dt_count}")
 
     return all_specs
 
@@ -716,17 +1194,49 @@ def main():
     # Step 1: Get car list
     raw_cars = fetch_car_list(fetch_limit)
 
-    # Extract entity IDs for specs query
+    # Extract entity IDs and build entity→Wikipedia title mapping
     entity_ids = []
     seen_ids = set()
+    entity_wiki_map: dict[str, str] = {}
     for row in raw_cars:
         eid = get_val(row, "car").split("/")[-1]
         if eid not in seen_ids:
             entity_ids.append(eid)
             seen_ids.add(eid)
+            wiki_url = get_val(row, "article")
+            if wiki_url:
+                # Extract page title from URL:
+                # https://en.wikipedia.org/wiki/Toyota_Corolla → Toyota_Corolla
+                page_title = wiki_url.split("/wiki/")[-1]
+                page_title = urllib.parse.unquote(page_title)
+                entity_wiki_map[eid] = page_title
 
-    # Step 2: Fetch specs
-    specs = fetch_car_specs(entity_ids)
+    # Step 2: Fetch specs from Wikipedia infoboxes (primary source)
+    specs: dict[str, dict] = {}
+    if entity_wiki_map:
+        wiki_specs = fetch_wikipedia_specs(entity_wiki_map)
+        specs.update(wiki_specs)
+    else:
+        print("  No Wikipedia URLs available, skipping Wikipedia specs")
+
+    # Step 2b: Fetch remaining specs from Wikidata SPARQL (fallback)
+    missing_ids = [eid for eid in entity_ids if eid not in specs
+                   or not all(specs[eid].get(k)
+                              for k in ("horsepower", "weight_kg",
+                                        "engine", "drivetrain"))]
+    if missing_ids:
+        print(f"\nStep 2b: Fetching Wikidata specs for "
+              f"{len(missing_ids)} cars missing data...")
+        wd_specs = fetch_car_specs(missing_ids)
+        # Merge: only fill in what's still missing
+        for eid, wd_data in wd_specs.items():
+            if eid not in specs:
+                specs[eid] = wd_data
+            else:
+                existing = specs[eid]
+                for key in ("horsepower", "weight_kg", "engine", "drivetrain"):
+                    if not existing.get(key) and wd_data.get(key):
+                        existing[key] = wd_data[key]
 
     # Load seed data as fallback for enrichment
     print("Loading seed data for fallback enrichment...")
@@ -801,10 +1311,9 @@ def main():
     print(
         "Next steps:\n"
         "  1. Review and curate the list (remove irrelevant entries)\n"
-        "  2. Fill in missing specs from Wikipedia articles\n"
-        "  3. Download images using image_source URLs, convert to .webp\n"
-        "  4. Write fun facts for each car\n"
-        "  5. Remove extra metadata fields to match Car interface\n"
+        "  2. Download images using image_source URLs, convert to .webp\n"
+        "  3. Write fun facts for each car\n"
+        "  4. Remove extra metadata fields to match Car interface\n"
     )
 
 

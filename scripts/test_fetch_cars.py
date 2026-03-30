@@ -26,6 +26,13 @@ process_results = fetch_cars.process_results
 enrich_from_seed = fetch_cars.enrich_from_seed
 get_val = fetch_cars.get_val
 make_slug = fetch_cars.make_slug
+parse_infobox = fetch_cars.parse_infobox
+extract_horsepower = fetch_cars.extract_horsepower
+extract_weight = fetch_cars.extract_weight
+extract_engine_type = fetch_cars.extract_engine_type
+extract_drivetrain = fetch_cars.extract_drivetrain
+_strip_wiki_markup = fetch_cars._strip_wiki_markup
+_parse_convert_template = fetch_cars._parse_convert_template
 
 
 # ---------------------------------------------------------------------------
@@ -489,3 +496,284 @@ class TestGetVal:
 
     def test_returns_custom_default(self):
         assert get_val({}, "name", "unknown") == "unknown"
+
+
+# ---------------------------------------------------------------------------
+# Wikipedia infobox parsing tests
+# ---------------------------------------------------------------------------
+
+# Sample infobox wikitext snippets for testing
+SAMPLE_INFOBOX_SUPRA = """
+{{Infobox automobile
+| name         = Toyota Supra (A80)
+| manufacturer = [[Toyota]]
+| production   = May 1993 – July 2002
+| engine       = 3.0 L [[Toyota JZ engine#2JZ-GE|2JZ-GE]] [[Straight-six engine|I6]]
+| power        = {{convert|220|PS|kW hp|0|abbr=on}}
+| layout       = [[Front-engine, rear-wheel-drive layout|Front-engine, rear-wheel-drive]]
+| curb_weight  = {{convert|1510|kg|lb|0|abbr=on}}
+}}
+"""
+
+SAMPLE_INFOBOX_MUSTANG = """
+{{Infobox automobile
+| name         = Ford Mustang (sixth generation)
+| manufacturer = [[Ford Motor Company]]
+| production   = 2015–present
+| engine       = {{plainlist|
+* 2.3 L [[Ford EcoBoost engine|EcoBoost]] [[Inline-four engine|I4]] turbo
+* 5.0 L [[Ford Coyote engine|Coyote]] [[V8 engine|V8]]
+}}
+| power        = 310 hp (2.3L)<br>450 hp (5.0L GT)
+| layout       = [[Front-engine, rear-wheel-drive layout|FR]]
+| curb_weight  = {{convert|3532|lb|kg|0|abbr=on}}
+}}
+"""
+
+SAMPLE_INFOBOX_GOLF = """
+{{Infobox automobile
+| name         = Volkswagen Golf Mk8
+| manufacturer = [[Volkswagen]]
+| production   = 2019–present
+| engine       = 1.0 L I3 turbo, 1.5 L I4 turbo
+| power        = {{convert|90|kW|PS hp|abbr=on}}
+| layout       = [[Front-engine, front-wheel-drive layout|FF]]
+| curb_weight  = 1,295 kg
+}}
+"""
+
+SAMPLE_INFOBOX_ELECTRIC = """
+{{Infobox automobile
+| name         = Tesla Model 3
+| manufacturer = [[Tesla, Inc.|Tesla]]
+| production   = 2017–present
+| motor        = Electric motor
+| power        = {{convert|283|hp|kW|abbr=on}}
+| layout       = [[Rear-wheel drive]] / [[All-wheel drive]]
+| curb_weight  = {{convert|1611|–|1847|kg|lb|abbr=on}}
+}}
+"""
+
+SAMPLE_NO_INFOBOX = """
+== Toyota Supra ==
+The Toyota Supra is a sports car and grand tourer manufactured by Toyota.
+"""
+
+
+class TestParseInfobox:
+    """Test the infobox wikitext parser."""
+
+    def test_parses_supra_infobox(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_SUPRA)
+        assert "name" in fields
+        assert "Supra" in fields["name"]
+        assert "engine" in fields
+        assert "layout" in fields
+        assert "curb_weight" in fields
+
+    def test_parses_mustang_infobox(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_MUSTANG)
+        assert "name" in fields
+        assert "Mustang" in fields["name"]
+
+    def test_no_infobox_returns_empty(self):
+        fields = parse_infobox(SAMPLE_NO_INFOBOX)
+        assert fields == {}
+
+    def test_empty_string_returns_empty(self):
+        fields = parse_infobox("")
+        assert fields == {}
+
+    def test_infobox_car_variant(self):
+        wikitext = '{{Infobox car\n| name = Test\n| engine = V8\n}}'
+        fields = parse_infobox(wikitext)
+        assert fields.get("name") == "Test"
+
+
+class TestStripWikiMarkup:
+    def test_strips_wikilinks_with_display(self):
+        assert _strip_wiki_markup("[[V8 engine|V8]]") == "V8"
+
+    def test_strips_wikilinks_without_display(self):
+        assert _strip_wiki_markup("[[Toyota]]") == "Toyota"
+
+    def test_strips_bold(self):
+        assert _strip_wiki_markup("'''bold'''") == "bold"
+
+    def test_strips_refs(self):
+        result = _strip_wiki_markup('text<ref name="x">citation</ref>more')
+        assert "citation" not in result
+        assert "text" in result
+
+    def test_strips_br(self):
+        result = _strip_wiki_markup("first<br/>second")
+        assert "first" in result
+        assert "second" in result
+
+    def test_strips_nowrap(self):
+        assert _strip_wiki_markup("{{nowrap|some text}}") == "some text"
+
+
+class TestParseConvertTemplate:
+    def test_parse_kg(self):
+        results = _parse_convert_template("{{convert|1510|kg|lb|0|abbr=on}}")
+        assert any(v == 1510.0 and u == "kg" for v, u in results)
+
+    def test_parse_hp(self):
+        results = _parse_convert_template("{{convert|220|PS|kW hp|0|abbr=on}}")
+        assert any(v == 220.0 and u == "PS" for v, u in results)
+
+    def test_parse_lb(self):
+        results = _parse_convert_template("{{convert|3532|lb|kg|0|abbr=on}}")
+        assert any(v == 3532.0 and u == "lb" for v, u in results)
+
+    def test_parse_kw(self):
+        results = _parse_convert_template("{{convert|90|kW|PS hp|abbr=on}}")
+        assert any(v == 90.0 and u == "kW" for v, u in results)
+
+    def test_parse_range(self):
+        results = _parse_convert_template(
+            "{{convert|1611|–|1847|kg|lb|abbr=on}}")
+        assert any(v == 1611.0 and u == "kg" for v, u in results)
+
+    def test_no_template(self):
+        assert _parse_convert_template("just text") == []
+
+
+class TestExtractHorsepower:
+    def test_supra_ps(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_SUPRA)
+        hp = extract_horsepower(fields)
+        assert 200 <= hp <= 230  # 220 PS ≈ 217 hp
+
+    def test_mustang_plain_hp(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_MUSTANG)
+        hp = extract_horsepower(fields)
+        assert hp == 310  # First value "310 hp"
+
+    def test_golf_kw(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_GOLF)
+        hp = extract_horsepower(fields)
+        assert 115 <= hp <= 125  # 90 kW ≈ 121 hp
+
+    def test_electric_hp(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_ELECTRIC)
+        hp = extract_horsepower(fields)
+        assert hp == 283
+
+    def test_empty_returns_zero(self):
+        assert extract_horsepower({}) == 0
+
+    def test_no_power_field(self):
+        assert extract_horsepower({"name": "Test"}) == 0
+
+
+class TestExtractWeight:
+    def test_supra_kg(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_SUPRA)
+        weight = extract_weight(fields)
+        assert weight == 1510
+
+    def test_mustang_lb_to_kg(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_MUSTANG)
+        weight = extract_weight(fields)
+        # 3532 lb ≈ 1603 kg
+        assert 1590 <= weight <= 1620
+
+    def test_golf_plain_kg(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_GOLF)
+        weight = extract_weight(fields)
+        assert weight == 1295
+
+    def test_electric_range_kg(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_ELECTRIC)
+        weight = extract_weight(fields)
+        assert weight == 1611  # First value in range
+
+    def test_empty_returns_zero(self):
+        assert extract_weight({}) == 0
+
+
+class TestExtractEngineType:
+    def test_supra_i6(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_SUPRA)
+        engine = extract_engine_type(fields)
+        assert engine == "I6"
+
+    def test_mustang_i4(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_MUSTANG)
+        engine = extract_engine_type(fields)
+        # Should find I4 (first engine listed) or V8
+        assert engine in ("I4", "V8")
+
+    def test_golf_i3(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_GOLF)
+        engine = extract_engine_type(fields)
+        assert engine == "I3"
+
+    def test_electric_motor(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_ELECTRIC)
+        engine = extract_engine_type(fields)
+        assert engine == "Electric"
+
+    def test_v8_text(self):
+        assert extract_engine_type({"engine": "5.0 L V8"}) == "V8"
+
+    def test_v6_text(self):
+        assert extract_engine_type({"engine": "3.5 L V6"}) == "V6"
+
+    def test_flat_six(self):
+        assert extract_engine_type({"engine": "3.8 L flat-6"}) == "Flat-6"
+
+    def test_rotary(self):
+        assert extract_engine_type({"engine": "Wankel rotary"}) == "Rotary"
+
+    def test_empty_returns_empty(self):
+        assert extract_engine_type({}) == ""
+
+    def test_cylinder_count_pattern(self):
+        assert extract_engine_type({"engine": "2.0 L 4-cylinder"}) == "I4"
+
+
+class TestExtractDrivetrain:
+    def test_supra_rwd(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_SUPRA)
+        dt = extract_drivetrain(fields)
+        assert dt == "RWD"
+
+    def test_mustang_rwd(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_MUSTANG)
+        dt = extract_drivetrain(fields)
+        assert dt == "RWD"
+
+    def test_golf_fwd(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_GOLF)
+        dt = extract_drivetrain(fields)
+        assert dt == "FWD"
+
+    def test_electric_rwd_awd(self):
+        fields = parse_infobox(SAMPLE_INFOBOX_ELECTRIC)
+        dt = extract_drivetrain(fields)
+        # Has both RWD and AWD — should return RWD (rear-wheel first in text)
+        # or AWD (all-wheel takes priority)
+        assert dt in ("RWD", "AWD")
+
+    def test_fwd_text(self):
+        assert extract_drivetrain({"layout": "front-wheel drive"}) == "FWD"
+
+    def test_awd_text(self):
+        assert extract_drivetrain({"layout": "all-wheel drive"}) == "AWD"
+
+    def test_4wd_text(self):
+        assert extract_drivetrain({"layout": "four-wheel drive"}) == "4WD"
+
+    def test_fr_layout(self):
+        assert extract_drivetrain(
+            {"layout": "Front-engine, rear-wheel-drive"}) == "RWD"
+
+    def test_ff_layout(self):
+        assert extract_drivetrain(
+            {"layout": "Front-engine, front-wheel-drive"}) == "FWD"
+
+    def test_empty_returns_empty(self):
+        assert extract_drivetrain({}) == ""
