@@ -93,6 +93,8 @@
         :src="todaysCar.image"
         :alt="`${todaysCar.make} ${todaysCar.model}`"
         :state="imageState"
+        :car-name="gameComplete ? `${todaysCar.make} ${todaysCar.model}` : undefined"
+        :car-subtitle="gameComplete ? `${todaysCar.year} · ${todaysCar.country}` : undefined"
       />
 
       <div v-if="canGuess" class="mt-4 mb-4">
@@ -116,18 +118,77 @@
         </div>
       </div>
 
-      <ClueGrid :entries="guessEntries" />
+      <!-- Completion banner -->
+      <Transition name="banner">
+        <div
+          v-if="gameComplete"
+          :class="[
+            'text-center py-3 mb-4 rounded-xl border animate-slide-in',
+            state.solved
+              ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+              : 'bg-red-500/10 border-red-500/20 text-red-400',
+          ]"
+        >
+          <p class="font-bold text-lg">
+            {{ state.solved ? '🎉 You got it!' : 'The answer was...' }}
+          </p>
+          <p class="text-white text-xl font-extrabold mt-0.5">
+            {{ todaysCar.make }} {{ todaysCar.model }}
+          </p>
+        </div>
+      </Transition>
 
-      <PostGame
-        :open="postGameOpen"
-        :car="todaysCar"
-        :solved="state.solved"
-        :is-today="isToday"
-        @share="share"
-        @close="postGameOpen = false"
-        @go-to-today="goToToday"
-      />
+      <!-- Tabs -->
+      <div class="flex gap-1 mb-4 bg-white/[0.04] rounded-xl p-1 border border-white/5">
+        <button
+          :class="[
+            'flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-300',
+            activeTab === 'guesses'
+              ? 'bg-white/10 text-white shadow-sm shadow-white/5'
+              : 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.04]',
+          ]"
+          @click="activeTab = 'guesses'"
+        >
+          Guesses
+        </button>
+        <button
+          :class="[
+            'flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-300',
+            activeTab === 'details'
+              ? 'bg-white/10 text-white shadow-sm shadow-white/5'
+              : 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.04]',
+          ]"
+          @click="activeTab = 'details'"
+        >
+          Details
+        </button>
+      </div>
+
+      <!-- Tab content with crossfade -->
+      <div class="relative">
+        <Transition name="tab-fade" mode="out-in">
+          <div v-if="activeTab === 'guesses'" key="guesses">
+            <ClueGrid :entries="guessEntries" />
+          </div>
+          <div v-else key="details">
+            <ResultDetails
+              :car="todaysCar"
+              :blurred="!gameComplete"
+              :is-today="isToday"
+              @share="share"
+              @go-to-today="goToToday"
+            />
+          </div>
+        </Transition>
+      </div>
     </main>
+
+    <!-- Confetti canvas (fires only on fresh solve) -->
+    <canvas
+      v-if="showConfetti"
+      ref="confettiCanvas"
+      class="fixed inset-0 pointer-events-none z-[60]"
+    />
 
     <StatsModal
       :open="statsOpen"
@@ -155,8 +216,37 @@
   </div>
 </template>
 
+<style scoped>
+.tab-fade-enter-active,
+.tab-fade-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.tab-fade-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.tab-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.banner-enter-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.banner-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.banner-enter-from {
+  opacity: 0;
+  transform: scale(0.95) translateY(-8px);
+}
+.banner-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+</style>
+
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useGame, MAX_GUESSES, getTodayDateStr, dateToDayNumber, dayNumberToDate } from '~/composables/useGame'
 import { useUnits } from '~/composables/useUnits'
@@ -205,25 +295,47 @@ const datePickerRef = ref<HTMLInputElement | null>(null)
 
 const statsOpen = ref(false)
 const howToPlayOpen = ref(false)
-const postGameOpen = ref(false)
 const gameStats = ref(loadStats())
 
-// Suppress modal when navigating between dates so that loading
-// a previously-completed state doesn't re-open the post-game modal.
-let suppressPostGame = false
+const gameComplete = computed(() => state.value.solved || state.value.failed)
 
+// Tab state: "guesses" when playing, "details" when complete
+const activeTab = ref<'guesses' | 'details'>(gameComplete.value ? 'details' : 'guesses')
+
+// Track whether the user JUST completed the puzzle in this session
+// (for confetti — not when loading a previously completed state)
+let justCompletedInSession = false
+const showConfetti = ref(false)
+const confettiCanvas = ref<HTMLCanvasElement | null>(null)
+let confettiCleanupTimer: ReturnType<typeof setTimeout>
+let confettiAnimId: number
+
+// Watch for game completion (fresh solve/fail)
 watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
   gameStats.value = loadStats()
-  if ((solved || failed) && !suppressPostGame) {
-    postGameOpen.value = true
+  if (solved || failed) {
+    justCompletedInSession = true
+    // Switch to details tab with a small delay for animation
+    setTimeout(() => {
+      activeTab.value = 'details'
+    }, 600)
+    // Fire confetti only on fresh win
+    if (solved) {
+      showConfetti.value = true
+      nextTick(() => {
+        setTimeout(launchConfetti, 400)
+      })
+    }
   }
 })
 
-// Close post-game modal when navigating to a different date
+// When navigating between dates, reset tab based on game state
 watch(selectedDateStr, () => {
-  suppressPostGame = true
-  postGameOpen.value = false
-  nextTick(() => { suppressPostGame = false })
+  justCompletedInSession = false
+  showConfetti.value = false
+  nextTick(() => {
+    activeTab.value = gameComplete.value ? 'details' : 'guesses'
+  })
 })
 
 onMounted(() => {
@@ -232,11 +344,102 @@ onMounted(() => {
     if (!seen) {
       howToPlayOpen.value = true
     }
-    if (state.value.solved || state.value.failed) {
-      postGameOpen.value = true
+    // If the game was already complete, default to details tab (no confetti)
+    if (gameComplete.value) {
+      activeTab.value = 'details'
     }
   }
 })
+
+onUnmounted(() => {
+  clearTimeout(confettiCleanupTimer)
+  cancelAnimationFrame(confettiAnimId)
+})
+
+// Confetti effect
+interface Particle {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  size: number
+  color: string
+  rotation: number
+  rotationSpeed: number
+  opacity: number
+}
+
+const launchConfetti = () => {
+  const canvas = confettiCanvas.value
+  if (!canvas) return
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+
+  const colors = ['#6366f1', '#818cf8', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#38bdf8', '#fb923c']
+  const particles: Particle[] = []
+
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+      y: canvas.height * 0.4,
+      vx: (Math.random() - 0.5) * 15,
+      vy: -Math.random() * 18 - 5,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 10,
+      opacity: 1,
+    })
+  }
+
+  let animId: number
+  const gravity = 0.4
+  const drag = 0.99
+
+  const animate = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    let alive = false
+
+    for (const p of particles) {
+      p.vy += gravity
+      p.vx *= drag
+      p.x += p.vx
+      p.y += p.vy
+      p.rotation += p.rotationSpeed
+      p.opacity -= 0.005
+
+      if (p.opacity <= 0) continue
+      alive = true
+
+      ctx.save()
+      ctx.globalAlpha = p.opacity
+      ctx.translate(p.x, p.y)
+      ctx.rotate((p.rotation * Math.PI) / 180)
+      ctx.fillStyle = p.color
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6)
+      ctx.restore()
+    }
+
+    if (alive) {
+      animId = requestAnimationFrame(animate)
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      showConfetti.value = false
+    }
+  }
+
+  animId = requestAnimationFrame(animate)
+  confettiAnimId = animId
+
+  confettiCleanupTimer = setTimeout(() => {
+    cancelAnimationFrame(animId)
+    if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height)
+    showConfetti.value = false
+  }, 5000)
+}
 
 const guessEntries = computed<GuessEntry[]>(() => {
   return state.value.guesses
