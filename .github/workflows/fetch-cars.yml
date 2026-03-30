@@ -1,0 +1,97 @@
+name: Fetch Car Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Number of cars to fetch (default: 500)'
+        required: false
+        default: '500'
+        type: string
+      use_seed:
+        description: 'Use curated seed data instead of Wikidata API'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    env:
+      CAR_LIMIT: ${{ inputs.limit }}
+    steps:
+      - name: Validate inputs
+        run: |
+          if ! echo "$CAR_LIMIT" | grep -qE '^[0-9]+$'; then
+            echo "::error::limit must be a positive integer, got: $CAR_LIMIT"
+            exit 1
+          fi
+          if [ "$CAR_LIMIT" -lt 1 ] || [ "$CAR_LIMIT" -gt 1000 ]; then
+            echo "::error::limit must be between 1 and 1000, got: $CAR_LIMIT"
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch car data from Wikidata
+        if: ${{ !inputs.use_seed }}
+        id: fetch
+        run: |
+          python scripts/fetch-cars.py "$CAR_LIMIT" 2>&1 | tee /tmp/fetch-output.txt
+          echo "source=wikidata" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+
+      - name: Fallback to seed data
+        if: ${{ inputs.use_seed || steps.fetch.outcome == 'failure' }}
+        id: seed
+        run: |
+          if [ "${{ steps.fetch.outcome }}" = "failure" ]; then
+            echo "::warning::Wikidata API failed, falling back to curated seed data"
+          fi
+          python scripts/seed-cars.py --limit "$CAR_LIMIT"
+          echo "source=seed" >> "$GITHUB_OUTPUT"
+
+      - name: Verify output exists
+        run: |
+          if [ ! -f data/cars-wikidata.json ]; then
+            echo "::error::No output file generated"
+            exit 1
+          fi
+          COUNT=$(python -c "import json; print(len(json.load(open('data/cars-wikidata.json'))))")
+          echo "Generated $COUNT cars"
+          echo "car_count=$COUNT" >> "$GITHUB_ENV"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'data: update car dataset (${{ env.car_count }} cars)'
+          title: 'Update car dataset (${{ env.car_count }} cars)'
+          body: |
+            ## Auto-generated car dataset
+
+            This PR was created by the **Fetch Car Data** workflow.
+
+            - **Source:** ${{ steps.fetch.outcome != 'failure' && !inputs.use_seed && 'Wikidata SPARQL API' || 'Curated seed data' }}
+            - **Car count:** ${{ env.car_count }}
+            - **Limit requested:** ${{ inputs.limit }}
+
+            ### Next steps
+            - [ ] Review the car list for accuracy
+            - [ ] Fill in missing specs where needed
+            - [ ] Download images from `image_source` URLs and convert to `.webp`
+            - [ ] Write fun facts for each car
+            - [ ] Remove extra metadata fields (`image_source`, `wikidata`, `sitelinks`) before merging into `cars.json`
+          branch: data/update-car-dataset
+          delete-branch: true
+          labels: data

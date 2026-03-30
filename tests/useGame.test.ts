@@ -153,10 +153,10 @@ describe('useGame', () => {
       expect(car.year).toBeGreaterThan(0)
     })
 
-    it('has 10 cars in the dataset', async () => {
+    it('has 64 cars in the dataset', async () => {
       const { useGame } = await import('~/composables/useGame')
       const game = useGame()
-      expect(game.cars).toHaveLength(10)
+      expect(game.cars).toHaveLength(64)
     })
 
     it('generateShareText outputs correct format', async () => {
