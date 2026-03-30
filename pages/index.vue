@@ -280,7 +280,9 @@ const onDatePick = (event: Event) => {
 const share = () => {
   let text = generateShareText()
   // Add the puzzle URL so friends can play the same day
-  const base = 'https://everchanger.github.io/grille/'
+  const origin = window.location.origin
+  const baseURL = useRuntimeConfig().app.baseURL || '/'
+  const base = `${origin}${baseURL}`
   const url = isToday.value ? base : `${base}?date=${selectedDateStr.value}`
   text += `\n${url}`
   if (navigator.clipboard) {
