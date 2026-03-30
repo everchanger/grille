@@ -66,6 +66,51 @@ describe('date utility functions', () => {
   })
 })
 
+describe('carIndexForDay', () => {
+  it('produces a valid index within range', async () => {
+    const { carIndexForDay } = await import('~/composables/useGame')
+    for (let day = 0; day < 750; day++) {
+      const idx = carIndexForDay(day, 375)
+      expect(idx).toBeGreaterThanOrEqual(0)
+      expect(idx).toBeLessThan(375)
+    }
+  })
+
+  it('produces unique indices within a single cycle', async () => {
+    const { carIndexForDay } = await import('~/composables/useGame')
+    const total = 375
+    const seen = new Set<number>()
+    for (let day = 0; day < total; day++) {
+      seen.add(carIndexForDay(day, total))
+    }
+    expect(seen.size).toBe(total)
+  })
+
+  it('consecutive days map to non-consecutive indices', async () => {
+    const { carIndexForDay } = await import('~/composables/useGame')
+    const total = 375
+    for (let day = 0; day < total - 1; day++) {
+      const idx1 = carIndexForDay(day, total)
+      const idx2 = carIndexForDay(day + 1, total)
+      expect(Math.abs(idx1 - idx2)).toBeGreaterThan(1)
+    }
+  })
+
+  it('second cycle uses different ordering than first', async () => {
+    const { carIndexForDay } = await import('~/composables/useGame')
+    const total = 375
+    const cycle0 = carIndexForDay(0, total)
+    const cycle1 = carIndexForDay(total, total)
+    expect(cycle0).not.toBe(cycle1)
+  })
+
+  it('is deterministic', async () => {
+    const { carIndexForDay } = await import('~/composables/useGame')
+    expect(carIndexForDay(42, 375)).toBe(carIndexForDay(42, 375))
+    expect(carIndexForDay(100, 375)).toBe(carIndexForDay(100, 375))
+  })
+})
+
 describe('useGame with date override', () => {
   beforeEach(() => {
     Object.keys(mockStore).forEach(k => delete mockStore[k])
