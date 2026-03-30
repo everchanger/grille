@@ -106,6 +106,8 @@ MAKE_OVERRIDES = {
     "Tata Motors": "Tata",
     "Rover Group": "Rover",
     "Bertha Benz": "Benz",
+    "Benz & Cie.": "Benz",
+    "Karl Benz": "Benz",
     "Fuji Heavy Industries": "Subaru",
     "Subaru Corporation": "Subaru",
     "Hyundai Motor Company": "Hyundai",
@@ -124,7 +126,10 @@ MAKE_OVERRIDES = {
     "Dacia": "Dacia",
 }
 
-# Map generic engine labels from Wikidata to cleaner short forms
+# Map generic engine labels from Wikidata to cleaner short forms.
+# Generic fuel-type labels (e.g. "gasoline engine") are mapped to "" because
+# they don't describe the engine configuration — most cars are gasoline-powered,
+# so this is effectively the default and not useful display information.
 ENGINE_LABEL_MAP = {
     "gasoline engine": "",
     "petrol engine": "",
