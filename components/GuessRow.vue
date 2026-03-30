@@ -5,7 +5,7 @@
       :key="col.key"
       :class="['flex flex-col items-center justify-center rounded-lg p-1.5 text-center min-h-[52px] text-xs font-semibold transition-all duration-200 hover:scale-[1.03] hover:brightness-110 ring-1 ring-white/5', cellClass(col.key)]"
     >
-      <span class="text-lg leading-none">{{ icon(col.key) }}</span>
+      <span class="text-sm leading-none">{{ icon(col.key) }}</span>
       <span class="mt-0.5 text-[10px] opacity-70">{{ col.label }}</span>
       <span v-if="displayValue(col.key)" class="text-[10px] font-bold">{{ displayValue(col.key) }}</span>
     </div>

@@ -13,7 +13,7 @@
           class="fixed inset-0 pointer-events-none z-[60]"
         />
 
-        <div class="bg-gray-900/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-sm mx-4 border border-white/10 ring-1 ring-indigo-500/10 shadow-2xl shadow-black/40 animate-scale-in max-h-[85vh] overflow-y-auto">
+        <div class="bg-gray-900/90 backdrop-blur-xl rounded-2xl p-6 w-full max-w-sm mx-4 border border-white/10 ring-1 ring-white/5 shadow-2xl shadow-black/40 animate-scale-in max-h-[85vh] overflow-y-auto">
           <div class="flex justify-end mb-2">
             <button class="text-gray-500 hover:text-white text-xl transition-colors duration-200" @click="$emit('close')">✕</button>
           </div>
@@ -21,10 +21,10 @@
           <div class="text-center mb-4">
             <p v-if="solved" class="text-emerald-400 font-bold text-lg animate-slide-in">🎉 You got it!</p>
             <p v-else class="text-red-400 font-bold text-lg animate-slide-in">The answer was...</p>
-            <h2 class="text-white text-2xl font-extrabold mt-1 bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
+            <h2 class="text-white text-2xl font-extrabold mt-1">
               {{ car.make }} {{ car.model }}
             </h2>
-            <p class="text-indigo-300/60 text-sm mt-0.5">{{ car.year }} · {{ car.country }}</p>
+            <p class="text-gray-500 text-sm mt-0.5">{{ car.year }} · {{ car.country }}</p>
           </div>
 
           <img
@@ -35,19 +35,19 @@
 
           <div class="grid grid-cols-2 gap-2 text-sm mb-4">
             <div class="bg-white/[0.05] rounded-lg p-2.5 border border-white/5">
-              <span class="text-indigo-400/70 block text-xs">Engine</span>
+              <span class="text-gray-500 block text-xs">Engine</span>
               <span class="text-white font-semibold">{{ car.engine }}</span>
             </div>
             <div class="bg-white/[0.05] rounded-lg p-2.5 border border-white/5">
-              <span class="text-indigo-400/70 block text-xs">Drivetrain</span>
+              <span class="text-gray-500 block text-xs">Drivetrain</span>
               <span class="text-white font-semibold">{{ car.drivetrain }}</span>
             </div>
             <div class="bg-white/[0.05] rounded-lg p-2.5 border border-white/5">
-              <span class="text-indigo-400/70 block text-xs">Horsepower</span>
+              <span class="text-gray-500 block text-xs">Horsepower</span>
               <span class="text-white font-semibold">{{ car.horsepower }} hp</span>
             </div>
             <div class="bg-white/[0.05] rounded-lg p-2.5 border border-white/5">
-              <span class="text-indigo-400/70 block text-xs">Weight</span>
+              <span class="text-gray-500 block text-xs">Weight</span>
               <span class="text-white font-semibold">{{ formatWeight(car.weight_kg) }}</span>
             </div>
           </div>
@@ -59,12 +59,12 @@
               :href="car.wiki"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-indigo-400 text-sm text-center hover:text-indigo-300 transition-colors duration-200"
+              class="text-gray-400 text-sm text-center hover:text-white transition-colors duration-200"
             >
               Read more ↗
             </a>
             <button
-              class="w-full py-2.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white rounded-xl font-semibold text-sm shadow-lg shadow-indigo-500/20 transition-all duration-200 hover:shadow-indigo-500/30"
+              class="w-full py-2.5 bg-white hover:bg-gray-200 text-gray-900 rounded-xl font-semibold text-sm shadow-lg shadow-black/20 transition-all duration-200"
               @click="$emit('share')"
             >
               📋 Share Result
@@ -72,7 +72,7 @@
           </div>
 
           <div class="mt-4 text-center text-gray-500 text-xs">
-            <p>Next puzzle in <span class="text-indigo-300 font-semibold">{{ countdown }}</span></p>
+            <p>Next puzzle in <span class="text-white font-semibold">{{ countdown }}</span></p>
           </div>
         </div>
       </div>

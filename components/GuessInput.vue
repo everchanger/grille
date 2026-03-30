@@ -4,7 +4,7 @@
       v-model="query"
       type="text"
       placeholder="Search for a car..."
-      class="w-full px-4 py-2.5 rounded-xl bg-white/[0.06] text-white placeholder-gray-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 backdrop-blur-sm transition-all duration-200"
+      class="w-full px-4 py-2.5 rounded-xl bg-white/[0.06] text-white placeholder-gray-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/25 focus:border-white/25 backdrop-blur-sm transition-all duration-200"
       :disabled="disabled"
       @input="onInput"
       @keydown.enter="selectFirst"
@@ -17,7 +17,7 @@
       <li
         v-for="car in suggestions"
         :key="car.id"
-        class="px-4 py-2.5 cursor-pointer text-gray-300 text-sm hover:bg-indigo-500/20 hover:text-white transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
+        class="px-4 py-2.5 cursor-pointer text-gray-300 text-sm hover:bg-white/10 hover:text-white transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl"
         @mousedown.prevent="select(car)"
       >
         {{ car.make }} {{ car.model }} <span class="text-gray-500">({{ car.year }})</span>

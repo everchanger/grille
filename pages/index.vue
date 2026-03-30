@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-gray-950 to-indigo-950 text-white">
+  <div class="min-h-screen bg-gray-950 text-white">
     <header class="relative max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-2xl font-extrabold tracking-widest uppercase bg-gradient-to-r from-white to-indigo-300 bg-clip-text text-transparent">
+      <h1 class="text-2xl font-extrabold tracking-widest uppercase text-white">
         🚗 Grille
       </h1>
       <div class="flex items-center gap-2">
@@ -24,11 +24,11 @@
           📊
         </button>
       </div>
-      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
+      <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </header>
 
     <main class="max-w-lg mx-auto px-4 py-6">
-      <p class="text-center text-indigo-400/60 text-xs font-medium tracking-wide mb-4">Puzzle #{{ dayNumber }}</p>
+      <p class="text-center text-gray-500 text-xs font-medium tracking-wide mb-4">Puzzle #{{ dayNumber }}</p>
 
       <CarImage
         :src="todaysCar.image"
@@ -49,7 +49,7 @@
             :class="[
               'w-2 h-2 rounded-full transition-all duration-300',
               n <= guessCount
-                ? 'bg-indigo-500 shadow-sm shadow-indigo-500/50'
+                ? 'bg-white shadow-sm shadow-white/30'
                 : 'bg-white/10 border border-white/10',
             ]"
           />

@@ -5,7 +5,7 @@
       <div
         v-for="col in columns"
         :key="col"
-        class="text-center text-[10px] font-bold text-indigo-400/70 uppercase tracking-wider"
+        class="text-center text-[10px] font-bold text-gray-500 uppercase tracking-wider"
       >
         {{ col }}
       </div>
@@ -45,7 +45,7 @@ const props = defineProps<{
   maxGuesses?: number
 }>()
 
-const max = computed(() => props.maxGuesses ?? 6)
+const max = computed(() => props.maxGuesses ?? 5)
 const filledEntries = computed(() => props.entries)
 const emptyRows = computed(() => Math.max(0, max.value - filledEntries.value.length))
 const columns = ['Make', 'Model', 'Year', 'Country', 'HP', 'Weight']
