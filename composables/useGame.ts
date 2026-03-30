@@ -25,11 +25,11 @@ export const useGame = () => {
 
   const guessCount = computed(() => state.value.guesses.filter(g => g !== null).length)
 
+  const BLUR_STEPS = [40, 30, 20, 12, 6, 3]
+
   const imageState = computed<ImageState>(() => {
-    if (state.value.solved || state.value.failed) return 'full'
-    if (guessCount.value >= 4) return 'blurred'
-    if (guessCount.value >= 2) return 'silhouette'
-    return 'none'
+    if (state.value.solved || state.value.failed) return 0
+    return BLUR_STEPS[guessCount.value] ?? 0
   })
 
   const canGuess = computed(() => !state.value.solved && !state.value.failed)
