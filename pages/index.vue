@@ -1,8 +1,9 @@
 <template>
   <div class="min-h-screen bg-gray-950 text-white">
     <header class="relative max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-2xl font-extrabold tracking-widest uppercase text-white">
-        🚗 Grille
+      <h1 class="flex items-center gap-2 text-2xl font-extrabold tracking-widest uppercase text-white">
+        <GrilleLogo :size="32" body-color="white" grill-color="#1f2937" bar-color="#d1d5db" headlight-color="#fbbf24" />
+        Grille
       </h1>
       <div class="flex items-center gap-2">
         <button
@@ -28,7 +29,7 @@
     </header>
 
     <main class="max-w-lg mx-auto px-4 py-6">
-      <p class="text-center text-gray-500 text-xs font-medium tracking-wide mb-4">Puzzle #{{ dayNumber }}</p>
+      <p class="text-center text-gray-500 text-xs font-medium tracking-wide mb-4">Puzzle #{{ dayNumber }} · {{ todaysDate }}</p>
 
       <CarImage
         :src="todaysCar.image"
@@ -78,6 +79,19 @@
       :open="howToPlayOpen"
       @close="howToPlayOpen = false"
     />
+
+    <footer class="max-w-lg mx-auto px-4 py-8 mt-8">
+      <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+      <div class="flex flex-col items-center gap-3 text-center">
+        <GrilleLogo :size="28" headlight-color="#d97706" />
+        <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
+          A new mystery car every day — guess the exact make and model in 5 tries. Each guess reveals clues and unblurs the image. How well do you know your cars?
+        </p>
+        <p class="text-gray-600 text-[10px] font-medium tracking-wider uppercase">
+          A daily car guessing game
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -95,6 +109,11 @@ const cars = carsData as Car[]
 const { todaysCar, dayNumber, state, guessCount, imageState, canGuess, submitGuess, generateShareText } = useGame()
 const { unit, toggleUnit } = useUnits()
 const { loadStats } = useStorage()
+
+const todaysDate = computed(() => {
+  const now = new Date()
+  return now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+})
 
 const statsOpen = ref(false)
 const howToPlayOpen = ref(false)
