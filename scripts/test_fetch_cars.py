@@ -26,6 +26,8 @@ load_seed_data = fetch_cars.load_seed_data
 load_existing_cars = fetch_cars.load_existing_cars
 extract_wiki_title = fetch_cars.extract_wiki_title
 make_fact = fetch_cars.make_fact
+shuffle_cars = fetch_cars.shuffle_cars
+SHUFFLE_SEED = fetch_cars.SHUFFLE_SEED
 
 
 # ---------------------------------------------------------------------------
@@ -293,3 +295,54 @@ class TestSeedDataQuality:
         assert "RWD" in dts
         assert "FWD" in dts
         assert "AWD" in dts
+
+
+# ---------------------------------------------------------------------------
+# shuffle_cars
+# ---------------------------------------------------------------------------
+
+class TestShuffleCars:
+    def test_deterministic(self):
+        """Same seed always produces the same order."""
+        cars = [_good_car(id=i, make=f"Make{i}") for i in range(20)]
+        a = shuffle_cars(cars, seed=42)
+        b = shuffle_cars(cars, seed=42)
+        assert [c["id"] for c in a] == [c["id"] for c in b]
+
+    def test_different_seed_different_order(self):
+        cars = [_good_car(id=i, make=f"Make{i}") for i in range(20)]
+        a = shuffle_cars(cars, seed=1)
+        b = shuffle_cars(cars, seed=2)
+        assert [c["id"] for c in a] != [c["id"] for c in b]
+
+    def test_preserves_all_cars(self):
+        cars = [_good_car(id=i) for i in range(50)]
+        shuffled = shuffle_cars(cars)
+        assert sorted(c["id"] for c in shuffled) == list(range(50))
+
+    def test_does_not_mutate_input(self):
+        cars = [_good_car(id=i) for i in range(10)]
+        original_order = [c["id"] for c in cars]
+        shuffle_cars(cars)
+        assert [c["id"] for c in cars] == original_order
+
+    def test_breaks_up_make_clusters(self):
+        """After shuffling, same-make cars shouldn't all be adjacent."""
+        # Create a list with 10 cars per make, perfectly clustered
+        cars = []
+        for make_idx in range(10):
+            for i in range(10):
+                cars.append(_good_car(
+                    id=make_idx * 10 + i,
+                    make=f"Make{make_idx}",
+                    model=f"Model{i}",
+                ))
+        shuffled = shuffle_cars(cars)
+        # Count adjacent same-make pairs
+        adjacent = sum(
+            1 for i in range(len(shuffled) - 1)
+            if shuffled[i]["make"] == shuffled[i + 1]["make"]
+        )
+        # With 100 cars and 10 makes, perfect clustering = 90 adjacent pairs.
+        # A good shuffle should have far fewer.
+        assert adjacent < 30, f"Too many adjacent same-make pairs: {adjacent}"
