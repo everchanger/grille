@@ -34,10 +34,10 @@
               </div>
             </div>
             <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500/20 to-yellow-600/10 border border-amber-500/20">
-              <span class="text-lg">🟡</span>
+              <span class="text-lg">🔼</span>
               <div>
-                <span class="text-white text-sm font-semibold">Yellow</span>
-                <span class="text-gray-400 text-xs block">Close — within range</span>
+                <span class="text-white text-sm font-semibold">Yellow Arrow</span>
+                <span class="text-gray-400 text-xs block">Close — almost there, arrow shows direction</span>
               </div>
             </div>
             <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/[0.04] border border-white/10">

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-5 gap-1.5 mb-1.5">
+  <div class="grid grid-cols-6 gap-1.5 mb-1.5">
     <div
       v-for="col in columns"
       :key="col.key"
@@ -32,6 +32,7 @@ const columns: Column[] = [
   { key: 'make', label: 'Make' },
   { key: 'model', label: 'Model' },
   { key: 'year', label: 'Year' },
+  { key: 'country', label: 'Country' },
   { key: 'horsepower', label: 'HP' },
   { key: 'weight', label: 'Weight' },
 ]
@@ -39,7 +40,8 @@ const columns: Column[] = [
 const icon = (key: keyof GuessFeedback): string => {
   const result: FeedbackResult = props.feedback[key]
   if (result === 'correct') return '✅'
-  if (result === 'close') return '🟡'
+  if (result === 'close_higher') return '🔼'
+  if (result === 'close_lower') return '🔽'
   if (result === 'higher') return '🔼'
   if (result === 'lower') return '🔽'
   return '❌'
@@ -48,7 +50,7 @@ const icon = (key: keyof GuessFeedback): string => {
 const cellClass = (key: keyof GuessFeedback): string => {
   const result: FeedbackResult = props.feedback[key]
   if (result === 'correct') return 'bg-gradient-to-br from-emerald-600 to-green-700 text-white shadow-sm shadow-green-500/20'
-  if (result === 'close') return 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-sm shadow-yellow-500/20'
+  if (result === 'close_higher' || result === 'close_lower') return 'bg-gradient-to-br from-amber-500 to-yellow-600 text-white shadow-sm shadow-yellow-500/20'
   return 'bg-white/[0.06] text-gray-300'
 }
 
@@ -57,6 +59,7 @@ const displayValue = (key: keyof GuessFeedback): string => {
   if (key === 'make') return props.car.make
   if (key === 'model') return props.car.model
   if (key === 'year') return String(props.car.year)
+  if (key === 'country') return props.car.country
   if (key === 'horsepower') return `${props.car.horsepower} hp`
   if (key === 'weight') return formatWeight(props.car.weight_kg)
   return ''

@@ -47,11 +47,12 @@ export const useGame = () => {
           : guessed.year < answer.year
             ? 'higher'
             : 'lower',
+      country: guessed.country === answer.country ? 'correct' : 'wrong',
       horsepower:
         guessed.horsepower === answer.horsepower
           ? 'correct'
           : hpDiff <= 0.15
-            ? 'close'
+            ? (guessed.horsepower < answer.horsepower ? 'close_higher' : 'close_lower')
             : guessed.horsepower < answer.horsepower
               ? 'higher'
               : 'lower',
@@ -59,7 +60,7 @@ export const useGame = () => {
         guessed.weight_kg === answer.weight_kg
           ? 'correct'
           : weightDiff <= 0.1
-            ? 'close'
+            ? (guessed.weight_kg < answer.weight_kg ? 'close_higher' : 'close_lower')
             : guessed.weight_kg < answer.weight_kg
               ? 'higher'
               : 'lower',
@@ -83,6 +84,7 @@ export const useGame = () => {
     const solved = feedback.make === 'correct' &&
       feedback.model === 'correct' &&
       feedback.year === 'correct' &&
+      feedback.country === 'correct' &&
       feedback.horsepower === 'correct' &&
       feedback.weight === 'correct'
 
@@ -116,10 +118,10 @@ export const useGame = () => {
     const filled = state.value.guesses.filter(g => g !== null).length
     const lines: string[] = [`Grille #${dayNumber.value} ${state.value.solved ? filled : 'X'}/6`, '']
     const row = (idx: number) => {
-      if (state.value.guesses[idx] === null) return '⬜⬜⬜⬜⬜'
+      if (state.value.guesses[idx] === null) return '⬜⬜⬜⬜⬜⬜'
       return state.value.solved && state.value.guesses[idx] !== null && idx === filled - 1
-        ? '✅✅✅✅✅'
-        : '🟥🟥🟥🟥🟥'
+        ? '✅✅✅✅✅✅'
+        : '🟥🟥🟥🟥🟥🟥'
     }
     for (let i = 0; i < MAX_GUESSES; i++) lines.push(row(i))
     return lines.join('\n')

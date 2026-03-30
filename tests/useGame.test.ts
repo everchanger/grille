@@ -46,6 +46,7 @@ describe('useGame', () => {
         make: 'correct',
         model: 'correct',
         year: 'correct',
+        country: 'correct',
         horsepower: 'correct',
         weight: 'correct',
       })
@@ -58,6 +59,14 @@ describe('useGame', () => {
       const feedback = computeFeedback(guessed, answer)
       expect(feedback.make).toBe('wrong')
       expect(feedback.model).toBe('wrong')
+    })
+
+    it('returns wrong for different country', async () => {
+      const computeFeedback = await getComputeFeedback()
+      const guessed = makeCar({ country: 'USA' })
+      const answer = makeCar({ country: 'Japan' })
+      const feedback = computeFeedback(guessed, answer)
+      expect(feedback.country).toBe('wrong')
     })
 
     it('returns higher when guessed year is less than answer year', async () => {
@@ -76,13 +85,22 @@ describe('useGame', () => {
       expect(feedback.year).toBe('lower')
     })
 
-    it('returns close when HP difference is within 15%', async () => {
+    it('returns close_higher when HP difference is within 15% and guessed is lower', async () => {
       const computeFeedback = await getComputeFeedback()
       const guessed = makeCar({ horsepower: 280 })
       const answer = makeCar({ horsepower: 320 })
-      // diff = |280-320|/320 = 40/320 = 0.125 <= 0.15 → close
+      // diff = |280-320|/320 = 40/320 = 0.125 <= 0.15 → close_higher
       const feedback = computeFeedback(guessed, answer)
-      expect(feedback.horsepower).toBe('close')
+      expect(feedback.horsepower).toBe('close_higher')
+    })
+
+    it('returns close_lower when HP difference is within 15% and guessed is higher', async () => {
+      const computeFeedback = await getComputeFeedback()
+      const guessed = makeCar({ horsepower: 350 })
+      const answer = makeCar({ horsepower: 320 })
+      // diff = |350-320|/320 = 30/320 = 0.09375 <= 0.15 → close_lower
+      const feedback = computeFeedback(guessed, answer)
+      expect(feedback.horsepower).toBe('close_lower')
     })
 
     it('returns higher when HP is much lower than answer', async () => {
@@ -101,13 +119,22 @@ describe('useGame', () => {
       expect(feedback.horsepower).toBe('lower')
     })
 
-    it('returns close when weight difference is within 10%', async () => {
+    it('returns close_higher when weight difference is within 10% and guessed is lower', async () => {
       const computeFeedback = await getComputeFeedback()
       const guessed = makeCar({ weight_kg: 1450 })
       const answer = makeCar({ weight_kg: 1560 })
-      // diff = |1450-1560|/1560 = 110/1560 ≈ 0.0705 <= 0.1 → close
+      // diff = |1450-1560|/1560 = 110/1560 ≈ 0.0705 <= 0.1 → close_higher
       const feedback = computeFeedback(guessed, answer)
-      expect(feedback.weight).toBe('close')
+      expect(feedback.weight).toBe('close_higher')
+    })
+
+    it('returns close_lower when weight difference is within 10% and guessed is higher', async () => {
+      const computeFeedback = await getComputeFeedback()
+      const guessed = makeCar({ weight_kg: 1650 })
+      const answer = makeCar({ weight_kg: 1560 })
+      // diff = |1650-1560|/1560 = 90/1560 ≈ 0.0577 <= 0.1 → close_lower
+      const feedback = computeFeedback(guessed, answer)
+      expect(feedback.weight).toBe('close_lower')
     })
 
     it('returns higher when weight is much lower than answer', async () => {

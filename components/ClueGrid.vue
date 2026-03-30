@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <!-- Header row -->
-    <div class="grid grid-cols-5 gap-1.5 mb-2">
+    <div class="grid grid-cols-6 gap-1.5 mb-2">
       <div
         v-for="col in columns"
         :key="col"
@@ -25,10 +25,10 @@
     <div
       v-for="n in emptyRows"
       :key="`empty-${n}`"
-      class="grid grid-cols-5 gap-1.5 mb-1.5"
+      class="grid grid-cols-6 gap-1.5 mb-1.5"
     >
       <div
-        v-for="col in 5"
+        v-for="col in 6"
         :key="col"
         class="min-h-[52px] rounded-lg bg-white/[0.03] border border-dashed border-white/10 transition-colors duration-200"
       />
@@ -48,5 +48,5 @@ const props = defineProps<{
 const max = computed(() => props.maxGuesses ?? 6)
 const filledEntries = computed(() => props.entries)
 const emptyRows = computed(() => Math.max(0, max.value - filledEntries.value.length))
-const columns = ['Make', 'Model', 'Year', 'HP', 'Weight']
+const columns = ['Make', 'Model', 'Year', 'Country', 'HP', 'Weight']
 </script>
