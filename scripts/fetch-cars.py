@@ -27,22 +27,33 @@ USER_AGENT = "GrilleCarFetcher/1.0 (https://github.com/everchanger/grille)"
 # Map Wikidata country labels to short display names
 COUNTRY_MAP = {
     "United States of America": "USA",
+    "United States": "USA",
     "United Kingdom": "UK",
+    "United Kingdom of Great Britain and Ireland": "UK",
     "Germany": "Germany",
+    "West Germany": "Germany",
+    "East Germany": "Germany",
+    "Nazi Germany": "Germany",
+    "German Empire": "Germany",
     "Japan": "Japan",
+    "Empire of Japan": "Japan",
     "Italy": "Italy",
+    "Kingdom of Italy": "Italy",
     "France": "France",
     "Sweden": "Sweden",
     "South Korea": "South Korea",
     "Czech Republic": "Czech Republic",
     "Czechoslovakia": "Czech Republic",
+    "Czechia": "Czech Republic",
     "Australia": "Australia",
     "Spain": "Spain",
     "Romania": "Romania",
     "India": "India",
     "China": "China",
+    "People's Republic of China": "China",
     "Malaysia": "Malaysia",
     "Austria": "Austria",
+    "Austria-Hungary": "Austria",
     "Netherlands": "Netherlands",
     "Belgium": "Belgium",
     "Canada": "Canada",
@@ -50,13 +61,169 @@ COUNTRY_MAP = {
     "Mexico": "Mexico",
     "Russia": "Russia",
     "Soviet Union": "Russia",
+    "Serbia": "Serbia",
+    "Yugoslavia": "Serbia",
     "Turkey": "Turkey",
     "Iran": "Iran",
     "Indonesia": "Indonesia",
     "Thailand": "Thailand",
     "Taiwan": "Taiwan",
     "Poland": "Poland",
+    "Croatia": "Croatia",
+    "Argentina": "Argentina",
+    "South Africa": "South Africa",
+    "Portugal": "Portugal",
+    "Denmark": "Denmark",
+    "Finland": "Finland",
+    "Norway": "Norway",
+    "Switzerland": "Switzerland",
 }
+
+# Corporate suffixes to strip from manufacturer labels to get brand names
+MAKE_SUFFIXES = [
+    " Motor Company", " Motor Corporation", " Motor Co.",
+    " Motors Ltd", " Motors", " Motor",
+    " Corporation", " Corp.",
+    " Automobiles", " Automobile",
+    " Group", " Holding",
+    ", Inc.", " Inc.", " Inc",
+    " Ltd.", " Ltd",
+    " S.p.A.", " SpA",
+    " SE & Co. KGaA", " SE", " AG", " GmbH",
+    " N.V.", " NV",
+    " S.A.S.", " S.A.", " SA",
+    " plc", " PLC",
+    " Co.", " Co",
+]
+
+# Explicit manufacturer name overrides (Wikidata label → brand name)
+MAKE_OVERRIDES = {
+    "Bayerische Motoren Werke": "BMW",
+    "Dr. Ing. h.c. F. Porsche AG": "Porsche",
+    "Mercedes-Benz Group": "Mercedes-Benz",
+    "Daimler-Benz": "Mercedes-Benz",
+    "Stellantis": "Stellantis",
+    "Tata Motors": "Tata",
+    "Rover Group": "Rover",
+    "Bertha Benz": "Benz",
+    "Fuji Heavy Industries": "Subaru",
+    "Subaru Corporation": "Subaru",
+    "Hyundai Motor Company": "Hyundai",
+    "Kia Corporation": "Kia",
+    "Honda Motor Co., Ltd.": "Honda",
+    "Suzuki Motor Corporation": "Suzuki",
+    "Mitsubishi Motors": "Mitsubishi",
+    "Volkswagen Group": "Volkswagen",
+    "Volkswagenwerk GmbH": "Volkswagen",
+    "General Motors": "GM",
+    "Chrysler": "Chrysler",
+    "Fiat Chrysler Automobiles": "Chrysler",
+    "Adam Opel AG": "Opel",
+    "AB Volvo": "Volvo",
+    "Volvo Cars": "Volvo",
+    "Dacia": "Dacia",
+}
+
+# Map generic engine labels from Wikidata to cleaner short forms
+ENGINE_LABEL_MAP = {
+    "gasoline engine": "",
+    "petrol engine": "",
+    "diesel engine": "Diesel",
+    "internal combustion engine": "",
+    "electric motor": "Electric",
+    "induction motor": "Electric",
+    "synchronous motor": "Electric",
+    "AC motor": "Electric",
+    "Wankel engine": "Rotary",
+    "rotary engine": "Rotary",
+    "flat engine": "Flat",
+    "V engine": "V",
+    "straight engine": "Inline",
+    "inline engine": "Inline",
+    "turbocharged direct injection": "Turbo",
+}
+
+# Map engine type entities (P31 of engine) to short labels
+ENGINE_TYPE_MAP = {
+    "V6 engine": "V6",
+    "V8 engine": "V8",
+    "V10 engine": "V10",
+    "V12 engine": "V12",
+    "V16 engine": "V16",
+    "straight-four engine": "I4",
+    "straight-five engine": "I5",
+    "straight-six engine": "I6",
+    "straight-eight engine": "I8",
+    "inline-four engine": "I4",
+    "inline-six engine": "I6",
+    "inline-three engine": "I3",
+    "flat-four engine": "Flat-4",
+    "flat-six engine": "Flat-6",
+    "flat-twin engine": "Flat-2",
+    "W12 engine": "W12",
+    "W16 engine": "W16",
+    "Wankel engine": "Rotary",
+    "electric motor": "Electric",
+    "hybrid electric-internal combustion engine": "Hybrid",
+}
+
+# Drivetrain label mapping
+DRIVETRAIN_MAP = {
+    "front-wheel drive": "FWD",
+    "rear-wheel drive": "RWD",
+    "all-wheel drive": "AWD",
+    "four-wheel drive": "4WD",
+    "front-engine, front-wheel-drive layout": "FWD",
+    "front-engine, rear-wheel-drive layout": "RWD",
+    "rear-engine, rear-wheel-drive layout": "RWD",
+    "mid-engine, rear-wheel-drive layout": "RWD",
+    "front-engine, four-wheel-drive layout": "AWD",
+}
+
+
+def clean_make(raw_make: str) -> str:
+    """Clean manufacturer label to a brand-level name."""
+    # Check explicit overrides first
+    if raw_make in MAKE_OVERRIDES:
+        return MAKE_OVERRIDES[raw_make]
+    # Strip corporate suffixes
+    make = raw_make
+    for suffix in MAKE_SUFFIXES:
+        if make.endswith(suffix):
+            make = make[:-len(suffix)].strip()
+            break
+    return make if make else raw_make
+
+
+def clean_engine(engine_label: str, engine_type_label: str = "") -> str:
+    """Clean engine label to a short description like 'V8', 'I4', etc."""
+    # Prefer the engine type (from P31 of the engine entity) if available
+    if engine_type_label:
+        mapped = ENGINE_TYPE_MAP.get(engine_type_label)
+        if mapped:
+            return mapped
+    # Fall back to engine label mapping
+    if engine_label:
+        mapped = ENGINE_LABEL_MAP.get(engine_label)
+        if mapped is not None:
+            return mapped
+        # Check if the label already looks like a short engine type
+        if engine_label in ("V6", "V8", "V10", "V12", "I4", "I6"):
+            return engine_label
+    return engine_label
+
+
+def clean_drivetrain(dt_label: str) -> str:
+    """Map drivetrain label to short form (FWD, RWD, AWD, 4WD)."""
+    if not dt_label:
+        return ""
+    mapped = DRIVETRAIN_MAP.get(dt_label)
+    if mapped:
+        return mapped
+    # Check if already short form
+    if dt_label in ("FWD", "RWD", "AWD", "4WD"):
+        return dt_label
+    return dt_label
 
 
 def sparql_query(query: str) -> list[dict]:
@@ -100,7 +267,7 @@ def fetch_car_list(limit: int = 600) -> list[dict]:
 
     query = f"""
     SELECT DISTINCT ?car ?carLabel ?manufacturerLabel ?countryLabel
-           ?inception ?image ?article ?sitelinks
+           ?mfgCountryLabel ?inception ?prodStart ?image ?article ?sitelinks
     WHERE {{
       # Match automobile models and generations
       VALUES ?carType {{ wd:Q3231690 wd:Q786820 }}
@@ -110,7 +277,9 @@ def fetch_car_list(limit: int = 600) -> list[dict]:
       FILTER(?sitelinks > 10)
 
       OPTIONAL {{ ?car wdt:P495 ?country . }}
+      OPTIONAL {{ ?manufacturer wdt:P17 ?mfgCountry . }}
       OPTIONAL {{ ?car wdt:P571 ?inception . }}
+      OPTIONAL {{ ?car wdt:P580 ?prodStart . }}
       OPTIONAL {{ ?car wdt:P18 ?image . }}
       OPTIONAL {{
         ?article schema:about ?car ;
@@ -132,6 +301,14 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
     """
     Step 2: Fetch HP, weight, engine, and drivetrain for specific car entities.
     Batches the queries to avoid timeouts.
+
+    Uses:
+      P2386 = engine power (replaces wrong P2325)
+      P2067 = mass (weight)
+      P516  = powered by (engine entity)
+      P31   = instance of (to get engine type like 'V8 engine')
+      P1552 = has characteristic (for drivetrain: FWD/RWD/AWD)
+      P2517 = category for the type of drive (layout)
     """
     print(f"Step 2: Fetching specs for {len(entity_ids)} cars...")
     all_specs: dict[str, dict] = {}
@@ -142,13 +319,14 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
         values = " ".join(f"wd:{eid}" for eid in batch)
 
         query = f"""
-        SELECT ?car ?hpAmount ?hpUnit ?weightAmount ?engineLabel ?drivetrainLabel
+        SELECT ?car ?hpAmount ?hpUnit ?weightAmount
+               ?engineLabel ?engineTypeLabel ?driveLabel
         WHERE {{
           VALUES ?car {{ {values} }}
 
           OPTIONAL {{
-            ?car p:P2325 ?hpStmt .
-            ?hpStmt psv:P2325 ?hpNode .
+            ?car p:P2386 ?hpStmt .
+            ?hpStmt psv:P2386 ?hpNode .
             ?hpNode wikibase:quantityAmount ?hpAmount .
             ?hpNode wikibase:quantityUnit ?hpUnit .
           }}
@@ -157,8 +335,11 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
             ?weightStmt psv:P2067 ?weightNode .
             ?weightNode wikibase:quantityAmount ?weightAmount .
           }}
-          OPTIONAL {{ ?car wdt:P516 ?engine . }}
-          OPTIONAL {{ ?car wdt:P5765 ?drivetrain . }}
+          OPTIONAL {{
+            ?car wdt:P516 ?engine .
+            OPTIONAL {{ ?engine wdt:P31 ?engineType . }}
+          }}
+          OPTIONAL {{ ?car wdt:P1552 ?drive . }}
 
           SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" . }}
         }}
@@ -174,8 +355,9 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
             hp_raw = get_val(row, "hpAmount")
             hp_unit = get_val(row, "hpUnit")
             weight_raw = get_val(row, "weightAmount")
-            engine = get_val(row, "engineLabel")
-            drivetrain = get_val(row, "drivetrainLabel")
+            engine_label = get_val(row, "engineLabel")
+            engine_type_label = get_val(row, "engineTypeLabel")
+            drive_label = get_val(row, "driveLabel")
 
             # Convert HP: kW (Q25269) -> hp, PS (Q178049) stays ~same, bhp stays
             hp = 0
@@ -198,11 +380,20 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
                 except ValueError:
                     pass
 
-            # Clean engine/drivetrain labels (skip if looks like QID)
-            if engine and engine.startswith("Q") and engine[1:].isdigit():
-                engine = ""
-            if drivetrain and drivetrain.startswith("Q") and drivetrain[1:].isdigit():
-                drivetrain = ""
+            # Clean engine label: skip QIDs, then apply mappings
+            if engine_label and engine_label.startswith("Q") and \
+                    engine_label[1:].isdigit():
+                engine_label = ""
+            if engine_type_label and engine_type_label.startswith("Q") and \
+                    engine_type_label[1:].isdigit():
+                engine_type_label = ""
+            engine = clean_engine(engine_label, engine_type_label)
+
+            # Clean drivetrain label
+            if drive_label and drive_label.startswith("Q") and \
+                    drive_label[1:].isdigit():
+                drive_label = ""
+            drivetrain = clean_drivetrain(drive_label)
 
             if entity not in all_specs:
                 all_specs[entity] = {
@@ -269,46 +460,68 @@ def process_results(
         else:
             # Merge optional fields
             existing = seen[entity]
-            for key in ("countryLabel", "inception", "image", "article"):
+            for key in ("countryLabel", "mfgCountryLabel",
+                        "inception", "prodStart",
+                        "image", "article"):
                 if not get_val(existing, key) and get_val(row, key):
                     existing[key] = row[key]
 
     cars = []
     for entity, row in seen.items():
-        make = get_val(row, "manufacturerLabel")
+        raw_make = get_val(row, "manufacturerLabel")
         car_label = get_val(row, "carLabel")
         country = get_val(row, "countryLabel")
+        mfg_country = get_val(row, "mfgCountryLabel")
         inception = get_val(row, "inception")
+        prod_start = get_val(row, "prodStart")
         image_url = get_val(row, "image")
         wiki = get_val(row, "article")
         sitelinks = int(get_val(row, "sitelinks", "0"))
 
         # Skip unresolved labels (look like QIDs)
-        if not make or not car_label:
+        if not raw_make or not car_label:
             continue
         if car_label.startswith("Q") and car_label[1:].isdigit():
             continue
-        if make.startswith("Q") and make[1:].isdigit():
+        if raw_make.startswith("Q") and raw_make[1:].isdigit():
             continue
 
-        # Clean up model name — remove manufacturer prefix if present
+        # Clean manufacturer name to brand-level
+        make = clean_make(raw_make)
+
+        # Clean up model name — remove manufacturer/brand prefix if present
         model = car_label
+        # Try cleaned brand name first (e.g. "Ford" from "Ford Motor Company")
         if model.lower().startswith(make.lower()):
             model = model[len(make):].strip()
+        # Also try original manufacturer label
+        elif model.lower().startswith(raw_make.lower()):
+            model = model[len(raw_make):].strip()
+        # If stripping left nothing, keep original label
         if not model:
             model = car_label
 
-        # Map country names
-        country = COUNTRY_MAP.get(country, country)
+        # Skip entries that are brands/companies, not car models
+        # (where model name equals the brand name after stripping)
+        if model.lower() == make.lower():
+            continue
 
-        # Parse year from inception date
+        # Map country names; fall back to manufacturer's country
+        country = COUNTRY_MAP.get(country, country)
+        if not country and mfg_country:
+            country = COUNTRY_MAP.get(mfg_country, mfg_country)
+
+        # Parse year from inception date, fall back to production start
         year = 0
-        if inception:
-            try:
-                # Wikidata dates look like "1993-01-01T00:00:00Z"
-                year = int(inception[:4])
-            except (ValueError, IndexError):
-                pass
+        for date_str in (inception, prod_start):
+            if date_str and not year:
+                try:
+                    # Wikidata dates look like "1993-01-01T00:00:00Z"
+                    parsed = int(date_str[:4])
+                    if 1800 <= parsed <= 2030:
+                        year = parsed
+                except (ValueError, IndexError):
+                    pass
 
         # Get specs
         car_specs = specs.get(entity, {})
