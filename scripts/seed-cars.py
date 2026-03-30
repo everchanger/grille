@@ -570,9 +570,48 @@ def generate_wiki_url(make: str, model: str) -> str:
     return f"https://en.wikipedia.org/wiki/{title}"
 
 
+def validate_car(car: dict) -> tuple[bool, list[str]]:
+    """
+    Validate that a car has all required fields for the guessing game.
+    Returns (is_valid, list_of_reasons) — if invalid, reasons describe what's
+    missing or wrong.
+    """
+    reasons: list[str] = []
+
+    if not car.get("make"):
+        reasons.append("missing make")
+    if not car.get("model"):
+        reasons.append("missing model")
+
+    year = car.get("year", 0)
+    if not isinstance(year, int) or year < 1800 or year > 2030:
+        reasons.append(f"invalid year ({year})")
+
+    if not car.get("country"):
+        reasons.append("missing country")
+
+    hp = car.get("horsepower", 0)
+    if not isinstance(hp, (int, float)) or hp <= 0:
+        reasons.append(f"invalid horsepower ({hp})")
+
+    weight = car.get("weight_kg", 0)
+    if not isinstance(weight, (int, float)) or weight <= 0:
+        reasons.append(f"invalid weight ({weight})")
+
+    if not car.get("engine"):
+        reasons.append("missing engine")
+
+    dt = car.get("drivetrain", "")
+    if not dt:
+        reasons.append("missing drivetrain")
+
+    return (len(reasons) == 0, reasons)
+
+
 def build_cars(limit: int | None = None) -> list[dict]:
     """Convert the embedded car data into Car-interface-compatible dicts."""
     cars = []
+    skipped: list[tuple[str, str, list[str]]] = []
     for idx, (make, model, year, country, hp, weight, engine, dt) in enumerate(CARS, 1):
         slug = make_slug(make, model)
         car = {
@@ -589,12 +628,25 @@ def build_cars(limit: int | None = None) -> list[dict]:
             "fact": "",
             "wiki": generate_wiki_url(make, model),
         }
+
+        valid, reasons = validate_car(car)
+        if not valid:
+            skipped.append((make, model, reasons))
+            continue
+
         cars.append(car)
+
+    if skipped:
+        print(f"\n  Skipped {len(skipped)} cars with incomplete data:")
+        for s_make, s_model, s_reasons in skipped:
+            print(f"    - {s_make} {s_model}: {', '.join(s_reasons)}")
 
     if limit:
         cars = cars[:limit]
-        for idx, car in enumerate(cars, 1):
-            car["id"] = idx
+
+    # Reassign IDs sequentially after filtering
+    for idx, car in enumerate(cars, 1):
+        car["id"] = idx
 
     return cars
 

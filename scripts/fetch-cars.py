@@ -426,6 +426,122 @@ def fetch_car_specs(entity_ids: list[str]) -> dict[str, dict]:
     return all_specs
 
 
+def validate_car(car: dict) -> tuple[bool, list[str]]:
+    """
+    Validate that a car has all required fields for the guessing game.
+    Returns (is_valid, list_of_reasons) — if invalid, reasons describe what's
+    missing or wrong.
+
+    Required fields:
+      - make: non-empty string
+      - model: non-empty string
+      - year: integer between 1800 and 2030
+      - country: non-empty string
+      - horsepower: positive integer
+      - weight_kg: positive integer
+      - engine: non-empty string
+      - drivetrain: non-empty string (FWD/RWD/AWD/4WD)
+    """
+    reasons: list[str] = []
+
+    if not car.get("make"):
+        reasons.append("missing make")
+    if not car.get("model"):
+        reasons.append("missing model")
+
+    year = car.get("year", 0)
+    if not isinstance(year, int) or year < 1800 or year > 2030:
+        reasons.append(f"invalid year ({year})")
+
+    if not car.get("country"):
+        reasons.append("missing country")
+
+    hp = car.get("horsepower", 0)
+    if not isinstance(hp, (int, float)) or hp <= 0:
+        reasons.append(f"invalid horsepower ({hp})")
+
+    weight = car.get("weight_kg", 0)
+    if not isinstance(weight, (int, float)) or weight <= 0:
+        reasons.append(f"invalid weight ({weight})")
+
+    if not car.get("engine"):
+        reasons.append("missing engine")
+
+    dt = car.get("drivetrain", "")
+    if not dt:
+        reasons.append("missing drivetrain")
+
+    return (len(reasons) == 0, reasons)
+
+
+def load_seed_lookup() -> dict[tuple[str, str], dict]:
+    """
+    Load the seed car data as a lookup table keyed by (make_lower, model_lower).
+    This is used as a fallback to fill in missing data from Wikidata results.
+    Returns empty dict if seed data can't be loaded.
+    """
+    seed_script = Path(__file__).resolve().parent / "seed-cars.py"
+    if not seed_script.exists():
+        return {}
+
+    # Import seed module dynamically
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("seed_cars", seed_script)
+    if spec is None or spec.loader is None:
+        return {}
+    mod = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(mod)
+    except Exception:
+        return {}
+
+    seed_cars = mod.build_cars()
+    lookup: dict[tuple[str, str], dict] = {}
+    for car in seed_cars:
+        key = (car["make"].lower(), car["model"].lower())
+        lookup[key] = car
+        # Also index by just model name for fuzzy matching
+        model_key = ("", car["model"].lower())
+        if model_key not in lookup:
+            lookup[model_key] = car
+    return lookup
+
+
+def enrich_from_seed(car: dict, seed_lookup: dict[tuple[str, str], dict]) -> dict:
+    """
+    Try to fill in missing car fields from the seed data.
+    Only fills fields that are missing/zero/empty.
+    """
+    if not seed_lookup:
+        return car
+
+    make_lower = car.get("make", "").lower()
+    model_lower = car.get("model", "").lower()
+
+    # Try exact match first, then model-only match
+    seed = seed_lookup.get((make_lower, model_lower))
+    if not seed:
+        seed = seed_lookup.get(("", model_lower))
+    if not seed:
+        return car
+
+    # Fill in missing/zero fields from seed
+    if not car.get("year") or car["year"] == 0:
+        car["year"] = seed.get("year", 0)
+    if not car.get("horsepower") or car["horsepower"] == 0:
+        car["horsepower"] = seed.get("horsepower", 0)
+    if not car.get("weight_kg") or car["weight_kg"] == 0:
+        car["weight_kg"] = seed.get("weight_kg", 0)
+    if not car.get("engine"):
+        car["engine"] = seed.get("engine", "")
+    if not car.get("drivetrain"):
+        car["drivetrain"] = seed.get("drivetrain", "")
+    if not car.get("country"):
+        car["country"] = seed.get("country", "")
+
+    return car
+
+
 def make_slug(make: str, model: str) -> str:
     """Create a URL-safe slug from make and model."""
     text = f"{make}-{model}".lower()
@@ -452,7 +568,8 @@ def commons_thumb_url(url: str, width: int = 800) -> str:
 
 
 def process_results(
-    raw_cars: list[dict], specs: dict[str, dict]
+    raw_cars: list[dict], specs: dict[str, dict],
+    seed_lookup: dict[tuple[str, str], dict] | None = None,
 ) -> list[dict]:
     """Combine car list and specs into final Car objects."""
     # Deduplicate by entity ID (keep first/best row)
@@ -472,6 +589,7 @@ def process_results(
                     existing[key] = row[key]
 
     cars = []
+    skipped: list[tuple[str, str, list[str]]] = []
     for entity, row in seen.items():
         raw_make = get_val(row, "manufacturerLabel")
         car_label = get_val(row, "carLabel")
@@ -556,7 +674,25 @@ def process_results(
             "wikidata": f"https://www.wikidata.org/wiki/{entity}",
             "sitelinks": sitelinks,
         }
+
+        # Try to enrich missing fields from seed data
+        if seed_lookup:
+            car = enrich_from_seed(car, seed_lookup)
+
+        # Validate — only include cars with complete data
+        valid, reasons = validate_car(car)
+        if not valid:
+            skipped.append((make, model, reasons))
+            continue
+
         cars.append(car)
+
+    if skipped:
+        print(f"\n  Skipped {len(skipped)} cars with incomplete data:")
+        for s_make, s_model, s_reasons in skipped[:20]:
+            print(f"    - {s_make} {s_model}: {', '.join(s_reasons)}")
+        if len(skipped) > 20:
+            print(f"    ... and {len(skipped) - 20} more")
 
     return cars
 
@@ -592,9 +728,17 @@ def main():
     # Step 2: Fetch specs
     specs = fetch_car_specs(entity_ids)
 
+    # Load seed data as fallback for enrichment
+    print("Loading seed data for fallback enrichment...")
+    seed_lookup = load_seed_lookup()
+    if seed_lookup:
+        print(f"  Loaded {len(seed_lookup)} seed entries for enrichment")
+    else:
+        print("  No seed data available (enrichment skipped)")
+
     # Step 3: Process and combine
     print("Step 3: Processing results...")
-    cars = process_results(raw_cars, specs)
+    cars = process_results(raw_cars, specs, seed_lookup)
 
     # Sort by sitelinks (popularity) descending
     cars.sort(key=lambda c: c["sitelinks"], reverse=True)
