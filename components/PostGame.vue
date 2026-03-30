@@ -133,11 +133,20 @@ const updateCountdown = () => {
 }
 
 let timer: ReturnType<typeof setInterval>
+let confettiCleanupTimer: ReturnType<typeof setTimeout>
+let confettiLaunchTimer: ReturnType<typeof setTimeout>
+let confettiAnimId: number
+
 onMounted(() => {
   updateCountdown()
   timer = setInterval(updateCountdown, 1000)
 })
-onUnmounted(() => clearInterval(timer))
+onUnmounted(() => {
+  clearInterval(timer)
+  clearTimeout(confettiCleanupTimer)
+  clearTimeout(confettiLaunchTimer)
+  cancelAnimationFrame(confettiAnimId)
+})
 
 // Confetti effect
 interface Particle {
@@ -164,7 +173,7 @@ const launchConfetti = () => {
   const colors = ['#6366f1', '#818cf8', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#38bdf8', '#fb923c']
   const particles: Particle[] = []
 
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < 100; i++) {
     particles.push({
       x: canvas.width / 2 + (Math.random() - 0.5) * 200,
       y: canvas.height * 0.4,
@@ -214,8 +223,9 @@ const launchConfetti = () => {
   }
 
   animId = requestAnimationFrame(animate)
+  confettiAnimId = animId
 
-  setTimeout(() => {
+  confettiCleanupTimer = setTimeout(() => {
     cancelAnimationFrame(animId)
     if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height)
   }, 5000)
@@ -224,7 +234,7 @@ const launchConfetti = () => {
 watch(() => props.open, async (isOpen) => {
   if (isOpen && props.solved) {
     await nextTick()
-    setTimeout(launchConfetti, 300)
+    confettiLaunchTimer = setTimeout(launchConfetti, 300)
   }
 })
 </script>
