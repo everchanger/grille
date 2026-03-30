@@ -13,12 +13,13 @@ export interface Car {
   wiki: string
 }
 
-export type FeedbackResult = 'correct' | 'wrong' | 'higher' | 'lower' | 'close'
+export type FeedbackResult = 'correct' | 'wrong' | 'higher' | 'lower' | 'close_higher' | 'close_lower'
 
 export interface GuessFeedback {
   make: FeedbackResult
   model: FeedbackResult
   year: FeedbackResult
+  country: FeedbackResult
   horsepower: FeedbackResult
   weight: FeedbackResult
 }

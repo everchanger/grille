@@ -36,9 +36,7 @@
         :state="imageState"
       />
 
-      <ClueGrid :entries="guessEntries" />
-
-      <div v-if="canGuess" class="mt-4">
+      <div v-if="canGuess" class="mt-4 mb-4">
         <GuessInput
           :disabled="!canGuess"
           :guessed-ids="guessedCarIds"
@@ -58,6 +56,8 @@
           <span class="ml-2 text-gray-500 text-xs">{{ guessCount }}/6</span>
         </div>
       </div>
+
+      <ClueGrid :entries="guessEntries" />
 
       <PostGame
         v-if="state.solved || state.failed"
