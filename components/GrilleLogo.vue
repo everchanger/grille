@@ -66,9 +66,9 @@ withDefaults(defineProps<{
   size: 32,
   className: '',
   animate: false,
-  bodyColor: 'currentColor',
-  grillColor: '#1a1a2e',
-  barColor: '#e5e7eb',
+  bodyColor: '#6b7280',
+  grillColor: '#1f2937',
+  barColor: '#9ca3af',
   headlightColor: '#fbbf24',
 })
 </script>

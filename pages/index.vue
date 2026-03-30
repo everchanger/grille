@@ -83,7 +83,7 @@
     <footer class="max-w-lg mx-auto px-4 py-8 mt-8">
       <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
       <div class="flex flex-col items-center gap-3 text-center">
-        <GrilleLogo :size="28" body-color="#6b7280" grill-color="#1f2937" bar-color="#9ca3af" headlight-color="#d97706" />
+        <GrilleLogo :size="28" headlight-color="#d97706" />
         <p class="text-gray-500 text-xs leading-relaxed max-w-xs">
           A new mystery car every day — guess the exact make and model in 5 tries. Each guess reveals clues and unblurs the image. How well do you know your cars?
         </p>
