@@ -48,6 +48,16 @@
             <span class="text-gray-500 text-[10px] tracking-wider uppercase">Puzzle #{{ dayNumber }}</span>
             <span class="mx-1.5 text-gray-600">·</span>
             <span>{{ displayDate }}</span>
+            <span
+              v-if="state.solved"
+              class="ml-1.5 text-emerald-400"
+              title="Solved"
+            >✓</span>
+            <span
+              v-else-if="state.failed"
+              class="ml-1.5 text-red-400"
+              title="Failed"
+            >✗</span>
           </button>
           <input
             ref="datePickerRef"
@@ -146,7 +156,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useGame, MAX_GUESSES, getTodayDateStr, dateToDayNumber, dayNumberToDate } from '~/composables/useGame'
 import { useUnits } from '~/composables/useUnits'
@@ -198,16 +208,22 @@ const howToPlayOpen = ref(false)
 const postGameOpen = ref(false)
 const gameStats = ref(loadStats())
 
+// Suppress modal when navigating between dates so that loading
+// a previously-completed state doesn't re-open the post-game modal.
+let suppressPostGame = false
+
 watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
   gameStats.value = loadStats()
-  if (solved || failed) {
+  if ((solved || failed) && !suppressPostGame) {
     postGameOpen.value = true
   }
 })
 
 // Close post-game modal when navigating to a different date
 watch(selectedDateStr, () => {
+  suppressPostGame = true
   postGameOpen.value = false
+  nextTick(() => { suppressPostGame = false })
 })
 
 onMounted(() => {

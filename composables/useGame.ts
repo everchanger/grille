@@ -27,6 +27,20 @@ export const dayNumberToDate = (day: number): string => {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
 }
 
+/**
+ * Map a day number to a car index using a multiplicative hash so that
+ * consecutive days don't land on consecutive (and potentially similar) cars.
+ * 373 is prime and coprime with 375, so (d * 373) % 375 produces a full
+ * permutation of indices 0..374 within each 375-day cycle. An additive
+ * cycle offset ensures different ordering across cycles.
+ */
+const SPREAD_PRIME = 373
+export const carIndexForDay = (day: number, total: number): number => {
+  const cycle = Math.floor(day / total)
+  const dayInCycle = day % total
+  return (dayInCycle * SPREAD_PRIME + cycle) % total
+}
+
 const CONTINENT_MAP: Record<string, string> = {
   'USA': 'North America',
   'Germany': 'Europe',
@@ -67,7 +81,7 @@ export const useGame = (dateOverride?: Ref<string | undefined>) => {
   })
 
   const todaysCar = computed<Car>(() => {
-    return cars[dayNumber.value % cars.length]
+    return cars[carIndexForDay(dayNumber.value, cars.length)]
   })
 
   const state = ref<GameState>(loadGameState(dateOverride?.value))
