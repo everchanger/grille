@@ -302,28 +302,30 @@ const gameComplete = computed(() => state.value.solved || state.value.failed)
 // Tab state: "guesses" when playing, "details" when complete
 const activeTab = ref<'guesses' | 'details'>(gameComplete.value ? 'details' : 'guesses')
 
-// Track whether the user JUST completed the puzzle in this session
-// (for confetti — not when loading a previously completed state)
-let justCompletedInSession = false
+// Animation timing constants
+const TAB_SWITCH_DELAY_MS = 600
+const CONFETTI_LAUNCH_DELAY_MS = 400
+const CONFETTI_DURATION_MS = 5000
+const CONFETTI_PARTICLE_COUNT = 100
+
 const showConfetti = ref(false)
 const confettiCanvas = ref<HTMLCanvasElement | null>(null)
-let confettiCleanupTimer: ReturnType<typeof setTimeout>
-let confettiAnimId: number
+let confettiCleanupTimer: ReturnType<typeof setTimeout> | undefined
+let confettiAnimId: number | undefined
 
 // Watch for game completion (fresh solve/fail)
 watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) => {
   gameStats.value = loadStats()
   if (solved || failed) {
-    justCompletedInSession = true
     // Switch to details tab with a small delay for animation
     setTimeout(() => {
       activeTab.value = 'details'
-    }, 600)
+    }, TAB_SWITCH_DELAY_MS)
     // Fire confetti only on fresh win
     if (solved) {
       showConfetti.value = true
       nextTick(() => {
-        setTimeout(launchConfetti, 400)
+        setTimeout(launchConfetti, CONFETTI_LAUNCH_DELAY_MS)
       })
     }
   }
@@ -331,7 +333,6 @@ watch([() => state.value.solved, () => state.value.failed], ([solved, failed]) =
 
 // When navigating between dates, reset tab based on game state
 watch(selectedDateStr, () => {
-  justCompletedInSession = false
   showConfetti.value = false
   nextTick(() => {
     activeTab.value = gameComplete.value ? 'details' : 'guesses'
@@ -352,8 +353,8 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  clearTimeout(confettiCleanupTimer)
-  cancelAnimationFrame(confettiAnimId)
+  if (confettiCleanupTimer) clearTimeout(confettiCleanupTimer)
+  if (confettiAnimId) cancelAnimationFrame(confettiAnimId)
 })
 
 // Confetti effect
@@ -381,7 +382,7 @@ const launchConfetti = () => {
   const colors = ['#6366f1', '#818cf8', '#34d399', '#fbbf24', '#f87171', '#a78bfa', '#38bdf8', '#fb923c']
   const particles: Particle[] = []
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < CONFETTI_PARTICLE_COUNT; i++) {
     particles.push({
       x: canvas.width / 2 + (Math.random() - 0.5) * 200,
       y: canvas.height * 0.4,
@@ -438,7 +439,7 @@ const launchConfetti = () => {
     cancelAnimationFrame(animId)
     if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height)
     showConfetti.value = false
-  }, 5000)
+  }, CONFETTI_DURATION_MS)
 }
 
 const guessEntries = computed<GuessEntry[]>(() => {
