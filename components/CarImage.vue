@@ -20,6 +20,16 @@
         @error="onImageError"
       />
     </template>
+    <!-- Car name overlay (shown when game is complete) -->
+    <Transition name="car-name">
+      <div
+        v-if="carName"
+        class="px-3 py-2 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-sm border-t border-white/5"
+      >
+        <p class="text-white font-bold text-sm text-center">{{ carName }}</p>
+        <p v-if="carSubtitle" class="text-gray-400 text-xs text-center mt-0.5">{{ carSubtitle }}</p>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -32,6 +42,8 @@ const props = defineProps<{
   src: string
   alt: string
   state: ImageState
+  carName?: string
+  carSubtitle?: string
 }>()
 
 const imageError = ref(false)
@@ -46,3 +58,20 @@ watch(() => props.src, () => {
   imageError.value = false
 })
 </script>
+
+<style scoped>
+.car-name-enter-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.car-name-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.car-name-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.car-name-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+</style>
