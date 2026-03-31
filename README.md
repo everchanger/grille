@@ -41,29 +41,41 @@ grille/
 ├── components/
 │   ├── CarImage.vue          # Progressive image reveal
 │   ├── ClueGrid.vue          # 5-row guess grid
+│   ├── GrilleLogo.vue        # Animated SVG logo
 │   ├── GuessInput.vue        # Autocomplete search input
 │   ├── GuessRow.vue          # Single feedback row
 │   ├── HowToPlay.vue         # How-to-play instructions overlay
-│   ├── PostGame.vue          # Win/lose reveal panel
+│   ├── ResultDetails.vue     # Win/lose reveal panel
 │   └── StatsModal.vue        # Statistics overlay
 ├── composables/
 │   ├── useGame.ts            # Core game logic
 │   ├── useStorage.ts         # localStorage persistence
 │   └── useUnits.ts           # kg/lbs toggle
 ├── data/
-│   └── cars.json             # Car database (~375 cars)
+│   ├── cars.json             # Car database (~375 cars)
+│   └── cars-wikidata.json    # Raw Wikidata fetch output
 ├── types/
 │   └── index.ts              # TypeScript interfaces
 ├── utils/
 │   ├── carLabel.ts           # Car display label helper
 │   └── useAssetUrl.ts        # Asset URL resolution
+├── tests/
+│   ├── carLabel.test.ts
+│   ├── dateNavigation.test.ts
+│   ├── useAssetUrl.test.ts
+│   ├── useGame.test.ts
+│   ├── useStorage.test.ts
+│   └── useUnits.test.ts
 ├── scripts/
 │   ├── fetch-cars.py         # Wikipedia car data fetcher
-│   └── seed-cars.py          # Curated seed car data
+│   ├── seed-cars.py          # Curated seed car data
+│   ├── test_fetch_cars.py    # Tests for fetch-cars.py
+│   └── test_seed_cars.py     # Tests for seed-cars.py
 ├── public/
 │   └── cars/                 # Car images (.webp)
 ├── nuxt.config.ts
 ├── tailwind.config.ts
+├── vitest.config.ts
 └── .github/workflows/
     ├── deploy.yml            # CI/CD → GitHub Pages
     └── fetch-cars.yml        # Automated car data refresh
